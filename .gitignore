@@ -1,0 +1,14 @@
+# Dependencies directories
+
+node_modules/
+frontend/lib/
+vendor/
+
+# Application files
+
+.env
+!.env.example
+
+# Temp files
+
+.DS_Store

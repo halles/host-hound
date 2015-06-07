@@ -1,0 +1,17 @@
+{
+  "name": "some-test",
+  "author": "<%= author %>",
+  "version": "0.1.0",
+  "dependencies": {
+    "gulp": "~3.8.11",
+    "bower": "~1.4.1"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.11",
+    "bower": "~1.4.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": "BSD"
+}
