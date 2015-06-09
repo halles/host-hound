@@ -12,3 +12,4 @@ vendor/
 # Temp files
 
 .DS_Store
+logs
