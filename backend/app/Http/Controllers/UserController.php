@@ -15,8 +15,7 @@ class UserController extends Controller {
   public function login(Request $request) {
 
     if (Auth::attempt($request->only('email', 'password'))) {
-      //return response()->json($response);
-      App::abort(200, 'OK');
+      return response()->json(array('status' => 'OK'));
     }else{
       App::abort(403, 'Access denied');
     }

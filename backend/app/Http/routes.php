@@ -42,7 +42,7 @@ $app->get('/logout', [
 $app->get('/me', [
   'as' => 'me',
   'middleware' => 'auth',
-  'uses' => 'App\Http\Controllers\UserController@me'
+  'uses' => 'App\Http\Controllers\UserController@profile'
 ]);
 
 $app->get('/me/emails', [
@@ -80,5 +80,3 @@ $app->get('/me/password/{token}', [
   'middleware' => 'auth',
   'uses' => 'App\Http\Controllers\UserController@passwordTokenCheck'
 ]);
-
-/** Admin Panels **/
