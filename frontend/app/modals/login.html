@@ -1,0 +1,28 @@
+<form class="form-signin">
+  <div class="modal-header">
+    <h3 class="modal-title">Ingreso de Usuarios</h3>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus ng-model="email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model="password">
+    </div>
+    <div class="form-group">
+      <label class="checkbox" for="checkbox4">
+        <input type="checkbox" ng-model="remember" value="" id="checkbox4" checked="false" class="custom-checkbox">
+        <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+        Recordarme
+      </label>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-warning" ng-click="cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="ok()">Ingresar</button>
+  </div>
+</form>

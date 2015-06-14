@@ -3,6 +3,7 @@ hostHound.factory("User", function ($rootScope, $http, $location, ngProgress){
     data: null,
     isLogin: false,
     register: false,
+    callbacks: [],
 
     fetch: function(callback) {
       var _this = this;
@@ -10,9 +11,11 @@ hostHound.factory("User", function ($rootScope, $http, $location, ngProgress){
         .success(function(data, status, headers, config) {
           _this.afterlogin(data);
           if (callback) callback(true);
+          _this.callCallbacks();
         })
         .error(function(data, status, headers, config) {
           if (callback) callback(false, data);
+          _this.callCallbacks();
         });
 
       return this;
@@ -70,6 +73,7 @@ hostHound.factory("User", function ($rootScope, $http, $location, ngProgress){
           _this.register = false;
           $location.path('/');
           if (callback) callback();
+          _this.callCallbacks();
         });
       return this;
     },
@@ -79,6 +83,17 @@ hostHound.factory("User", function ($rootScope, $http, $location, ngProgress){
       this.isLogin = true;
       if (data.register)
         this.register = true;
+    },
+
+    watch: function(callback) {
+      this.callbacks.push(callback);
+    },
+
+    callCallbacks: function() {
+      for (key in this.callbacks) {
+        if (typeof this.callbacks[key] == 'function')
+          this.callbacks[key]();
+      }
     }
   }
   return interfaz;

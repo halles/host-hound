@@ -25,3 +25,60 @@ $app->get('/group/{id}/profiles', function($id) use ($app){
   );
   return response()->json($response);
 });
+
+/** User Auth & Controller Routes **/
+
+$app->post('/login', [
+  'as' => 'userLogin',
+  'uses' => 'App\Http\Controllers\UserController@login'
+]);
+
+$app->get('/logout', [
+  'as' => 'userLogout',
+  'middleware' => 'auth',
+  'uses' => 'App\Http\Controllers\UserController@logout'
+]);
+
+$app->get('/me', [
+  'as' => 'me',
+  'middleware' => 'auth',
+  'uses' => 'App\Http\Controllers\UserController@me'
+]);
+
+$app->get('/me/emails', [
+  'as' => 'meMails',
+  'middleware' => 'auth',
+  'uses' => 'App\Http\Controllers\UserController@emails'
+]);
+
+$app->get('/me/accounts', [
+  'as' => 'meAccounts',
+  'middleware' => 'auth',
+  'uses' => 'App\Http\Controllers\UserController@accounts'
+]);
+
+$app->get('/me/password', [
+  'as' => 'mePassword',
+  'middleware' => 'auth',
+  'uses' => 'App\Http\Controllers\UserController@password'
+]);
+
+$app->get('/me/password/recover', [
+  'as' => 'mePasswordRecover',
+  'middleware' => 'auth',
+  'uses' => 'App\Http\Controllers\UserController@passwordRecover'
+]);
+
+$app->get('/me/password/new',  [
+  'as' => 'userLogin',
+  'middleware' => 'auth',
+  'uses' => 'App\Http\Controllers\UserController@passwordNew'
+]);
+
+$app->get('/me/password/{token}', [
+  'as' => 'mePasswordTokenCheck',
+  'middleware' => 'auth',
+  'uses' => 'App\Http\Controllers\UserController@passwordTokenCheck'
+]);
+
+/** Admin Panels **/
