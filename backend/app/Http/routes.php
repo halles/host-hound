@@ -18,10 +18,10 @@ $app->get('/', function() use ($app) {
 });
 
 $app->get('/group/{id}/profiles', function($id) use ($app){
-  $profiles = Profile::all();
+  $profiles = DB::table('profiles')->get();
   $response = array(
     'status' => 'ok',
-    'profiles' => Profile::all(),
+    'profiles' => $profiles,
   );
   return response()->json($response);
 });
