@@ -22,7 +22,7 @@ hostHound.controller('hostHoundController', ['$scope','$modal','$log', function 
 
     var modalInstance = $modal.open({
       animation: $scope.animationsEnabled,
-      templateUrl: 'app/modals/login.html',
+      templateUrl: 'app/modules/auth/login.html',
       controller: 'loginModalController'
     });
 
@@ -51,12 +51,15 @@ hostHound.controller('loginModalController', function ($scope, $modalInstance, $
       password: $scope.password,
       remember: $scope.remember
     }
+
+    // Validate
+
     $http.post('api/login',data).
     success(function(data, status, headers, config) {
-
+      $log.info('Login Success');
     }).
     error(function(data, status, headers, config) {
-
+      angular.element('#loginAlert').slideDown();
     });
     //$modalInstance.close('ok');
   };
