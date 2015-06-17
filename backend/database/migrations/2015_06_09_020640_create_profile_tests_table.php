@@ -17,6 +17,7 @@ class CreateProfileTestsTable extends Migration {
         $table->integer('profile_id');
         $table->string('name');
         $table->string('answers');
+        $table->softDeletes();
         $table->timestamps();
     });
 	}

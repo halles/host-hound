@@ -19,6 +19,7 @@ class CreateProfileEventsTable extends Migration {
         $table->string('value');
         $table->string('event_type');
         $table->string('data');
+        $table->softDeletes();
         $table->timestamps();
     });
 	}

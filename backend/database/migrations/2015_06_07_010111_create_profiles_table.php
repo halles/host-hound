@@ -20,6 +20,7 @@ class CreateProfilesTable extends Migration {
         $table->string('id_num');
         $table->string('email');
         $table->string('latest_profile_test_id');
+        $table->softDeletes();
         $table->timestamps();
     });
 
