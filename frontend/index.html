@@ -50,12 +50,15 @@
     </div>
 
     <div id="content" class="container">
-      <div ng-view></div>
+      <div ui-view></div>
     </div>
 
     <div ng-include="'footer.html'" class="bottom-menu"></div>
 
   </body>
+
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
 
   <!-- jQuery -->
   <script src="lib/jquery/dist/jquery.min.js"></script>
@@ -63,8 +66,18 @@
 
   <!-- AngularJS -->
   <script src="lib/angular/angular.min.js"></script>
-  <script src="lib/angular-route/angular-route.min.js"></script>
+  <script src="lib/angular-messages/angular-messages.min.js"></script>
+  <script src="lib/angular-resource/angular-resource.min.js"></script>
   <!-- / AngularJS -->
+
+  <!-- Angular Strap -->
+  <script src="lib/angular-strap/dist/angular-strap.js"></script>
+  <script src="lib/angular-strap/dist/angular-strap.tpl.js"></script>
+  <!-- / Angular Strap -->
+
+  <!-- Angular UI Router -->
+  <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <!-- / Angular UI Router -->
 
   <!-- Bootstrap for AngularJS -->
   <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
@@ -112,6 +125,11 @@
   <script src="js/flat-ui-pro.js"></script>
   <!-- / Flat UI Pro -->
 
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp,app}) scripts/app.js -->
+
   <!-- Application -->
 
     <script src="app/app.js"></script>
@@ -130,5 +148,7 @@
     <!-- / Directives -->
 
   <!-- / Application -->
+
+  <!-- endbuild -->
 
 </html>
