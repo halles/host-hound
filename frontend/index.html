@@ -8,6 +8,8 @@
 
     <title>AnglumApp</title>
 
+    <!-- build:vendorcss css/vendor.css -->
+
     <!-- Bootstrap for Angular -->
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
     <!-- <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css" /> -->
@@ -29,9 +31,15 @@
     <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <!-- / FontAwesome -->
 
+    <!-- endbuild -->
+
+    <!-- build:appcss css/app.css -->
+
     <!-- Application Styles -->
     <link href="css/style.css" rel="stylesheet" />
     <!-- / Application Styles -->
+
+    <!-- endbuild -->
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
@@ -57,7 +65,7 @@
 
   </body>
 
-  <!-- build:js(.) scripts/vendor.js -->
+  <!-- build:vendorjs js/vendor.js -->
   <!-- bower:js -->
 
   <!-- jQuery -->
@@ -128,7 +136,7 @@
   <!-- endbower -->
   <!-- endbuild -->
 
-  <!-- build:js({.tmp,app}) scripts/app.js -->
+  <!-- build:appjs js/app.js -->
 
   <!-- Application -->
 
@@ -152,5 +160,7 @@
   <!-- / Application -->
 
   <!-- endbuild -->
+
+  <!-- inject:apptemplates js/templates.js -->
 
 </html>
