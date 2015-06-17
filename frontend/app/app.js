@@ -1,6 +1,15 @@
 'use strict';
 
-var hostHound = angular.module("hostHoundApp",["ngRoute","satellizer","ui.bootstrap","ngFileUpload", "ngProgress"]);
+var hostHound = angular.module("hostHoundApp",[
+  'ngResource',
+  'ngMessages',
+  'ngProgress',
+  'ui.router',
+  'satellizer',
+  'ui.bootstrap',
+  'ngFileUpload',
+  'mgcrea.ngStrap'
+]);
 
 /**
  *  Main App Controller
@@ -14,8 +23,7 @@ hostHound.controller('hostHoundController', ['$scope','$modal','$log', function 
     slug: '541-noi-santiago'
   };
 
-  $scope.items = ['item1', 'item2', 'item3'];
-
+/*
   $scope.animationsEnabled = true;
 
   $scope.loginDialog = function (size) {
@@ -37,35 +45,5 @@ hostHound.controller('hostHoundController', ['$scope','$modal','$log', function 
   $scope.toggleAnimation = function () {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
-
+*/
 }]);
-
-hostHound.controller('loginModalController', function ($scope, $modalInstance, $http, $log) {
-
-  $scope.remember = false;
-
-  $scope.ok = function () {
-
-    var data = {
-      email: $scope.email,
-      password: $scope.password,
-      remember: $scope.remember
-    }
-
-    // Validate
-
-    $http.post('api/login',data).
-    success(function(data, status, headers, config) {
-      $log.info('Login Success');
-    }).
-    error(function(data, status, headers, config) {
-      angular.element('#loginAlert').slideDown();
-    });
-    //$modalInstance.close('ok');
-  };
-
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
-
-});

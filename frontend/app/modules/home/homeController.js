@@ -1,4 +1,6 @@
-hostHound.controller("homeController", function ($scope, $rootScope, User, $http) {
+hostHound.controller("homeController", function ($log, $scope, $rootScope, User, $http) {
+
+  $log.info('Home Controller');
 
   $http.get('api/group/'+$scope.currentGroup.id+'/profiles').
     success(function(data, status, headers, config) {
