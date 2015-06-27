@@ -1,4 +1,4 @@
-hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider){
+hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider){
 
   $stateProvider
     .state('home', {
@@ -43,6 +43,8 @@ hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider){
         }
       }
     });
+
+    $locationProvider.html5Mode(true).hashPrefix('!')
 
     $urlRouterProvider.otherwise('/');
 /*
