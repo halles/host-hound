@@ -30,13 +30,13 @@ $app->get('/group/{id}/profiles', function($id) use ($app){
 
 $app->post('/login', [
   'as' => 'userLogin',
-  'uses' => 'App\Http\Controllers\UserController@login'
+  'uses' => 'App\Http\Controllers\AuthController@login'
 ]);
 
 $app->get('/logout', [
   'as' => 'userLogout',
   'middleware' => 'auth',
-  'uses' => 'App\Http\Controllers\UserController@logout'
+  'uses' => 'App\Http\Controllers\AuthController@logout'
 ]);
 
 $app->get('/me', [

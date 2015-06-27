@@ -3,7 +3,6 @@
 use App\User;
 
 use Illuminate\Http\Request;
-use Auth;
 use App;
 
 use App\Http\Controllers\Controller;
@@ -12,22 +11,6 @@ use App\Models\Profile;
 
 class UserController extends Controller {
 
-  public function login(Request $request) {
-
-    if (Auth::attempt($request->only('email', 'password'))) {
-      return response()->json(array('status' => 'OK'));
-    }else{
-      App::abort(403, 'Access denied');
-    }
-
-  }
-
-  public function logout(){
-
-    Auth::logout();
-    return response()->json(array('status' => 'OK'));
-
-  }
 
   public function profile(){
 
@@ -56,7 +39,5 @@ class UserController extends Controller {
   public function passwordTokenCheck($token){
 
   }
-
-
 
 }
