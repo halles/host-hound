@@ -47,41 +47,10 @@ hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $l
     $locationProvider.html5Mode(true).hashPrefix('!')
 
     $urlRouterProvider.otherwise('/');
-/*
-    $authProvider.facebook({
-      clientId: '603122136500203'
-    });
 
-    $authProvider.google({
-      clientId: '631036554609-v5hm2amv4pvico3asfi97f54sc51ji4o.apps.googleusercontent.com'
-    });
+    $authProvider.httpInterceptor = true; // Add Authorization header to HTTP request
+    $authProvider.loginOnSignup = true;
+    $authProvider.baseUrl = '/HostHound/webapp/frontend/api/' // API Base URL for the paths below.
+    $authProvider.loginUrl = 'login';
 
-    $authProvider.github({
-      clientId: '45ab07066fb6a805ed74'
-    });
-
-    $authProvider.linkedin({
-      clientId: '77cw786yignpzj'
-    });
-
-    $authProvider.yahoo({
-      clientId: 'dj0yJmk9SDVkM2RhNWJSc2ZBJmQ9WVdrOWIzVlFRMWxzTXpZbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0yYw--'
-    });
-
-    $authProvider.twitter({
-      url: '/auth/twitter'
-    });
-
-    $authProvider.live({
-      clientId: '000000004C12E68D'
-    });
-
-    $authProvider.oauth2({
-      name: 'foursquare',
-      url: '/auth/foursquare',
-      clientId: 'MTCEJ3NGW2PNNB31WOSBFDSAD4MTHYVAZ1UKIULXZ2CVFC2K',
-      redirectUri: window.location.origin || window.location.protocol + '//' + window.location.host,
-      authorizationEndpoint: 'https://foursquare.com/oauth2/authenticate'
-    });
-*/
   });

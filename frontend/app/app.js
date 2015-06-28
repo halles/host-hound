@@ -6,7 +6,6 @@ var hostHound = angular.module("hostHoundApp",[
   'ngProgress',
   'ui.router',
   'satellizer',
-  'ui.bootstrap',
   'ngFileUpload',
   'mgcrea.ngStrap'
 ]);
