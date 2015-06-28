@@ -51,6 +51,13 @@ class UsersDataSeeder extends Seeder
         'name' => 'Matías Halles',
         'email' => 'matias.halles@gmail.com',
         'password' => Hash::make('123456'),
+        'organization_id' => $organizations[0]->id
+      ]);
+
+      $users[] = User::create([
+        'name' => 'Matías Halles',
+        'email' => 'matias.halles@gmail.com',
+        'password' => Hash::make('123456'),
         'organization_id' => $organizations[1]->id
       ]);
 
@@ -63,16 +70,26 @@ class UsersDataSeeder extends Seeder
 
       UserDepartment::create([
         'user_id' => $users[0]->id,
+        'department_id' => $organizations[0]->deparments[0]->id
+      ]);
+
+      UserDepartment::create([
+        'user_id' => $users[1]->id,
         'department_id' => $organizations[1]->deparments[0]->id
       ]);
 
       UserDepartment::create([
-        'user_id' => $users[0]->id,
+        'user_id' => $users[2]->id,
+        'department_id' => $organizations[1]->deparments[0]->id
+      ]);
+
+      UserDepartment::create([
+        'user_id' => $users[1]->id,
         'department_id' => $organizations[1]->deparments[1]->id
       ]);
 
       UserDepartment::create([
-        'user_id' => $users[0]->id,
+        'user_id' => $users[2]->id,
         'department_id' => $organizations[1]->deparments[1]->id
       ]);
 
