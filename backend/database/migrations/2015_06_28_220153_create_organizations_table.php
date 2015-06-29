@@ -22,9 +22,13 @@ class CreateOrganizationsTable extends Migration {
       $table->timestamps();
     });
 
-    Schema::table('users', function($table)
+    Schema::create('user_organizations', function(Blueprint $table)
     {
-      $table->integer('organization_id')->after('remember_token');
+      $table->increments('id');
+      $table->integer('user_id');
+      $table->integer('organization_id');
+      $table->softDeletes();
+      $table->timestamps();
     });
 
   }
@@ -36,10 +40,7 @@ class CreateOrganizationsTable extends Migration {
    */
   public function down()
   {
-    Schema::table('users', function($table)
-    {
-      $table->dropColumn('organization_id');
-    });
+    Schema::drop('user_organizations');
     Schema::drop('organizations');
   }
 
