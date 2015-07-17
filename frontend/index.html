@@ -11,24 +11,24 @@
     <!-- build:vendorcss css/vendor.css -->
 
     <!-- Bootstrap for Angular -->
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
     <!-- <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css" /> -->
     <!-- / Bootstrap for Angular -->
 
     <!-- Flat UI Pro -->
-    <link href="css/flat-ui-pro.min.css" rel="stylesheet" />
+    <link href="/css/flat-ui-pro.min.css" rel="stylesheet" />
     <!-- / Flat UI Pro -->
 
     <!-- ngProgress -->
-    <link href="lib/ngprogress/ngProgress.css" rel="stylesheet" />
+    <link href="/lib/ngprogress/ngProgress.css" rel="stylesheet" />
     <!-- / ngProgress -->
 
     <!-- animate.css -->
-    <link href="lib/animate.css/animate.min.css" rel="stylesheet" />
+    <link href="/lib/animate.css/animate.min.css" rel="stylesheet" />
     <!-- / animate.css -->
 
     <!-- FontAwesome -->
-    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <!-- / FontAwesome -->
 
     <!-- endbuild -->
@@ -36,7 +36,7 @@
     <!-- build:appcss css/app.css -->
 
     <!-- Application Styles -->
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
     <!-- / Application Styles -->
 
     <!-- endbuild -->
@@ -47,7 +47,7 @@
       <script src="../../dist/js/vendor/respond.min.js"></script>
     <![endif]-->
 
-    <base href="/HostHound/webapp/frontend/" />
+    <base href="/" />
 
   </head>
 
@@ -56,7 +56,7 @@
     <div id="fb-root"></div>
 
     <div class="container">
-      <div ng-include="'app/partials/header.html'" class="row" id="container-menu"></div>
+      <div ng-include="'/app/partials/header.html'" class="row" id="container-menu"></div>
     </div>
 
     <div class="container">
@@ -69,7 +69,7 @@
       <div ui-view></div>
     </div>
 
-    <div ng-include="'app/partials/footer.html'" class="bottom-menu"></div>
+    <div ng-include="'/app/partials/footer.html'" class="bottom-menu"></div>
 
   </body>
 
@@ -77,39 +77,39 @@
   <!-- bower:js -->
 
   <!-- jQuery -->
-  <script src="lib/jquery/dist/jquery.min.js"></script>
+  <script src="/lib/jquery/dist/jquery.min.js"></script>
   <!-- / jQuery -->
 
   <!-- AngularJS -->
-  <script src="lib/angular/angular.min.js"></script>
-  <script src="lib/angular-messages/angular-messages.min.js"></script>
-  <script src="lib/angular-resource/angular-resource.min.js"></script>
+  <script src="/lib/angular/angular.min.js"></script>
+  <script src="/lib/angular-messages/angular-messages.min.js"></script>
+  <script src="/lib/angular-resource/angular-resource.min.js"></script>
   <!-- / AngularJS -->
 
   <!-- Angular Strap -->
-  <script src="lib/angular-strap/dist/angular-strap.js"></script>
-  <script src="lib/angular-strap/dist/angular-strap.tpl.js"></script>
+  <script src="/lib/angular-strap/dist/angular-strap.js"></script>
+  <script src="/lib/angular-strap/dist/angular-strap.tpl.js"></script>
   <!-- / Angular Strap -->
 
   <!-- Angular UI Router -->
-  <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
   <!-- / Angular UI Router -->
 
   <!-- Angulartics + Google Analytics -->
-  <script src="lib/angulartics/dist/angulartics.min.js"></script>
-  <script src="lib/angulartics/dist/angulartics-ga.min.js"></script>
+  <script src="/lib/angulartics/dist/angulartics.min.js"></script>
+  <script src="/lib/angulartics/dist/angulartics-ga.min.js"></script>
   <!-- / Angulartics + Google Analytics -->
 
   <!-- ngProgress -->
-  <script src="lib/ngprogress/build/ngProgress.min.js"></script>
+  <script src="/lib/ngprogress/build/ngProgress.min.js"></script>
   <!-- / ngProgress -->
 
   <!-- Satellizer -->
-  <script src="lib/satellizer/satellizer.min.js"></script>
+  <script src="/lib/satellizer/satellizer.min.js"></script>
   <!-- / Satellizer -->
 
   <!-- SocketsIO -->
-  <script src="lib/sio-client/socket.io.js"></script>
+  <script src="/lib/sio-client/socket.io.js"></script>
   <!-- / SocketsIO -->
 
   <!-- FileUploads -->
@@ -125,16 +125,16 @@
       }
   </script>
 
-  <script src="lib/ng-file-upload/ng-file-upload-shim.min.js"></script>
-  <script src="lib/ng-file-upload/ng-file-upload.min.js"></script>
+  <script src="/lib/ng-file-upload/ng-file-upload-shim.min.js"></script>
+  <script src="/lib/ng-file-upload/ng-file-upload.min.js"></script>
   <!-- / FileUploads -->
 
   <!-- Datatables -->
-  <script src="lib/datatables/media/js/jquery.dataTables.min.js"></script>
+  <script src="/lib/datatables/media/js/jquery.dataTables.min.js"></script>
   <!-- / Datatables -->
 
   <!-- Flat UI Pro -->
-  <script src="js/flat-ui-pro.js"></script>
+  <script src="/js/flat-ui-pro.js"></script>
   <!-- / Flat UI Pro -->
 
   <!-- endbower -->
@@ -144,17 +144,17 @@
 
   <!-- Application -->
 
-    <script src="app/app.js"></script>
-    <script src="app/routes.js"></script>
-    <script src="app/run.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/routes.js"></script>
+    <script src="/app/run.js"></script>
 
-    <script src="app/factory/user.js"></script>
+    <script src="/app/factory/user.js"></script>
 
     <!-- Modules -->
-    <script src="app/modules/home/homeController.js"></script>
-    <script src="app/modules/auth/auth.js"></script>
-    <script src="app/modules/user/profileController.js"></script>
-    <!-- <script src="app/modules/example/exampleController.js"></script> -->
+    <script src="/app/modules/home/homeController.js"></script>
+    <script src="/app/modules/organizations/organizationsController.js"></script>
+    <script src="/app/modules/auth/auth.js"></script>
+    <script src="/app/modules/user/profileController.js"></script>
     <!-- / Modules -->
 
     <!-- Directives -->
