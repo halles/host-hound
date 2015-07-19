@@ -13,6 +13,11 @@
 
 use App\Models\Profile;
 
+use App\Models\User;
+use App\Models\Organization;
+use App\Models\UserDepartment;
+use App\Models\UserOrganization;
+
 $app->get('/', function() use ($app) {
     return $app->welcome();
 });
@@ -25,6 +30,18 @@ $app->get('/group/{id}/profiles', function($id) use ($app){
   );
   return response()->json($response);
 });
+
+$app->get('/organizations', [
+  'middleware' => 'auth',
+  function() use ($app){
+    $data = UserOrganization::all();
+    Log::info('Organizations: '.json_encode($data));
+    $response = array(
+      'organizations' => $data
+    );
+    return response()->json($response);
+  }
+]);
 
 /** User Auth & Controller Routes **/
 

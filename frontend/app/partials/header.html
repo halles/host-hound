@@ -17,7 +17,8 @@
       <li role="presentation"><a href="groups/new" tabindex="-1" role="menuitem">Crear Grupo</a></li>
     </ul>
   </div>
-  <a href="login">Login</a>
+  <a href="login" ng-show="{{!isLoggedIn}}">Login</a>
+  <a href="logout" ng-show="{{isLoggedIn}}">Logout</a>
   <!--
   &nbsp;&nbsp;
   <a href="#/me">

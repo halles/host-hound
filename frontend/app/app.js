@@ -14,35 +14,15 @@ var hostHound = angular.module("hostHoundApp",[
  *  Main App Controller
  **/
 
-hostHound.controller('hostHoundController', ['$scope','$modal','$log', function ($scope, $modal, $log) {
+hostHound.controller('hostHoundController', ['$scope','$modal','$log', '$auth', '$rootScope', function ($scope, $modal, $log, $auth, $rootScope) {
 
-  $scope.currentGroup = {
-    id: '541',
-    name: 'Noi Santiago',
-    slug: '541-noi-santiago'
-  };
+  $log.log('HostHound Controller');
+  $log.log('Authenticated: ' + $auth.isAuthenticated());
 
-/*
-  $scope.animationsEnabled = true;
+  $rootScope.isLoggedIn = false;
 
-  $scope.loginDialog = function (size) {
+  if ($auth.isAuthenticated()){
+    $rootScope.isLoggedIn = true;
+  }
 
-    var modalInstance = $modal.open({
-      animation: $scope.animationsEnabled,
-      templateUrl: 'app/modules/auth/login.html',
-      controller: 'loginModalController'
-    });
-
-    modalInstance.result.then(function (response) {
-      $log.info('Response: ' + response);
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
-
-  };
-
-  $scope.toggleAnimation = function () {
-    $scope.animationsEnabled = !$scope.animationsEnabled;
-  };
-*/
 }]);
