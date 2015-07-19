@@ -8,12 +8,12 @@ hostHound.controller('organizationsController', ['$scope','$modal','$log', '$aut
 
   $http.get('api/organizations/').
     success(function(data, status, headers, config) {
-      $scope.status = data.status;
-      $scope.profiles = data.profiles;
+      $log.log(status);
       $log.log(data);
+      $scope.organizations = data.organizations;
     }).
     error(function(data, status, headers, config) {
-      $log.log(data);
+      $log.log(status);
     });
 
 }]);

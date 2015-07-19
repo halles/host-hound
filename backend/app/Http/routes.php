@@ -34,10 +34,9 @@ $app->get('/group/{id}/profiles', function($id) use ($app){
 $app->get('/organizations', [
   'middleware' => 'auth',
   function() use ($app){
-    $data = UserOrganization::all();
-    Log::info('Organizations: '.json_encode($data));
+    $data = User::where('id', $app->request["user"]["sub"])->with('organizations')->first();
     $response = array(
-      'organizations' => $data
+      'organizations' => $data->organizations
     );
     return response()->json($response);
   }
