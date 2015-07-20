@@ -33,10 +33,10 @@ hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $l
         }
       }
     })
-    .state('department.dashboard', {
-      url: '/:departmentId',
-      templateUrl: 'app/modules/departments/chooser.html',
-      controller: 'departmentChooserController',
+    .state('dashboard', {
+      url: '/o/:organizationId/:departmentId',
+      templateUrl: 'app/modules/departments/dashboard.html',
+      controller: 'departmentDashboardController',
       resolve: {
         authenticated: function($q, $location, $auth) {
           var deferred = $q.defer();
@@ -48,27 +48,6 @@ hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $l
           return deferred.promise;
         }
       }
-    })
-    .state('dashboard',{
-      url: '/',
-      templateUrl: 'app/modules/dashboard/dashboard.html',
-      controller: 'dashboardController',
-      resolve: {
-        authenticated: function($q, $location, $auth) {
-          var deferred = $q.defer();
-          if (!$auth.isAuthenticated()) {
-            $location.path('/login');
-          } else {
-            deferred.resolve();
-          }
-          return deferred.promise;
-        }
-      }
-    })
-    .state('organization.department.detail', {
-      url: '/o-:orgId/d/:departmentId',
-      templateUrl: 'app/modules/department/choose.html',
-      controller: 'departmentChoiceController'
     })
     .state('login', {
       url: '/login',

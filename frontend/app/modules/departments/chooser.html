@@ -4,7 +4,7 @@
       <a href="/">« Volver</a>
       <h4>{{organization.name}}</h4>
       <p>Departamentos a los que perteneces</p>
-      <a href="/o/{{department.organization_id}}/{{department.id}}" class="list-group-item" ng-repeat="department in departments">{{department.name}}<span class="fui-arrow-right pull-right"></span></a>
+      <a href="/o/{{organization.id}}/{{department.id}}" class="list-group-item" ng-repeat="department in departments">{{department.name}}<span class="fui-arrow-right pull-right"></span></a>
     </div>
   </div>
 </div>

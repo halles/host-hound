@@ -1,23 +1,3 @@
-hostHound.controller('departmentsController', ['$scope','$modal','$log', '$auth', '$state' , function ($scope, $modal, $log, $auth, $state) {
-
-  $log.log('HostHound Controller');
-
-  $scope.isAuthenticated = function() {
-    return $auth.isAuthenticated();
-  };
-
-  if(!$auth.isAuthenticated()){
-    $log.log($state.go('login'));
-  }
-
-  $scope.currentGroup = {
-    id: '541',
-    name: 'Noi Santiago',
-    slug: '541-noi-santiago'
-  };
-
-}]);
-
 
 hostHound.controller('departmentChooserController', ['$scope','$modal','$log', '$auth', '$state', '$http' , function ($scope, $modal, $log, $auth, $state, $http){
 
@@ -32,6 +12,22 @@ hostHound.controller('departmentChooserController', ['$scope','$modal','$log', '
     }).
     error(function(data, status, headers, config) {
       $log.log(status);
+    });
+
+}]);
+
+
+hostHound.controller('departmentDashboardController',['$scope','$modal','$log', '$auth', '$state', '$http' , function ($scope, $modal, $log, $auth, $state, $http) {
+
+  $log.log('Department Dashboard Controller');
+
+  $http.get('api/group/'+$state.params.organizationId+'/profiles').
+    success(function(data, status, headers, config) {
+      $scope.status = data.status;
+      $scope.profiles = data.profiles;
+    }).
+    error(function(data, status, headers, config) {
+
     });
 
 }]);
