@@ -15,6 +15,7 @@ use App\Models\Profile;
 
 use App\Models\User;
 use App\Models\Organization;
+use App\Models\Department;
 use App\Models\UserDepartment;
 use App\Models\UserOrganization;
 
@@ -37,6 +38,22 @@ $app->get('/organizations', [
     $data = User::where('id', $app->request["user"]["sub"])->with('organizations')->first();
     $response = array(
       'organizations' => $data->organizations
+    );
+    return response()->json($response);
+  }
+]);
+
+$app->get('/organizations/{id}/departments', [
+  'middleware' => 'auth',
+  function($org_id) use ($app){
+
+    $data = User::where('id', $app->request["user"]["sub"])
+      ->with(['departments' => function ($query) use ($org_id){
+        $query->where('organization_id', $org_id);
+      }])->first();
+
+    $response = array(
+      'departments' => $data->departments
     );
     return response()->json($response);
   }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 final class Organization extends Model
 {
     /**
-    * The organizations that the user belongs to.
+    * The users that belong to an organization
     */
     public function users()
     {

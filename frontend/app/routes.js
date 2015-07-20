@@ -17,13 +17,24 @@ hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $l
         }
       }
     })
-    .state('department', {
-      url: '/d',
-      templateUrl: 'app/modules/department/chooser.html',
-      controller: 'departmentChooserController'
+    .state('departmentChooser', {
+      url: '/o/:orgId/',
+      templateUrl: 'app/modules/departments/chooser.html',
+      controller: 'departmentChooserController',
+      resolve: {
+        authenticated: function($q, $location, $auth) {
+          var deferred = $q.defer();
+          if (!$auth.isAuthenticated()) {
+            $location.path('/login');
+          } else {
+            deferred.resolve();
+          }
+          return deferred.promise;
+        }
+      }
     })
-    .state('department.detail', {
-      url: '/d/:departmentId',
+    .state('organization.department.detail', {
+      url: '/o-:orgId/d/:departmentId',
       templateUrl: 'app/modules/department/choose.html',
       controller: 'departmentChoiceController'
     })

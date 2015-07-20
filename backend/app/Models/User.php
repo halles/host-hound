@@ -13,4 +13,12 @@ final class User extends Model
     {
         return $this->belongsToMany('App\Models\Organization','user_organizations')->withTimestamps();
     }
+
+    /**
+    * The departments that the user has access to.
+    */
+    public function departments()
+    {
+        return $this->belongsToMany('App\Models\Department','user_departments')->withTimestamps();
+    }
 }
