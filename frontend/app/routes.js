@@ -1,10 +1,10 @@
 hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider){
 
   $stateProvider
-    .state('organization',{
+    .state('home',{
       url: '/',
-      templateUrl: 'app/modules/organizations/organizations.html',
-      controller: 'organizationsController',
+      templateUrl: 'app/modules/organizations/list.html',
+      controller: 'organizationsListController',
       resolve: {
         authenticated: function($q, $location, $auth) {
           var deferred = $q.defer();
@@ -17,10 +17,42 @@ hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $l
         }
       }
     })
-    .state('departmentChooser', {
-      url: '/o/:orgId/',
+    .state('department', {
+      url: '/o/:organizationId',
       templateUrl: 'app/modules/departments/chooser.html',
       controller: 'departmentChooserController',
+      resolve: {
+        authenticated: function($q, $location, $auth) {
+          var deferred = $q.defer();
+          if (!$auth.isAuthenticated()) {
+            $location.path('/login');
+          } else {
+            deferred.resolve();
+          }
+          return deferred.promise;
+        }
+      }
+    })
+    .state('department.dashboard', {
+      url: '/:departmentId',
+      templateUrl: 'app/modules/departments/chooser.html',
+      controller: 'departmentChooserController',
+      resolve: {
+        authenticated: function($q, $location, $auth) {
+          var deferred = $q.defer();
+          if (!$auth.isAuthenticated()) {
+            $location.path('/login');
+          } else {
+            deferred.resolve();
+          }
+          return deferred.promise;
+        }
+      }
+    })
+    .state('dashboard',{
+      url: '/',
+      templateUrl: 'app/modules/dashboard/dashboard.html',
+      controller: 'dashboardController',
       resolve: {
         authenticated: function($q, $location, $auth) {
           var deferred = $q.defer();

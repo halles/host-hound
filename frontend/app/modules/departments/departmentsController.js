@@ -17,3 +17,21 @@ hostHound.controller('departmentsController', ['$scope','$modal','$log', '$auth'
   };
 
 }]);
+
+
+hostHound.controller('departmentChooserController', ['$scope','$modal','$log', '$auth', '$state', '$http' , function ($scope, $modal, $log, $auth, $state, $http){
+
+  $log.log('Department Chooser Controller');
+
+  $http.get('api/organizations/'+$state.params.organizationId+'/departments').
+    success(function(data, status, headers, config) {
+      $log.log(status);
+      $log.log(data);
+      $scope.departments = data.departments;
+      $scope.organization = data.organization;
+    }).
+    error(function(data, status, headers, config) {
+      $log.log(status);
+    });
+
+}]);

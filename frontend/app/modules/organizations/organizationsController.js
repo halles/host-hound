@@ -1,6 +1,6 @@
-hostHound.controller('organizationsController', ['$scope','$modal','$log', '$auth', '$state', 'User', '$http' , function ($scope, $modal, $log, $auth, $state, User, $http) {
+hostHound.controller('organizationsListController', ['$scope','$modal','$log', '$auth', '$state', 'User', '$http' , function ($scope, $modal, $log, $auth, $state, User, $http) {
 
-  $log.log('Organizations Controller');
+  $log.log('Organizations List');
 
   $log.log($auth);
 

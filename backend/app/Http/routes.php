@@ -50,9 +50,14 @@ $app->get('/organizations/{id}/departments', [
     $data = User::where('id', $app->request["user"]["sub"])
       ->with(['departments' => function ($query) use ($org_id){
         $query->where('organization_id', $org_id);
-      }])->first();
+      }])
+      ->with(['organizations' => function($query) use ($org_id){
+        $query->where('organizations.id', $org_id)->first();
+      }])
+      ->first();
 
     $response = array(
+      'organization' => $data->organizations[0],
       'departments' => $data->departments
     );
     return response()->json($response);
