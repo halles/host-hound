@@ -1,0 +1,13 @@
+.not-checked{
+  opacity: 0.5;
+}
+
+.valid{
+  color: green;
+  opacity: 1;
+}
+
+.in-valid{
+  color: red;
+  opacity: 1;
+}

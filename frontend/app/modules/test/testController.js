@@ -2,11 +2,49 @@ hostHound
 
   .controller('TestCtrl', function($scope, $auth, $alert, $log) {
 
-    $scope.answers = {};
+    $scope.answers = [];
+    $scope.results = [];
+
+    $scope.checks = [
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle',
+      'not-checked fui-question-circle'
+    ];
+
+    for (i = 0; i < 16; i++) {
+      $scope.answers[i] = [];
+      for(o = 0; o < 4; o++) {
+        $scope.answers[i][o] = 0;
+      }
+    }
 
     $scope.$watch('answers', function(newValue, oldValue){
-      $log.log(newValue);
+      for (i = 0; i < 4; i++) {
+        $scope.results[i] = 0;
+        for (o = 0; o < 16; o++) {
+          $scope.results[i] += parseInt($scope.answers[o][i]);
+        }
+      }
     }, true);
+
+    $scope.showInstructions = false;
+
+    $scope.toggleInstructions = function(){
+
+    }
 
     $scope.terms = [
       [

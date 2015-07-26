@@ -1,32 +1,118 @@
-<div>
+<div class="row">
 
-<h2>Test de Personalidad</h2>
+  <div class="col-md-12 col-sm-12 col-xs-12">
 
-<h4>Instrucciones para completar la evaluación</h4>
+    <h2>Indicador de Estilo Personal</h2>
 
-<p>La evaluación contiene 16 filas con palabras. En cada fila hay 4 palabras descriptivas en negrita, con 3 definiciones, explicaciones o sinónimos debajo de cada palabra en negrita. El objetivo es usar las palabras en negrita para describir cómo te ves a ti mismo la mayoría del tiempo, con la mayoría de las personas, en la mayoría de situaciones. En cada fila, debes asignar el número 4, 3, 2 o 1 a cada palabra en negrita. Asigna el número 4 a la palabra que esté más cerca de describirte, incluso si piensas que no eres como ninguna de las palabras de la fila. Asigna el 3 a la siguiente palabra que se acerque más a describirte, y asigna un 2 a la siguiente palabra que se acerque más a describirte luego de la anterior. Asigna el 1 a la palabra que menos te describa. Debes usar cada número solamente una vez por fila. Debes sumar los resultados de cada columna, y todas las columnas sumadas entre sí deben dar 160.</p>
+    <a ng-click="toggleInstructions()" ng-hide="{{showInstructions}}"><span class="fui-triangle-down"></span> ver instrucciones</a>
+    <a ng-click="toggleInstructions()" ng-show="{{showInstructions}}"><span class="fui-triangle-up"></span> cerrar instrucciones</a>
 
-<table class="table table-bordered">
-  <tbody>
-    <tr ng-repeat="line in terms">
-      <td>{{$index+1}}<br/>icon</td>
-      <td ng-repeat="block in line">
-        <div class="row">
-          <div class="col-md-6 col-sm-12 col-xs-12 col-md-push-6">
-            <select ng-model="answers[$parent.$index][$index]">
-              <option ng-repeat="n in [1,2,3,4]">{{n}}</option>
-            </select>
-          </div>
-          <div class="col-md-6 col-sm-12 col-xs-12 col-md-pull-6">
-            <strong>{{block[0]}}</strong><br/>
-            {{block[1]}}<br/>
-            {{block[2]}}<br/>
-            {{block[3]}}<br/>
-          </div>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  </div>
 
-<button ng-click="displayAnswers()"></button>
+  <div class="col-md-12 col-sm-12 col-xs-12 instrucciones" ng-show="{{showInstructions}}" class="slideInDown">
+
+    <h4>Instrucciones para completar la evaluación</h4>
+
+    <p><small>La evaluación contiene 16 filas con palabras. En cada fila hay 4 palabras descriptivas en negrita, con 3 definiciones, explicaciones o sinónimos debajo de cada palabra en negrita. El objetivo es usar las palabras en negrita para describir cómo te ves a ti mismo la mayoría del tiempo, con la mayoría de las personas, en la mayoría de situaciones. En cada fila, debes asignar el número 4, 3, 2 o 1 a cada palabra en negrita. Asigna el número 4 a la palabra que esté más cerca de describirte, incluso si piensas que no eres como ninguna de las palabras de la fila. Asigna el 3 a la siguiente palabra que se acerque más a describirte, y asigna un 2 a la siguiente palabra que se acerque más a describirte luego de la anterior. Asigna el 1 a la palabra que menos te describa. Debes usar cada número solamente una vez por fila. Debes sumar los resultados de cada columna, y todas las columnas sumadas entre sí deben dar 160.</small></p>
+
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td>
+            <span class="counter">3</span>
+            <span class="fui-check-circle"></span>
+          </td>
+          <td>
+            <div class="row">
+              <div class="col-md-6 col-sm-12 col-xs-12 col-md-push-6">
+                <select selected="3">
+                  <option value="3">3</option>
+                </select>
+              </div>
+              <div class="col-md-6 col-sm-12 col-xs-12 col-md-pull-6">
+                <strong>Artístico</strong>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="row">
+              <div class="col-md-6 col-sm-12 col-xs-12 col-md-push-6">
+                <select selected="3">
+                  <option value="3">4</option>
+                </select>
+              </div>
+              <div class="col-md-6 col-sm-12 col-xs-12 col-md-pull-6">
+                <strong>Técnico</strong>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="row">
+              <div class="col-md-6 col-sm-12 col-xs-12 col-md-push-6">
+                <select selected="3">
+                  <option value="3">1</option>
+                </select>
+              </div>
+              <div class="col-md-6 col-sm-12 col-xs-12 col-md-pull-6">
+                <strong>Productivo</strong>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="row">
+              <div class="col-md-6 col-sm-12 col-xs-12 col-md-push-6">
+                <select selected="3">
+                  <option value="3">2</option>
+                </select>
+              </div>
+              <div class="col-md-6 col-sm-12 col-xs-12 col-md-pull-6">
+                <strong>Colaborador</strong>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+
+    <table class="table table-bordered">
+      <tbody>
+        <tr ng-repeat="line in terms">
+          <td>
+            <span class="counter">{{$index+1}}</span>
+            <span ng-class="checks[$index]"></span>
+          </td>
+          <td ng-repeat="block in line">
+            <div class="row">
+              <div class="col-md-6 col-sm-12 col-xs-12 col-md-push-6">
+                <select ng-model="answers[$parent.$index][$index]">
+                  <option ng-repeat="n in [1,2,3,4]">{{n}}</option>
+                </select>
+              </div>
+              <div class="col-md-6 col-sm-12 col-xs-12 col-md-pull-6">
+                <strong>{{block[0]}}</strong><br/>
+                {{block[1]}}<br/>
+                {{block[2]}}<br/>
+                {{block[3]}}<br/>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Resultados</td>
+          <td>{{results[0]}}</td>
+          <td>{{results[1]}}</td>
+          <td>{{results[2]}}</td>
+          <td>{{results[3]}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <button ng-click="displayAnswers()">Calcular Resultado</button>
+
+</div>
