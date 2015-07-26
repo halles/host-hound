@@ -6,7 +6,7 @@ hostHound
 
     $scope.$watch('answers', function(newValue, oldValue){
       $log.log(newValue);
-    });
+    }, true);
 
     $scope.terms = [
       [
