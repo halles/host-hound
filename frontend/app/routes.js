@@ -49,7 +49,7 @@ hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $l
         }
       }
     })
-    .state('free-test', {
+    .state('test', {
       url: '/test',
       templateUrl: 'app/modules/test/test.html',
       controller: 'TestCtrl'
