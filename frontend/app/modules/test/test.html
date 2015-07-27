@@ -83,7 +83,7 @@
         <tr ng-repeat="line in terms">
           <td>
             <span class="counter">{{$index+1}}</span>
-            <span ng-class="checks[$index]"></span>
+            <span ng-class="validate[$index].class"></span>
           </td>
           <td ng-repeat="block in line">
             <div class="row">

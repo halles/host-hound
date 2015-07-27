@@ -4,25 +4,7 @@ hostHound
 
     $scope.answers = [];
     $scope.results = [];
-
-    $scope.checks = [
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle',
-      'not-checked fui-question-circle'
-    ];
+    $scope.validate = [];
 
     for (i = 0; i < 16; i++) {
       $scope.answers[i] = [];
@@ -32,12 +14,51 @@ hostHound
     }
 
     $scope.$watch('answers', function(newValue, oldValue){
+
+      /** Cálculos Validaciones por Block **/
+
+      for (y = 0; y < 16; y++){
+
+        $scope.validate[y] = {
+          is_valid: true,
+          fields: [true,true,true,true],
+          class: 'not-checked fui-question-circle'
+        };
+
+        if(parseInt($scope.answers[y][0]) && parseInt($scope.answers[y][1]) && parseInt($scope.answers[y][2]) && parseInt($scope.answers[y][3])){
+          $log.log('Validando: ' + y);
+          var temp_sum = parseInt($scope.answers[y][0]) + parseInt($scope.answers[y][1]) + parseInt($scope.answers[y][2]) + parseInt($scope.answers[y][3]);
+          $log.log('Suma: ' + temp_sum);
+          $scope.validate[y].is_valid = (temp_sum != 10)?false:true;
+          if($scope.validate[y].is_valid){
+            $log.log('Checking Dupes');
+            $scope.validate[y].is_valid = !has_duplicates($scope.answers[y]);
+          }
+          if($scope.validate[y].is_valid){
+            $log.log('VALID');
+            $scope.validate[y].class = 'valid fui-check-circle';
+          }else{
+            $log.log('INVALID');
+            $scope.validate[y].class = 'invalid fui-cross-circle';
+          }
+        }else{
+          $log.log('No Completado: ' + y);
+          $scope.validate[y].is_valid = null;
+          $scope.validate[y].class = 'not-checked fui-question-circle';
+        }
+
+        $log.log('Resultado: ' + $scope.validate[y].class);;
+      }
+
+      /** Cálculos Resultado por Columna **/
+
       for (i = 0; i < 4; i++) {
         $scope.results[i] = 0;
         for (o = 0; o < 16; o++) {
           $scope.results[i] += parseInt($scope.answers[o][i]);
         }
       }
+
     }, true);
 
     $scope.showInstructions = false;
@@ -148,5 +169,28 @@ hostHound
     $scope.displayAnswers = function(){
       $log.log($scope.answers);
     };
+
+    function has_duplicates(arr) {
+
+      var len=arr.length,
+          out=[],
+          counts={};
+
+      for (var i=0;i<len;i++) {
+        var item = arr[i];
+        counts[item] = counts[item] >= 1 ? counts[item] + 1 : 1;
+      }
+
+      for (var item in counts) {
+        if(counts[item] > 1)
+          out.push(item);
+      }
+
+      if(out.length>0)
+        $log.log('Rep: ' + out);
+
+      return (out.length>0)?true:false;
+
+    }
 
   });
