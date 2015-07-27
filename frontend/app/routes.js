@@ -54,6 +54,11 @@ hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $l
       templateUrl: 'app/modules/test/test.html',
       controller: 'TestCtrl'
     })
+    .state('results', {
+      url: '/results/:resultsData',
+      templateUrl: 'app/modules/results/results.html',
+      controller: 'ResultsCtrl'
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'app/modules/auth/login.html',
