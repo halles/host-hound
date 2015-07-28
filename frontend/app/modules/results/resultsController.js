@@ -227,13 +227,15 @@ hostHound
         }*/
       }else if(over40counter == 2){
 
-        $log.log('Double Pattern');
-        finalresult = results[0].type+results[1].type;
-
+        if((results[0].score - results[1].score) <= 5){
+          $log.log('Double Dual Pattern: ' + results[0].type + results[1].type + '&' + results[1].type + results[0].type);
+        }else{
+          $log.log('Double Single Pattern: ' + results[0].type + results[1].type);
+        }
 
       }else if(over40counter == 1){
 
-        $log.log('Single Pattern');
+        $log.log('Single Pattern: ' + results[0].type);
         finalresult = results[0].type;
 
       }
