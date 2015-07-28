@@ -38,7 +38,7 @@ hostHound
           type: 'synergistic',
           ref: 'bcia',
           letters: ['b','c','i','a'],
-          name: 'Synergistic'
+          name: 'Sinergístico'
         }
       ],
       triple: [
@@ -46,25 +46,25 @@ hostHound
           type: 'ambitious',
           ref: 'bci',
           letters: ['b','c','i'],
-          name: 'Ambitious'
+          name: 'Ambicioso'
         },
         {
           type: 'balanced',
           ref: 'cia',
           letters: ['c','i','a'],
-          name: 'Balanced'
+          name: 'Balanceado'
         },
         {
           type: 'influential',
           ref: 'bia',
           letters: ['b','i','a'],
-          name: 'Influential'
+          name: 'Influyente'
         },
         {
           type: 'productive',
           ref: 'bca',
           letters: ['b','c','a'],
-          name: 'Productive'
+          name: 'Productivo'
         }
       ],
       double: [
@@ -72,99 +72,99 @@ hostHound
           type: 'independent',
           ref: 'bc',
           letters: ['b','c'],
-          name: 'Independent'
+          name: 'Independiente'
         },
         {
           type: 'determined',
           ref: 'bi',
           letters: ['b','i'],
-          name: 'Determined'
+          name: 'Determinado'
         },
         {
           type: 'optimistic',
           ref: 'ba',
           letters: ['b','a'],
-          name: 'Optimistic'
+          name: 'Optimista'
         },
         {
           type: 'competitive',
           ref: 'cb',
           letters: ['c','b'],
-          name: 'Competitive'
+          name: 'Competitivo'
         },
         {
           type: 'practical',
           ref: 'ci',
           letters: ['c','i'],
-          name: 'Practical'
+          name: 'Práctico'
         },
         {
           type: 'perceptive',
           ref: 'ca',
           letters: ['c','a'],
-          name: 'Perceptive'
+          name: 'Percetivo'
         },
         {
           type: 'reliable',
           ref: 'ib',
           letters: ['i','b'],
-          name: 'Reliable'
+          name: 'Confiable'
         },
         {
           type: 'thoughtful',
           ref: 'ic',
           letters: ['i','c'],
-          name: 'Thoughtful'
+          name: 'Considerado'
         },
         {
           type: 'responsive',
           ref: 'ia',
           letters: ['i','a'],
-          name: 'Responsive'
+          name: 'Receptivo'
         },
         {
           type: 'idealistic',
           ref: 'ab',
           letters: ['a','b'],
-          name: 'Idealistic'
+          name: 'Idealista'
         },
         {
           type: 'inventive',
           ref: 'ac',
           letters: ['a','c'],
-          name: 'Inventive'
+          name: 'Creativo'
         },
         {
           type: 'versatile',
           ref: 'ai',
           letters: ['a','i'],
-          name: 'Versatile'
+          name: 'Versátil'
         }
       ],
       single: [
         {
-          type: 'Commanding',
+          type: 'commanding',
           ref: 'b',
           letters: ['b'],
-          name: 'commanding'
+          name: 'Autoritario'
         },
         {
           type: 'analytical',
           ref: 'c',
           letters: ['c'],
-          name: 'Analytical'
+          name: 'Analítico'
         },
         {
           type: 'harmonious',
-          ref: 'a',
-          letters: ['a'],
-          name: 'Harmonious'
+          ref: 'i',
+          letters: ['i'],
+          name: 'Armonioso'
         },
         {
           type: 'performing',
-          ref: 'i',
-          letters: ['i'],
-          name: 'Performing'
+          ref: 'a',
+          letters: ['a'],
+          name: 'Actor'
         }
       ]
     }
