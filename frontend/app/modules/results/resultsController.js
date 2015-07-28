@@ -169,8 +169,46 @@ hostHound
       ]
     }
 
+    $scope.dimentions_display = {
+      b: false,
+      c: false,
+      i: false,
+      a: false
+    }
+
+    $scope.patterns_display = {
+      bcia: false,
+      bci: false,
+      cia: false,
+      bia: false,
+      bca: false,
+      bc: false,
+      bi: false,
+      ba: false,
+      cb: false,
+      ci: false,
+      ca: false,
+      ib: false,
+      ic: false,
+      ia: false,
+      ab: false,
+      ac: false,
+      ai: false,
+      b: false,
+      c: false,
+      a: false,
+      i: false
+    }
+
     if((results[0].score - results[3].score) <= 5){ /* Is Synergistic */
-      primary_style_pattern = patterns.cuadruple.bcia.name;
+      primary_style_pattern = patterns.cuadruple[0].name;
+      $scope.dimentions_display = {
+        b: true,
+        c: true,
+        i: true,
+        a: true
+      }
+      $scope.patterns_display.bcia = true;
     } /* / Is Synergistic */
 
     if(primary_style_pattern != 'synergistic'){ /* Is Not Synergistic */
@@ -215,26 +253,49 @@ hostHound
 
         };
 
-        $log.log(lookup);
+        $log.log('Found: ', lookup);
+
+        for (var i = 0; i < lookup[0].letters.length; i++) {
+          $scope.dimentions_display[lookup[0].letters[i]] = true;
+        };
+
+        $scope.patterns_display[lookup[0].ref] = true;
+
+        $log.log($scope.dimentions_display);
 
       }else if(over40counter == 2){
 
         if((results[0].score - results[1].score) <= 5){
           $log.log('Double Dual Pattern: ' + results[0].type + results[1].type + '&' + results[1].type + results[0].type);
+
+          $scope.dimentions_display[results[0].type] = true;
+          $scope.dimentions_display[results[1].type] = true;
+          var a = results[0].type + results[1].type;
+          var b = results[1].type + results[0].type;
+          $scope.patterns_display[a] = true;
+          $scope.patterns_display[b] = true;
         }else{
           $log.log('Double Single Pattern: ' + results[0].type + results[1].type);
+          $scope.dimentions_display[results[0].type] = true;
+          $scope.dimentions_display[results[1].type] = true;
+          var a = results[0].type + results[1].type;
+          $scope.dimentions_display[a] = true;
+          $scope.patterns_display[a] = true;
         }
 
       }else if(over40counter == 1){
 
         $log.log('Single Pattern: ' + results[0].type);
-        finalresult = results[0].type;
+        $scope.dimentions_display[results[0].type] = true;
+        $scope.patterns_display[results[0].type] = true;
 
       }
 
 
     } /* / Is Not Synergistic */
 
+    $log.log($scope.patterns_display);
+    $log.log($scope.dimentions_display);
     $log.log(primary_style_pattern);
 
   });
