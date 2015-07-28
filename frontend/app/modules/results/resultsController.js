@@ -189,10 +189,6 @@ hostHound
 
         $log.log('Triple Pattern');
 
-        /*var temp_array =  Object.keys(patterns.triple).map(function(value, index) {
-          return [value];
-        });*/
-
         var lookup = patterns.triple;
         var lookup_found = [];
         var temp = [];
@@ -220,11 +216,7 @@ hostHound
         };
 
         $log.log(lookup);
-        return;
 
-        /*for (var i = 0; i < results.length-1; i++) {
-
-        }*/
       }else if(over40counter == 2){
 
         if((results[0].score - results[1].score) <= 5){
