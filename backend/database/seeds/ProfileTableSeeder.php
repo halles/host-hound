@@ -36,20 +36,26 @@ class ProfileTableSeeder extends Seeder
 
           Profile::create([
             'name' => $names['m'][$i],
+            'organization_id' => 1,
+            'is_employee' => rand(0,4) < 1,
             'phone' => self::random_phone_number(),
             'sex' => 'm',
             'id_num' => self::random_rut(),
+            'id_type' => 'rut',
             'email' => self::create_email_from_name($names['m'][$i]),
-            'latest_profile_test_id' => 1
+            'profile_test_id' => null
           ]);
 
           Profile::create([
             'name' => $names['f'][$i],
+            'organization_id' => 1,
+            'is_employee' => rand(0,4) < 1,
             'phone' => self::random_phone_number(),
             'sex' => 'f',
             'id_num' => self::random_rut(),
+            'id_type' => 'rut',
             'email' => self::create_email_from_name($names['f'][$i]),
-            'latest_profile_test_id' => 1
+            'profile_test_id' => null
           ]);
 
         }
