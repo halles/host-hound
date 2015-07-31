@@ -13,4 +13,9 @@ final class Organization extends Model
     {
         return $this->belongsToMany('App\User','user_organizations')->withTimestamps();
     }
+
+    public function profiles()
+    {
+      return $this->hasMany('App\Profile');
+    }
 }

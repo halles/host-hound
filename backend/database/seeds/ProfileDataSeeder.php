@@ -3,6 +3,11 @@
 # database/seeds/ProfileTableSeeder.php
 
 use App\Models\Profile;
+use App\Models\ProfileAttribute;
+use App\Models\ProfileNote;
+use App\Models\ProfileEmployment;
+use App\Models\ProfileLog;
+use App\Models\Attribute;
 use Illuminate\Database\Seeder;
 
 class ProfileTableSeeder extends Seeder
@@ -24,6 +29,30 @@ class ProfileTableSeeder extends Seeder
       return mb_ereg_replace("\ ",".",mb_strtolower($name).'@gmail.com');
     }
 
+    public function create_profile_record($name, $sex){
+
+      $profile = Profile::create([
+        'name' => $name,
+        'organization_id' => 1,
+        'is_employee' => rand(0,4) < 1,
+        'phone' => self::random_phone_number(),
+        'sex' => $sex,
+        'id_num' => self::random_rut(),
+        'id_type' => 'rut',
+        'email' => self::create_email_from_name($name),
+        'profile_test_id' => null
+      ]);
+
+      $attributes = array();
+
+      do{
+        $attributes[] = rand(0,19);
+      } while(count($attributes) < 5);
+
+      $profile->attributes()->sync($attributes);
+
+    }
+
     public function run()
     {
 
@@ -34,29 +63,9 @@ class ProfileTableSeeder extends Seeder
 
         for($i=0; $i < 50; $i++){
 
-          Profile::create([
-            'name' => $names['m'][$i],
-            'organization_id' => 1,
-            'is_employee' => rand(0,4) < 1,
-            'phone' => self::random_phone_number(),
-            'sex' => 'm',
-            'id_num' => self::random_rut(),
-            'id_type' => 'rut',
-            'email' => self::create_email_from_name($names['m'][$i]),
-            'profile_test_id' => null
-          ]);
+          self::create_profile_record($names['m'][$i], 'm');
 
-          Profile::create([
-            'name' => $names['f'][$i],
-            'organization_id' => 1,
-            'is_employee' => rand(0,4) < 1,
-            'phone' => self::random_phone_number(),
-            'sex' => 'f',
-            'id_num' => self::random_rut(),
-            'id_type' => 'rut',
-            'email' => self::create_email_from_name($names['f'][$i]),
-            'profile_test_id' => null
-          ]);
+          self::create_profile_record($names['f'][$i], 'f');
 
         }
 
