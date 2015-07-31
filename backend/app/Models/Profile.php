@@ -11,8 +11,8 @@ final class Profile extends Model
       return $this->belongsToMany('App\Models\Attribute', 'profile_attributes')->withTimestamps();
     }
 
-    public function employments(){
-      return $this->hasMany('App\Models\ProfileEmployment');
+    public function jobs(){
+      return $this->hasMany('App\Models\ProfileJob');
     }
 
     public function notes(){

@@ -18,6 +18,7 @@ class CreateProfilesTable extends Migration {
       $table->boolean('is_employee');
       $table->string('name');
       $table->string('sex')->nullable()->default(null);
+      $table->date('birthday')->nullable()->default(null);
       $table->string('phone')->nullable()->default(null);
       $table->string('id_num')->nullable();
       $table->string('id_type')->default('rut');
