@@ -203,6 +203,8 @@ class ProfileTableSeeder extends Seeder
 
     public function create_profile_record($name, $sex){
 
+      /** Perfil **/
+
       $profile = Profile::create([
         'name' => $name,
         'organization_id' => 1,
@@ -216,6 +218,8 @@ class ProfileTableSeeder extends Seeder
         'profile_test_id' => null
       ]);
 
+      /** Atributos **/
+
       $attributes = array();
 
       do{
@@ -223,6 +227,43 @@ class ProfileTableSeeder extends Seeder
       } while(count($attributes) < 5);
 
       $profile->attributes()->sync($attributes);
+
+      /** Tests **/
+
+      $all = array(1,2,3,4);
+      $answers = array();
+      $scores = array();
+      $scores_b = 0;
+      $scores_c = 0;
+      $scores_i = 0;
+      $scores_a = 0;
+
+      for($y = 0; $y < 16; $y++){
+        $temp = $all;
+        $answers[$y] = array();
+        for($x = 0; $x < 4; $x++) {
+          $value = array_splice($temp, mt_rand(0,count($temp)-1),1);
+          $answers[$y][] = $value[0];
+        }
+        $scores_b = $scores_b + $answers[$y][0];
+        $scores_c = $scores_c + $answers[$y][1];
+        $scores_i = $scores_i + $answers[$y][2];
+        $scores_a = $scores_a + $answers[$y][3];
+      }
+
+      $profile->test()->create([
+        'style' => 'style',
+        'code' => 'code',
+        'name' => 'name',
+        'score_b' => $scores_b,
+        'score_c' => $scores_c,
+        'score_i' => $scores_i,
+        'score_a' => $scores_a,
+        'answers' => json_encode($answers)
+      ]);
+
+
+      /** Empleos **/
 
       $jobs = mt_rand(0,3);
 
@@ -252,6 +293,8 @@ class ProfileTableSeeder extends Seeder
           $start_date = self::random_date($end_date, date("Y-m-d"));
         }
       }
+
+      /** Notas **/
 
       $notes = mt_rand(0,10);
 
