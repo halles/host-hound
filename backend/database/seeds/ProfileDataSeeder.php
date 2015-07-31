@@ -5,6 +5,7 @@
 use App\Models\Profile;
 use App\Models\ProfileAttribute;
 use App\Models\ProfileNote;
+use App\Models\ProfileNoteType;
 use App\Models\ProfileEmployment;
 use App\Models\ProfileLog;
 use App\Models\Attribute;
@@ -252,18 +253,65 @@ class ProfileTableSeeder extends Seeder
         }
       }
 
+      $notes = mt_rand(0,10);
+
+      for($i = 0; $i < $notes; $i++){
+        $note = self::$baconipsum[mt_rand(0,(count(self::$baconipsum)-1))];
+        $profile->notes()->create([
+          'user_id' => mt_rand(1,2),
+          'profile_note_type_id' => mt_rand(0,4),
+          'content' => $note,
+        ]);
+      }
+
     }
 
     public function run()
     {
 
-        for($i=0; $i < 50; $i++){
+      ProfileNoteType::create([
+        'organization_id' => 2,
+        'name' => 'Grave',
+        'score' => -10,
+        'color' => 'CC0000'
+      ]);
 
-          self::create_profile_record(self::$names['m'][$i], 'm');
+      ProfileNoteType::create([
+        'organization_id' => 2,
+        'name' => 'Negativo',
+        'score' => -1,
+        'color' => 'CC0000'
+      ]);
 
-          self::create_profile_record(self::$names['f'][$i], 'f');
+      ProfileNoteType::create([
+        'organization_id' => 2,
+        'name' => 'Neutro',
+        'score' => 0,
+        'color' => 'FFFFCC'
+      ]);
 
-        }
+      ProfileNoteType::create([
+        'organization_id' => 2,
+        'name' => 'Positivo',
+        'score' => 1,
+        'color' => '66FF99'
+      ]);
+
+      ProfileNoteType::create([
+        'organization_id' => 2,
+        'name' => 'Super',
+        'score' => 2,
+        'color' => '660066'
+      ]);
+
+
+      for($i=0; $i < 50; $i++){
+
+        self::create_profile_record(self::$names['m'][$i], 'm');
+
+        self::create_profile_record(self::$names['f'][$i], 'f');
+
+      }
 
     }
 }

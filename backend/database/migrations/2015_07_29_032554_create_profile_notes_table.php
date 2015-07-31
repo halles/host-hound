@@ -15,6 +15,7 @@ class CreateProfileNotesTable extends Migration {
     Schema::create('profile_notes', function(Blueprint $table)
     {
       $table->increments('id');
+      $table->integer('user_id');
       $table->integer('profile_id');
       $table->integer('profile_note_type_id');
       $table->text('content');
