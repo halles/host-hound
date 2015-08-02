@@ -11,19 +11,23 @@ final class Profile extends Model
       return $this->belongsToMany('App\Models\Attribute', 'profile_attributes')->withTimestamps();
     }
 
-    public function jobs(){
+    public function jobs()
+    {
       return $this->hasMany('App\Models\ProfileJob');
     }
 
-    public function notes(){
+    public function notes()
+    {
       return $this->hasMany('App\Models\ProfileNote');
     }
 
-    public function logs(){
+    public function logs()
+    {
       return $this->hasMany('App\Models\ProfileLog');
     }
 
-    public function test(){
+    public function test()
+    {
       return $this->hasOne('App\Models\ProfileTest');
     }
 

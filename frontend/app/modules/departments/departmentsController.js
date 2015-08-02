@@ -21,10 +21,14 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
 
   $log.log('Department Dashboard Controller');
 
-  $http.get('api/group/'+$state.params.organizationId+'/profiles').
+  $scope.organizationId = $state.params.organizationId;
+  $scope.departmentId = $state.params.departmentId;
+
+  $http.get('api/organizations/'+$state.params.organizationId+'/profiles').
     success(function(data, status, headers, config) {
       $scope.status = data.status;
       $scope.profiles = data.profiles;
+      $scope.note_types = data.note_types;
     }).
     error(function(data, status, headers, config) {
 

@@ -207,7 +207,7 @@ class ProfileTableSeeder extends Seeder
 
       $profile = Profile::create([
         'name' => $name,
-        'organization_id' => 1,
+        'organization_id' => 2,
         'is_employee' => rand(0,4) < 1,
         'birthday' => self::random_date('1960-01-01', '1997-01-01'),
         'phone' => self::random_phone_number(),
@@ -302,7 +302,7 @@ class ProfileTableSeeder extends Seeder
         $note = self::$baconipsum[mt_rand(0,(count(self::$baconipsum)-1))];
         $profile->notes()->create([
           'user_id' => mt_rand(1,2),
-          'profile_note_type_id' => mt_rand(0,4),
+          'profile_note_type_id' => mt_rand(1,5),
           'content' => $note,
         ]);
       }
@@ -316,35 +316,35 @@ class ProfileTableSeeder extends Seeder
         'organization_id' => 2,
         'name' => 'Grave',
         'score' => -10,
-        'color' => 'CC0000'
+        'color' => '83142A'
       ]);
 
       ProfileNoteType::create([
         'organization_id' => 2,
         'name' => 'Negativo',
         'score' => -1,
-        'color' => 'CC0000'
+        'color' => 'A70000'
       ]);
 
       ProfileNoteType::create([
         'organization_id' => 2,
         'name' => 'Neutro',
         'score' => 0,
-        'color' => 'FFFFCC'
+        'color' => '63636A'
       ]);
 
       ProfileNoteType::create([
         'organization_id' => 2,
         'name' => 'Positivo',
         'score' => 1,
-        'color' => '66FF99'
+        'color' => '42C74B'
       ]);
 
       ProfileNoteType::create([
         'organization_id' => 2,
         'name' => 'Super',
         'score' => 2,
-        'color' => '660066'
+        'color' => '38A330'
       ]);
 
 

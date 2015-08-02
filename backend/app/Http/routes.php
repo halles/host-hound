@@ -12,8 +12,10 @@
 */
 
 use App\Models\Profile;
+use App\Models\ProfileNoteType;
 
 use App\Models\User;
+use App\Models\Attribute;
 use App\Models\Organization;
 use App\Models\Department;
 use App\Models\UserDepartment;
@@ -59,6 +61,35 @@ $app->get('/organizations/{id}/departments', [
     $response = array(
       'organization' => $data->organizations[0],
       'departments' => $data->departments
+    );
+    return response()->json($response);
+  }
+]);
+
+$app->get('/organizations/{id}/profiles', [
+  'middleware' => 'auth',
+  function($id) use ($app){
+    $profiles = Profile::where('organization_id', intval($id))
+      ->with('attributes')
+      ->with('test')
+      ->with('notes')
+      ->get();
+    $note_types = ProfileNoteType::all();
+    foreach($note_types as $type){
+      $note_types_count[$type->id] = 0;
+    }
+    foreach($profiles as $profile_key => $profile){
+      $temp_note_types_count = $note_types_count;
+      foreach ($profile->notes as $note_key => $note) {
+        $temp_note_types_count[$note->profile_note_type_id]++;
+      }
+      $profiles[$profile_key]->note_types_count = $temp_note_types_count;
+    }
+    $response = array(
+      'status' => 'ok',
+      'profiles' => $profiles,
+      'attributes' => Attribute::all(),
+      'note_types' => $note_types
     );
     return response()->json($response);
   }

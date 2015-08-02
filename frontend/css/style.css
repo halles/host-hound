@@ -11,3 +11,50 @@
   color: red;
   opacity: 1;
 }
+
+.note-type-tag{
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  padding: 3px 5px;
+  margin: 0 1px 0px 0px;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 15px;
+  color: #fff;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.note-type-tag-class-1{
+  background-color: #83142A;
+}
+.note-type-tag-class-2{
+  background-color: #A70000;
+}
+.note-type-tag-class-3{
+  background-color: #63636A;
+}
+.note-type-tag-class-4{
+  background-color: #42C74B;
+}
+.note-type-tag-class-5{
+  background-color: #38A330;
+}
+
+#profile_table td.person img{
+  width: 20px;
+  height: 20px;
+}
+
+#profile_table td.notes_tags a{
+  white-space: nowrap;
+}
+
+.not_employee{
+  filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale"); /* Firefox 10+, Firefox on Android */
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+  opacity: 0.5;
+}
