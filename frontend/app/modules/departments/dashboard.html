@@ -19,26 +19,45 @@
     <table class="table table-bordered" id="profile_table">
       <thead>
         <tr>
-          <th class="person">Nombre</th>
-          <th class="test_info">Test</th>
+          <th class="person">Personal</th>
+          <th class="test_info">Perfil</th>
+          <th class="jobs">Experiencia Laboral</th>
           <th class="notes_tags">Notas</th>
-          <th class="score">Score</th>
         </tr>
       </thead>
       <tbody>
         <tr class="odd" ng-repeat="profile in profiles" profile-data-table-element>
           <td class="person">
+            <a href="/o/{{organizationId}}/{{departmentId}}/profile/{{profile.id}}/">{{profile.name}}</a><br/>
             <img src="/img/icons/shirt.svg" class="{{(profile.is_employee)?'not_employee':''}}">
-            <img src="/img/icons/{{(profile.sex=='m')?'dude.svg':'girl.svg'}}" alt="">
-            <a href="/o/{{organizationId}}/{{departmentId}}/profile/{{profile.id}}/">{{profile.name}}</a>
+            <img src="/img/icons/{{(profile.sex=='m')?'dude.svg':'girl.svg'}}" alt=""> {{age(profile)}} años
           </td>
-          <td class="test_info"><a href="/profile/{{profile.id}}/test-results">Ver Test</a></td>
+          <td class="test_info">
+            <a href="/profile/{{profile.id}}/test-results" ng-if="profile.test.patterns.length == 1">{{profile.test.patterns[0]}}</a>
+            <a href="/profile/{{profile.id}}/test-results" ng-if="profile.test.patterns.length > 1">{{profile.test.patterns[0]}} & {{profile.test.patterns[1]}}</a>
+          </td>
+          <td class="jobs">
+            <span ng-if="profile.jobs.length > 0">
+              <span ng-if="profile.jobs[profile.jobs.length-1].end != null">
+                {{profile.jobs[profile.jobs.length-1].position}} por {{monthDiff(profile.jobs[profile.jobs.length-1].start)}}  meses
+              </span>
+              <span ng-if="profile.jobs[profile.jobs.length-1].end == null">
+                {{profile.jobs[profile.jobs.length-1].position}} por {{monthDiff(profile.jobs[profile.jobs.length-1].start, profile.jobs[profile.jobs.length-1].end)}} meses
+              </span>
+              <br/>
+              <span>
+                {{profile.jobs.length-1}} otra(s)
+              </span>
+            </span>
+            <span ng-if="profile.jobs.length == 0">
+              Sin Experiencia
+            </span>
+          </td>
           <td class="notes_tags">
             <a href="/o/{{organizationId}}/{{departmentId}}/profile/{{profile.id}}#notes">
               <span ng-repeat="type in note_types" class="note-type-tag note-type-tag-class-{{type.id}}">{{profile.note_types_count[type.id]}}</span>
             </a>
           </td>
-          <td class="score">Algun Score</td>
         </tr>
       </tbody>
     </table>
