@@ -201,6 +201,29 @@ class ProfileTableSeeder extends Seeder
 
     }
 
+    public function populateTest($answers)
+    {
+
+      $test = array();
+      $test['b'] = 0;
+      $test['c'] = 0;
+      $test['i'] = 0;
+      $test['a'] = 0;
+
+      for($y = 0; $y < 16; $y++){
+        $test['b'] = $test['b'] + $answers[$y][0];
+        $test['c'] = $test['c'] + $answers[$y][1];
+        $test['i'] = $test['i'] + $answers[$y][2];
+        $test['a'] = $test['a'] + $answers[$y][3];
+      }
+
+      $test['code'] = 'code';
+      $test['name'] = 'name';
+      $test['style'] = 'style';
+
+      return $test;
+    }
+
     public function create_profile_record($name, $sex){
 
       /** Perfil **/
@@ -232,11 +255,6 @@ class ProfileTableSeeder extends Seeder
 
       $all = array(1,2,3,4);
       $answers = array();
-      $scores = array();
-      $scores_b = 0;
-      $scores_c = 0;
-      $scores_i = 0;
-      $scores_a = 0;
 
       for($y = 0; $y < 16; $y++){
         $temp = $all;
@@ -245,21 +263,12 @@ class ProfileTableSeeder extends Seeder
           $value = array_splice($temp, mt_rand(0,count($temp)-1),1);
           $answers[$y][] = $value[0];
         }
-        $scores_b = $scores_b + $answers[$y][0];
-        $scores_c = $scores_c + $answers[$y][1];
-        $scores_i = $scores_i + $answers[$y][2];
-        $scores_a = $scores_a + $answers[$y][3];
       }
 
+      $test = self::populateTest($answers);
+
       $profile->test()->create([
-        'style' => 'style',
-        'code' => 'code',
-        'name' => 'name',
-        'score_b' => $scores_b,
-        'score_c' => $scores_c,
-        'score_i' => $scores_i,
-        'score_a' => $scores_a,
-        'answers' => json_encode($answers)
+        'answers' => $answers
       ]);
 
 

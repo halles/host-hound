@@ -1,38 +1,18 @@
 <div class="row">
   <div class="col-md-12">
-    <h4>Listado de Personas en Base de Datos</h4>
+    <h4>
+      Departamento<br/>
+      <small>Organización</small>
+    </h4>
+  </div>
+  <div class="col-md-12">
+    <h5>Perfiles en Base de Datos</h5>
   </div>
   <div class="col-md-2">
-    <a href="{{currentGroup.slug}}/person/new">Nueva Persona</a>
-    <ul class="nav nav-list">
-      <li class="nav-header">Filtrar</li>
-      <li class="active">
-        <a href="#fakelink">
-          Todos
-          <span class="badge pull-right">190</span>
-        </a>
-      </li>
-      <li>
-        <a href="#fakelink">
-          Contratados
-          <span class="badge pull-right">130</span>
-        </a>
-      </li>
-      <li>
-        <a href="#fakelink">
-          Postulantes
-          <span class="badge pull-right">60</span>
-        </a>
-      </li>
-    </ul>
-    <label class="checkbox" for="checkbox1">
-      <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox" class="custom-checkbox"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
-      Tag 1
-    </label>
-    <label class="checkbox" for="checkbox2">
-      <input type="checkbox" value="" id="checkbox2" data-toggle="checkbox" class="custom-checkbox"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
-      Tag 2
-    </label>
+    <a href="/o/{{organizationId}}/{{departmentId}}/profile/new">Nuevo Perfil</a>
+    <a href="/o/{{organizationId}}/{{departmentId}}/jobs">Ver Oportunidades Laborales</a>
+    <a href="/o/{{organizationId}}/{{departmentId}}/jobs">Nueva Oportunidad Laboral</a>
+    <a href="/o/{{organizationId}}/{{departmentId}}/jobs">Aplicar Oportunidad Laboral</a>
   </div>
   <div class="col-md-10">
 

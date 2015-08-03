@@ -15,9 +15,9 @@ class CreateProfileTestsTable extends Migration {
     Schema::create('profile_tests', function($table){
         $table->increments('id');
         $table->integer('profile_id');
-        $table->string('style');
         $table->string('code');
-        $table->string('name');
+        $table->string('style');
+        $table->string('patterns');
         $table->string('score_b');
         $table->string('score_c');
         $table->string('score_i');
