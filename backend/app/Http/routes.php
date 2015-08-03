@@ -73,6 +73,7 @@ $app->get('/organizations/{id}/profiles', [
       ->with('attributes')
       ->with('test')
       ->with('notes')
+      ->with('jobs')
       ->get();
     $note_types = ProfileNoteType::all();
     foreach($note_types as $type){
