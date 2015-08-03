@@ -15,8 +15,8 @@ class ProfileTableSeeder extends Seeder
 {
 
   private static $names = array(
-    'm' => array('Jamel Eberhart', 'Caleb Dyment', 'Rich Talmage', 'Emilio Talamantez', 'Lenny Suhr', 'Courtney Sultan', 'Donny Ratti', 'Shane Mcmonagle', 'Clyde Acheson', 'Octavio Dufresne', 'Rickie Maher', 'Dillon Quellette', 'Carl Laury', 'Scotty Telfer', 'Jefferey Sterling', 'Grant Rose', 'Del Castaldo', 'Ismael Shattuck', 'Abel Parke', 'Kelly Cantor', 'Hung Keppler', 'Marco Kubat', 'Florentino Bondi', 'Michel Degroot', 'Rolland Ariola', 'Phillip Rench', 'Kendrick Smeltzer', 'Trenton Maysonet', 'Fabian Penland', 'Matthew Aubrey', 'Jay Pridmore', 'Abdul Marling', 'Marcus Samayoa', 'Alvin Pinelli', 'Rogelio Badger', 'Thad Hennig', 'Olen Dulaney', 'Rodney Colson', 'Rex Ribble', 'Lowell Rojo', 'Owen Needham', 'Aaron Polster', 'Blake Gilkey', 'Jeffry Doles', 'Drew Damato', 'Brendan Farthing', 'Donnell Dowe', 'Pasquale Grose', 'Ivory Bickel', 'Stevie Hite'),
-    'f' => array('Mora Tarin', 'Lurlene Speno', 'Lise Kraatz', 'Magdalena Munden', 'Farah Cropp', 'Bernita Defrank', 'Noemi Mccomas', 'Ranae Riggleman', 'Lavada Police', 'Sherice Scheck', 'Kathie Wiest', 'Nu Sealey', 'Devorah Perkinson', 'Particia Osborne', 'Felicita Kinser', 'Stefania Adan', 'Joanne Buel', 'Mira Reddix', 'Reiko Heyen', 'Kellie Hodson', 'Vena Combes', 'Kristina Arter', 'Alpha Liang', 'Florine Silversmith', 'Yvone Norville', 'Ernestina Hauff', 'Jeniffer Borst', 'Celestina Fucci', 'Shanelle Riva', 'Essie Ney', 'Tomeka Vien', 'Gidget Mccarville', 'Miranda Meloy', 'Consuelo Fontenot', 'Nam Alleman', 'Jazmine Knowlton', 'Huong Morabito', 'Daina Molander', 'Lois Moshier', 'Silvia Gardella', 'Joetta Coolidge', 'Anika Trost', 'Hettie Cousar', 'Mamie Siegfried', 'Yadira Glessner', 'Britta Sy', 'Marica Curtin', 'Stephania Doonan', 'Nathalie Threatt', 'Isela Mckinzie')
+    'm' => array('Jamel Eberhart', 'Caleb Dyment', 'Rich Talmage', 'Emilio Talamantez', 'Lenny Suhr', 'Courtney Sultan', 'Donny Ratti', 'Shane Mcmonagle', 'Clyde Acheson', 'Octavio Dufresne', 'Rickie Maher', 'Dillon Quellette', 'Carl Laury', 'Scotty Telfer', 'Jefferey Sterling', 'Grant Rose', 'Del Castaldo', 'Ismael Shattuck', 'Abel Parke', 'Kelly Cantor', 'Hung Keppler', 'Marco Kubat', 'Florentino Bondi', 'Michel Degroot', 'Rolland Ariola', 'Phillip Rench', 'Kendrick Smeltzer', 'Trenton Maysonet', 'Fabian Penland', 'Matthew Aubrey', 'Jay Pridmore', 'Abdul Marling', 'Marcus Samayoa', 'Alvin Pinelli', 'Rogelio Badger', 'Thad Hennig', 'Olen Dulaney', 'Rodney Colson', 'Rex Ribble', 'Lowell Rojo', 'Owen Needham', 'Aaron Polster', 'Blake Gilkey', 'Jeffry Doles', 'Drew Damato', 'Brendan Farthing', 'Donnell Dowe', 'Pasquale Grose', 'Ivory Bickel', 'Stevie Hite', 'Earl Russell', 'Brian Martin', 'Richard Washington', 'Gary Rogers', 'Frank Thomas', 'Joseph Bell', 'Clarence Hill', 'Albert Carter', 'Jason Gonzales', 'William Jenkins', 'James Phillips', 'Justin Rodriguez', 'Martin Powell', 'Victor Ross', 'Nicholas Thompson', 'Willie Griffin', 'Jeffrey Lewis', 'Brandon Allen', 'Ernest Morgan', 'Adam Brooks', 'Stephen Flores', 'Bobby Nelson', 'Jack Ramirez', 'Jimmy Collins', 'Henry Patterson', 'Carl Davis', 'Christopher Smith', 'Walter Peterson', 'Benjamin Robinson', 'Larry Wilson', 'Randy Perry', 'Dennis Turner', 'Samuel Gonzalez', 'Wayne Harris', 'Aaron King', 'Juan Bryant', 'Steve Coleman', 'George Watson', 'Donald Baker', 'Raymond Green', 'David Simmons', 'Harry Lee', 'Robert Cox', 'Billy Evans', 'Thomas Price', 'Patrick Butler', 'Chris White', 'Howard James', 'Anthony Cook', 'Arthur Jones'),
+    'f' => array('Mora Tarin', 'Lurlene Speno', 'Lise Kraatz', 'Magdalena Munden', 'Farah Cropp', 'Bernita Defrank', 'Noemi Mccomas', 'Ranae Riggleman', 'Lavada Police', 'Sherice Scheck', 'Kathie Wiest', 'Nu Sealey', 'Devorah Perkinson', 'Particia Osborne', 'Felicita Kinser', 'Stefania Adan', 'Joanne Buel', 'Mira Reddix', 'Reiko Heyen', 'Kellie Hodson', 'Vena Combes', 'Kristina Arter', 'Alpha Liang', 'Florine Silversmith', 'Yvone Norville', 'Ernestina Hauff', 'Jeniffer Borst', 'Celestina Fucci', 'Shanelle Riva', 'Essie Ney', 'Tomeka Vien', 'Gidget Mccarville', 'Miranda Meloy', 'Consuelo Fontenot', 'Nam Alleman', 'Jazmine Knowlton', 'Huong Morabito', 'Daina Molander', 'Lois Moshier', 'Silvia Gardella', 'Joetta Coolidge', 'Anika Trost', 'Hettie Cousar', 'Mamie Siegfried', 'Yadira Glessner', 'Britta Sy', 'Marica Curtin', 'Stephania Doonan', 'Nathalie Threatt', 'Isela Mckinzie', 'Andrea Henderson', 'Christina Perry', 'Kelly Stewart', 'Christine Mitchell', 'Sandra Baker', 'Julie Brooks', 'Helen Cook', 'Rose Torres', 'Elizabeth Hall', 'Jennifer Martinez', 'Betty Bailey', 'Michelle Turner', 'Donna Sanchez', 'Marie Watson', 'Frances Hill', 'Laura Ramirez', 'Lois Adams', 'Karen Bell', 'Virginia Ward', 'Evelyn Lewis', 'Martha Bennett', 'Amy Phillips', 'Paula Scott', 'Pamela Harris', 'Lillian Davis', 'Diana Lee', 'Maria Wood', 'Dorothy Price', 'Janice Johnson', 'Wanda Patterson', 'Shirley Thomas', 'Kathryn Nelson', 'Debra Long', 'Ashley Edwards', 'Anne Miller', 'Emily Morgan', 'Melissa Griffin', 'Louise Evans', 'Heather Alexander', 'Alice White', 'Joyce Hughes', 'Angela Thompson', 'Mary Collins', 'Doris Gray', 'Judith Coleman', 'Nicole Foster', 'Linda Williams', 'Sarah Richardson', 'Jean Parker', 'Deborah Morris')
   );
 
   private static $reference_names = array('Oscar Allison', 'Nicole Cunningham', 'Melinda Hampton', 'Janie Cobb', 'Shelly Saunders', 'Rodney Black', 'Lawrence Bryant', 'Agnes Weber', 'Patty Ryan', 'Gloria Richards', 'Annie Gonzales', 'Norman George', 'Pearl Montgomery', 'Terry Roberson', 'Shawna Cummings', 'Wilfred Hawkins', 'Israel Day', 'Maurice Lambert', 'Neal Williamson', 'Brendan Baldwin', 'Kelvin Foster', 'Edna Parker', 'Jeremy Wood', 'Adam Stevenson', 'Henry Pope', 'Lloyd Rodriguez', 'Ivan Higgins', 'Debbie Simmons', 'Leigh Nichols', 'Sandy Moody', 'Rosemarie Alvarez', 'Ron Collier', 'Kathy Chavez', 'Dora Beck', 'Julia Scott', 'Warren Mendoza', 'Deanna Bowman', 'Zachary Dennis', 'Arturo Ray', 'Marcus Stone', 'Robin Spencer', 'Grace Wilkerson', 'Loren Hubbard', 'Alexander Dawson', 'Ken Page', 'Jonathan Douglas', 'Eugene Guerrero', 'Danielle Willis', 'Bernadette Collins', 'Wilma Sandoval', 'Jorge Conner', 'Ginger Perez', 'Archie Chambers', 'Shane Johnston', 'Barry Fisher', 'Leonard Barber', 'Inez Ortega', 'Hubert Ellis', 'Reginald Watkins', 'Floyd Schneider', 'Dana Salazar', 'Darin Jimenez', 'Nichole Knight', 'Bernard Curry', 'Philip Nguyen', 'Terence Cruz', 'Edith Frazier', 'Jimmy Davidson', 'Sarah Blake', 'Sheldon Wolfe', 'Bobby Clayton', 'Joanne Reynolds', 'Terrell Santos', 'Yvette Mack', 'Lillian Pena', 'Dawn Graves', 'Randolph Fletcher', 'Tabitha Gomez', 'Marco Horton', 'Julie Greer', 'Ervin Dean', 'Ian Garza', 'Elaine Mullins', 'Sara Luna', 'Silvia Massey', 'Paulette Williams', 'Dianna Hodges', 'Delia Bradley', 'Randall Walton', 'Roger Morton', 'Roman Ramos', 'Derek Jensen', 'Arlene Peterson', 'Rickey Stanley', 'Nadine Warner', 'Darlene Hansen', 'Alejandro Moss', 'Violet Wade', 'Carol Owens', 'Jean Goodwin');
@@ -274,12 +274,12 @@ class ProfileTableSeeder extends Seeder
 
       /** Empleos **/
 
-      $jobs = mt_rand(0,3);
+      $jobs = mt_rand(0,5);
 
       $start_date = self::random_date('2000-01-01', date("Y-m-d"));
 
       for($i = 0; $i < $jobs; $jobs++){
-        $end_date = (mt_rand(0,2)>0)?self::random_date($start_date, date("Y-m-d",strtotime($start_date)+mt_rand(1,24)*86400*30)):null;
+        $end_date = (mt_rand(0,2)>0)?self::random_date($start_date, date("Y-m-d",strtotime($start_date)+mt_rand(1,48)*86400*30)):null;
         if(strtotime($end_date) > time()) $end_date = null;
         $groupi = mt_rand(0,(count(self::$jobs)-1));
         $ref_name = self::$reference_names[(mt_rand(0,count(self::$reference_names)-1))];
@@ -305,7 +305,7 @@ class ProfileTableSeeder extends Seeder
 
       /** Notas **/
 
-      $notes = mt_rand(0,10);
+      $notes = mt_rand(0,20);
 
       for($i = 0; $i < $notes; $i++){
         $note = self::$baconipsum[mt_rand(0,(count(self::$baconipsum)-1))];
@@ -356,14 +356,20 @@ class ProfileTableSeeder extends Seeder
         'color' => '38A330'
       ]);
 
-
-      for($i=0; $i < 50; $i++){
-
-        self::create_profile_record(self::$names['m'][$i], 'm');
-
-        self::create_profile_record(self::$names['f'][$i], 'f');
-
+      foreach(self::$names['m'] as $name){
+        $names[$name] = 'm';
       }
+
+      foreach(self::$names['f'] as $name){
+        $names[$name] = 'f';
+      }
+
+      do{
+        $current = array_splice($names, mt_rand(0,count($names)-1),1);
+        foreach($current as $name => $sex){
+          self::create_profile_record($name, $sex);
+        }
+      }while(count($names));
 
     }
 }
