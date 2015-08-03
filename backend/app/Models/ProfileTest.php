@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 final class ProfileTest extends Model
 {
 
+  protected $casts = [
+    'patterns' => 'array',
+    'answers' => 'array'
+  ];
+
   public $patterns_def = array(
     'cuadruple' => array(
       array(
@@ -304,8 +309,8 @@ final class ProfileTest extends Model
 
     }
 
-    $this->patterns = json_encode($this->patterns);
-    $this->answers = json_encode($this->answers);
+    //$this->patterns = json_encode($this->patterns);
+    //$this->answers = json_encode($this->answers);
 
     return true;
 
