@@ -13,4 +13,10 @@ final class Department extends Model
     {
         return $this->belongsToMany('App\User','user_departments')->withTimestamps();
     }
+
+    public function opportunities()
+    {
+      return $this->hasMany('App\Models\Opportunity');
+    }
+
 }
