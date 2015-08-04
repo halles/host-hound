@@ -41,87 +41,87 @@ class OpportunitiesSeeder extends Seeder
         'attributes' => array(
           array(
             'attribute_id' => 1,
-            'factor' => 2
+            'requirement' => 'mandatory'
           ),
           array(
             'attribute_id' => 2,
-            'factor' => 2
+            'requirement' => 'mandatory'
           ),
           array(
             'attribute_id' => 3,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 4,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 5,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 6,
-            'factor' => 1.5
+            'requirement' => 'plus'
           ),
           array(
             'attribute_id' => 7,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 8,
-            'factor' => 1.5
+            'requirement' => 'plus'
           ),
           array(
             'attribute_id' => 9,
-            'factor' => 1.5
+            'requirement' => 'plus'
           ),
           array(
             'attribute_id' => 10,
-            'factor' => 2
+            'requirement' => 'mandatory'
           ),
           array(
             'attribute_id' => 11,
-            'factor' => 2
+            'requirement' => 'mandatory'
           ),
           array(
             'attribute_id' => 12,
-            'factor' => 2
+            'requirement' => 'mandatory'
           ),
           array(
             'attribute_id' => 13,
-            'factor' => 2
+            'requirement' => 'mandatory'
           ),
           array(
             'attribute_id' => 14,
-            'factor' => 0
+            'requirement' => 'negative'
           ),
           array(
             'attribute_id' => 15,
-            'factor' => 1.5
+            'requirement' => 'plus'
           ),
           array(
             'attribute_id' => 16,
-            'factor' => 0
+            'requirement' => 'negative'
           ),
           array(
             'attribute_id' => 17,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 18,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 19,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 20,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 21,
-            'factor' => 1
+            'requirement' => 'neutral'
           )
         ),
         'experience' => array(
@@ -171,87 +171,87 @@ class OpportunitiesSeeder extends Seeder
         'attributes' => array(
           array(
             'attribute_id' => 1,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 2,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 3,
-            'factor' => 1.5
+            'requirement' => 'plus'
           ),
           array(
             'attribute_id' => 4,
-            'factor' => 1.5
+            'requirement' => 'plus'
           ),
           array(
             'attribute_id' => 5,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 6,
-            'factor' => 2
+            'requirement' => 'mandatory'
           ),
           array(
             'attribute_id' => 7,
-            'factor' => 2
+            'requirement' => 'mandatory'
           ),
           array(
             'attribute_id' => 8,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 9,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 10,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 11,
-            'factor' => 1.5
+            'requirement' => 'plus'
           ),
           array(
             'attribute_id' => 12,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 13,
-            'factor' => 1.5
+            'requirement' => 'plus'
           ),
           array(
             'attribute_id' => 14,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 15,
-            'factor' => 0.5
+            'requirement' => 'negative'
           ),
           array(
             'attribute_id' => 16,
-            'factor' => 0
+            'requirement' => 'negative'
           ),
           array(
             'attribute_id' => 17,
-            'factor' => 0.5
+            'requirement' => 'negative'
           ),
           array(
             'attribute_id' => 18,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 19,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 20,
-            'factor' => 1
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 21,
-            'factor' => 1
+            'requirement' => 'neutral'
           )
         ),
         'experience' => array(
