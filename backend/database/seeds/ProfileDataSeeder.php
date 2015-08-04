@@ -246,7 +246,7 @@ class ProfileTableSeeder extends Seeder
       $attributes = array();
 
       do{
-        $attributes[] = rand(0,19);
+        $attributes[] = mt_rand(1,19);
       } while(count($attributes) < 5);
 
       $profile->attributes()->sync($attributes);
@@ -297,7 +297,7 @@ class ProfileTableSeeder extends Seeder
           'end' => $end_date
         ]);
         if(!$end_date){
-          return;
+          break;
         }else{
           $start_date = self::random_date($end_date, date("Y-m-d"));
         }
@@ -305,7 +305,7 @@ class ProfileTableSeeder extends Seeder
 
       /** Notas **/
 
-      $notes = mt_rand(0,20);
+      $notes = mt_rand(0,10);
 
       for($i = 0; $i < $notes; $i++){
         $note = self::$baconipsum[mt_rand(0,(count(self::$baconipsum)-1))];
