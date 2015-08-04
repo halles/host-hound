@@ -33,8 +33,6 @@ hostHound.controller('profilesTableController',[
   '$scope', '$state', '$http', '$log',
   function($scope, $state, $http, $log){
 
-  $log.log('HOLA!');
-
   var organizationId = $state.params.organizationId;
   var departmentId = $state.params.departmentId;
 
@@ -73,6 +71,12 @@ hostHound.controller('profilesTableController',[
     }
   }
 
+  var resetScores = function(){
+    for($i = 0; $i < $scope.profiles.length; $i++){
+      $scope.profiles[$i].score = 1;
+    }
+  }
+
   var vm = this;
 
   var theTable;
@@ -82,17 +86,27 @@ hostHound.controller('profilesTableController',[
         $scope.status = data.status;
         $scope.profiles = data.profiles;
         $scope.note_types = data.note_types;
-        setAge();
-        $scope.calculateScore();
+        prepareProfiles();
+        buildTable();
       }).
       error(function(data, status, headers, config) {
 
       });
 
-  $scope.calculateScore = function(doRebuild){
+  var prepareProfiles = function(){
+    setAge();
+    resetScores();
+  }
+
+  $scope.calculateScores = function(doRebuild){
     for(pi = 0; pi < $scope.profiles.length; pi++){
       $scope.profiles[pi].score = getRandomArbitrary(0,1);
     }
+    buildTable(true);
+  };
+
+  function buildTable(doRebuild){
+
     if(doRebuild){
       theTable.destroy();
     }
@@ -161,7 +175,7 @@ hostHound.controller('profilesTableController',[
               type: "display"
             },
 
-            { "visible": false,  "targets": [ 4 ] }
+            { "visible": true,  "targets": [ 4 ] }
           ]
         });
   }
