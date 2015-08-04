@@ -145,24 +145,24 @@ class OpportunitiesSeeder extends Seeder
       $parameters = array(
         'profile_patterns' => array(
           array(
+            'factor' => 3,
+            'patterns' => array('cb')
+          ),
+          array(
+            'factor' => 3,
+            'patterns' => array('bc')
+          ),
+          array(
             'factor' => 2,
-            'patterns' => array('ce')
-          ),
-          array(
-            'factor' => 1.7,
-            'patterns' => array('ec')
-          ),
-          array(
-            'factor' => 1.2,
             'patterns' => array('c','ca','ci')
           ),
           array(
             'factor' => 1,
-            'patterns' => array('e','ea','ei')
+            'patterns' => array('b','ba','bi')
           ),
           array(
             'factor' => 0.7,
-            'patterns' => array('ac','ic','ae','ie','eci','cia','eia','eca','ecia')
+            'patterns' => array('ac','ic','ab','ib','bci','cia','bia','bca','bcia')
           ),
           array(
             'factor' => 0.3,
@@ -276,24 +276,24 @@ class OpportunitiesSeeder extends Seeder
       $parameters = array(
         'profile_patterns' => array(
           array(
+            'factor' => 3,
+            'patterns' => array('cb')
+          ),
+          array(
+            'factor' => 3,
+            'patterns' => array('bc')
+          ),
+          array(
             'factor' => 2,
-            'patterns' => array('ce')
-          ),
-          array(
-            'factor' => 1.7,
-            'patterns' => array('ec')
-          ),
-          array(
-            'factor' => 1.2,
             'patterns' => array('c','ca','ci')
           ),
           array(
             'factor' => 1,
-            'patterns' => array('e','ea','ei')
+            'patterns' => array('b','ba','bi')
           ),
           array(
             'factor' => 0.7,
-            'patterns' => array('ac','ic','ae','ie','eci','cia','eia','eca','ecia')
+            'patterns' => array('ac','ic','ab','ib','bci','cia','bia','bca','bcia')
           ),
           array(
             'factor' => 0.3,
