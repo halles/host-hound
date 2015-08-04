@@ -14,15 +14,15 @@ class OpportunitiesSeeder extends Seeder
       $parameters = array(
         'profile_patterns' => array(
           array(
-            'factor' => 2,
+            'factor' => 3,
             'patterns' => array('cb')
           ),
           array(
-            'factor' => 1.7,
+            'factor' => 3,
             'patterns' => array('bc')
           ),
           array(
-            'factor' => 1.2,
+            'factor' => 2,
             'patterns' => array('c','ca','ci')
           ),
           array(
@@ -128,9 +128,10 @@ class OpportunitiesSeeder extends Seeder
           'stability' => 2,
           'previous' => 1.5
         ),
-        'employed' => array(
-          'in' => 0,
-          'no' => 1.5
+        'employment' => array(
+          'is_employee' => 0,
+          'unemployed' => 1.5,
+          'employed' => 0.7
         )
       );
 
@@ -258,15 +259,147 @@ class OpportunitiesSeeder extends Seeder
           'stability' => 2,
           'previous' => 2
         ),
-        'employed' => array(
-          'in' => 1,
-          'no' => 0
+        'employment' => array(
+          'is_employee' => 0,
+          'unemployed' => 1.5,
+          'employed' => 0.7
         )
       );
 
       Opportunity::create([
         'department_id' => 2,
         'name' => 'Mesero',
+        'active' => true,
+        'parameters' => $parameters
+      ]);
+
+      $parameters = array(
+        'profile_patterns' => array(
+          array(
+            'factor' => 2,
+            'patterns' => array('ce')
+          ),
+          array(
+            'factor' => 1.7,
+            'patterns' => array('ec')
+          ),
+          array(
+            'factor' => 1.2,
+            'patterns' => array('c','ca','ci')
+          ),
+          array(
+            'factor' => 1,
+            'patterns' => array('e','ea','ei')
+          ),
+          array(
+            'factor' => 0.7,
+            'patterns' => array('ac','ic','ae','ie','eci','cia','eia','eca','ecia')
+          ),
+          array(
+            'factor' => 0.3,
+            'patterns' => array('a','i','ia','ai')
+          )
+        ),
+        'attributes' => array(
+          array(
+            'attribute_id' => 1,
+            'requirement' => 'neutral'
+          ),
+          array(
+            'attribute_id' => 2,
+            'requirement' => 'mandatory'
+          ),
+          array(
+            'attribute_id' => 3,
+            'requirement' => 'plus'
+          ),
+          array(
+            'attribute_id' => 4,
+            'requirement' => 'plus'
+          ),
+          array(
+            'attribute_id' => 5,
+            'requirement' => 'plus'
+          ),
+          array(
+            'attribute_id' => 6,
+            'requirement' => 'neutral'
+          ),
+          array(
+            'attribute_id' => 7,
+            'requirement' => 'neutral'
+          ),
+          array(
+            'attribute_id' => 8,
+            'requirement' => 'neutral'
+          ),
+          array(
+            'attribute_id' => 9,
+            'requirement' => 'mandatory'
+          ),
+          array(
+            'attribute_id' => 10,
+            'requirement' => 'mandatory'
+          ),
+          array(
+            'attribute_id' => 11,
+            'requirement' => 'plus'
+          ),
+          array(
+            'attribute_id' => 12,
+            'requirement' => 'plus'
+          ),
+          array(
+            'attribute_id' => 13,
+            'requirement' => 'plus'
+          ),
+          array(
+            'attribute_id' => 14,
+            'requirement' => 'neutral'
+          ),
+          array(
+            'attribute_id' => 15,
+            'requirement' => 'neutral'
+          ),
+          array(
+            'attribute_id' => 16,
+            'requirement' => 'neutral'
+          ),
+          array(
+            'attribute_id' => 17,
+            'requirement' => 'neutral'
+          ),
+          array(
+            'attribute_id' => 18,
+            'requirement' => 'neutral'
+          ),
+          array(
+            'attribute_id' => 19,
+            'requirement' => 'neutral'
+          ),
+          array(
+            'attribute_id' => 20,
+            'requirement' => 'neutral'
+          ),
+          array(
+            'attribute_id' => 21,
+            'requirement' => 'neutral'
+          )
+        ),
+        'experience' => array(
+          'stability' => 2,
+          'previous' => 2
+        ),
+        'employment' => array(
+          'is_employee' => 1.5,
+          'unemployed' => 1,
+          'employed' => 1
+        )
+      );
+
+      Opportunity::create([
+        'department_id' => 2,
+        'name' => 'Reservas Telefónicas Internacionales',
         'active' => true,
         'parameters' => $parameters
       ]);
