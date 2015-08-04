@@ -164,6 +164,62 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
     return finalfactor;
   }
 
+  var calculateEmployement = function(index,employment){
+    var profile = $scope.profiles[index];
+    if(profile.is_employee){
+      return employment.is_employee;
+    }else{
+      if(profile.jobs.length > 0){
+        if(profile.jobs[profile.jobs.length-1].end == null){
+          return employment.employed;
+        }else{
+          return employment.unemployed;
+        }
+      }else{
+        return 1;
+      }
+
+    }
+  }
+
+  var calculateExperience = function(index,experience){
+    var profile = $scope.profiles[index];
+    $log.log(profile);
+
+    var factor = 1;
+
+    var avg_length = 0;
+    var job_count = (profile.jobs.length > 3)?3:profile.jobs.length;
+
+    if(job_count > 0){
+
+      factor = factor * experience.previous;
+
+      for (var i = 0; i < job_count; i++) {
+        end = (profile.jobs[i].end!=null)?profile.jobs[i].end:undefined;
+        $log.log(profile.jobs[i].start, end);
+        avg_length = avg_length + $scope.monthDiff(profile.jobs[i].start,end)
+      }
+
+      avg_length = avg_length / job_count;
+
+      if(avg_length >= 6){
+        factor = factor * experience.stability;
+      }
+
+      $log.log(avg_length);
+
+    }else{
+
+      factor = factor * 1;
+      $log.log('Sin Experiencia');
+
+    }
+
+    return factor;
+
+  }
+
   $scope.calculateScores = function(doRebuild){
 
     if($scope.currentOpportunity == 0){
@@ -174,7 +230,7 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
 
     var profile_patterns = Op.parameters.profile_patterns;
     var attributes = Op.parameters.attributes;
-    var employed = Op.parameters.employed;
+    var employment = Op.parameters.employment;
     var experience = Op.parameters.experience;
 
     var factors = [];
@@ -183,8 +239,8 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
       factors = []
       factors.push(calculateProfilePattern(pi,profile_patterns));
       factors.push(calculateAttributes(pi,attributes));
-      factors.push(1);
-      factors.push(1);
+      factors.push(calculateEmployement(pi,employment));
+      factors.push(calculateExperience(pi,experience));
       $scope.profiles[pi].score = 1*factors[0]*factors[1]*factors[2]*factors[3];
     }
 
@@ -217,7 +273,8 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
                 var sexImg = (row.sex=='m')?'dude.svg':'girl.svg';
                 return '<a href="/o/' + organizationId + '/' + departmentId + '/profile/'+row.id+'/">'+row.name+'</a><br/>'+
                 '<img src="/img/icons/shirt.svg" class="'+employeeClass+'">'+
-                '<img src="/img/icons/'+sexImg+'" alt="">' + row.age + ' años';
+                '<img src="/img/icons/'+sexImg+'" alt="">' + row.age + ' años<br/>'+
+                '<small>Score: '+ (Math.round(row.score*10000)/10000) + '</small>';
               },
               targets: 0,
               type: "display"
@@ -264,7 +321,8 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
               type: "display"
             },
 
-            { "visible": true,  "targets": [ 4 ] }
+            { "visible": false,  "targets": [ 4 ] },
+            { 'bSortable': false, 'aTargets': [ 0,1,2,3 ] }
           ]
         });
   }
