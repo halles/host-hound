@@ -101,10 +101,10 @@ hostHound.controller('profilesTableController',[
           data: $scope.profiles,
           order: [4,'desc'],
           columns: [
-            { 'sClass':'person' },
-            { "data": "id_num"},
-            { "data": "phone" },
-            { "data": "notes" },
+            { 'sClass':'person', 'type': 'display'},
+            { 'sClass':'test_info', 'type': 'display' },
+            { 'sClass':'jobs', 'type': 'display' },
+            { 'sClass':'notes_tags', 'type': 'display' },
             { "data": "score" }
           ],
           columnDefs: [
@@ -154,7 +154,7 @@ hostHound.controller('profilesTableController',[
                   type_id = $scope.note_types[i].id;
                   $stuff = $stuff + '<span class="note-type-tag note-type-tag-class-'+ type_id + '">' + row.note_types_count[type_id] + '</span>';
                 }
-                return '<a href="/o/{{organizationId}}/{{departmentId}}/profile/{{profile.id}}#notes">' + $stuff + '</a>';
+                return '<a href="/o/' + organizationId + '/' + departmentId + '/profile/' + row.id + '#notes">' + $stuff + '</a>';
 
               },
               targets: 3,
