@@ -43,6 +43,11 @@
   background-color: #38A330;
 }
 
+.inline-label{
+  display: inline-block;
+  margin-right: 5px;
+}
+
 #profiles-table td.person img{
   width: 20px;
   height: 20px;

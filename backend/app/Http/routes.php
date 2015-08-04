@@ -115,6 +115,20 @@ $app->get('/organizations/{id}/profiles', [
   }
 ]);
 
+$app->get('/profile/{organizationId}/{departmentId}/opportunities', [
+  'middleware' => 'auth',
+  function($organizationId, $departmentId) use ($app){
+
+    $response = array(
+      'opportunities' => Opportunity::all(),
+      'attributes' => Attribute::all(),
+      'department' => Department::find($departmentId),
+      'organization' => Organization::find($organizationId)
+    );
+    return response()->json($response);
+  }
+]);
+
 $app->get('/profile/{organizationId}/{departmentId}/{profileId}', [
   'middleware' => 'auth',
   function($organizationId, $departmentId, $profileId) use ($app){

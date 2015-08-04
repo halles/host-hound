@@ -65,6 +65,22 @@ hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $l
         }
       }
     })
+    .state('opportunities', {
+      url: '/o/:organizationId/:departmentId/opportunities',
+      templateUrl: 'app/modules/opportunities/list.html',
+      controller: 'OpportunitiesController',
+      resolve: {
+        authenticated: function($q, $location, $auth) {
+          var deferred = $q.defer();
+          if (!$auth.isAuthenticated()) {
+            $location.path('/login');
+          } else {
+            deferred.resolve();
+          }
+          return deferred.promise;
+        }
+      }
+    })
     .state('test', {
       url: '/test',
       templateUrl: 'app/modules/test/test.html',
