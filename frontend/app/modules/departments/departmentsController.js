@@ -113,6 +113,8 @@ hostHound.controller('profilesTableController',[
 
     theTable = angular.element('#profiles-table').DataTable({
           data: $scope.profiles,
+          paging: false,
+          searching: false,
           order: [4,'desc'],
           columns: [
             { 'sClass':'person', 'type': 'display'},
