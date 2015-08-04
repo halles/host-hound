@@ -24,14 +24,17 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
   $scope.organizationId = $state.params.organizationId;
   $scope.departmentId = $state.params.departmentId;
 
+  $http.get('api/departments/'+$state.params.departmentId+'/tools').
+      success(function(data, status, headers, config) {
+        $scope.opportunities = data.opportunities;
+        $scope.organization = data.organization;
+        $scope.department = data.department;
+      }).
+      error(function(data, status, headers, config) {
+
+      });
+
   /** Utils **/
-
-}]);
-
-
-hostHound.controller('profilesTableController',[
-  '$scope', '$state', '$http', '$log',
-  function($scope, $state, $http, $log){
 
   var organizationId = $state.params.organizationId;
   var departmentId = $state.params.departmentId;
@@ -98,11 +101,51 @@ hostHound.controller('profilesTableController',[
     resetScores();
   }
 
+  $scope.currentOpportunity = 0;
+
+  var calculateProfilePattern = function(index,patterns){
+    var upatterns = $scope.profiles[index].test.patterns;
+    var factor = false;
+
+    for (var ui = 0; ui < upatterns.length; ui++) {
+      for (var pi = 0; pi < patterns.length; pi++) {
+        if(patterns[pi].patterns.indexOf(upatterns[ui]) >= 0){
+          factor = patterns[pi].factor;
+          break;
+        }
+      }
+      if(factor)
+        break;
+    };
+    return factor;
+  }
+
   $scope.calculateScores = function(doRebuild){
-    for(pi = 0; pi < $scope.profiles.length; pi++){
-      $scope.profiles[pi].score = getRandomArbitrary(0,1);
+
+    if($scope.currentOpportunity == 0){
+      return;
     }
+
+    var Op = $scope.currentOpportunity;
+
+    var profile_patterns = Op.parameters.profile_patterns;
+    var attributes = Op.parameters.attributes;
+    var employed = Op.parameters.employed;
+    var experience = Op.parameters.experience;
+
+    var factors = [];
+
+    for(pi = 0; pi < $scope.profiles.length; pi++){
+      factors = []
+      factors.push(calculateProfilePattern(pi,profile_patterns));
+      factors.push(1);
+      factors.push(1);
+      factors.push(1);
+      $scope.profiles[pi].score = 1*factors[0]*factors[1]*factors[2]*factors[3];
+    }
+
     buildTable(true);
+
   };
 
   function buildTable(doRebuild){

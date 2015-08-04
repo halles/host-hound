@@ -1,21 +1,41 @@
 <div class="row">
-  <div class="col-md-12">
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
     <h4>
-      Departamento<br/>
-      <small>Organización</small>
+      {{department.name}}<br/>
+      <small>{{organization.name}}</small>
     </h4>
   </div>
-  <div class="col-md-12">
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
     <h5>Perfiles en Base de Datos</h5>
   </div>
-  <div class="col-md-2">
-    <a href="/o/{{organizationId}}/{{departmentId}}/profile/new">Nuevo Perfil</a>
-    <a href="/o/{{organizationId}}/{{departmentId}}/jobs">Ver Oportunidades Laborales</a>
-    <a href="/o/{{organizationId}}/{{departmentId}}/jobs">Nueva Oportunidad Laboral</a>
-    <a href="/o/{{organizationId}}/{{departmentId}}/jobs">Aplicar Oportunidad Laboral</a>
+
+  <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:20px;">
+
+    <a href="/o/{{organizationId}}/{{departmentId}}/profile/new" class="btn btn-sm btn-info">Nuevo Perfil</a>
+    <a href="/o/{{organizationId}}/{{departmentId}}/jobs" class="btn btn-sm btn-info mlm">Ver Oportunidades Laborales</a>
+    <a href="/o/{{organizationId}}/{{departmentId}}/jobs" class="btn btn-sm btn-info mlm">Nueva Oportunidad Laboral</a>
+
   </div>
-  <div class="col-md-10" ng-controller="profilesTableController">
-  <button ng-click="calculateScores(true)">New Scores</button>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+
+    <div class="form-group">
+      <label>Selecciona una Oportunidad Laboral</label>
+      <div class="input-group">
+        <select class="form-control" ng-model="currentOpportunity"
+        ng-options="opportunity.name for opportunity in opportunities track by opportunity.id">
+        </select>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" ng-click="calculateScores()">Aplicar!</button>
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
     <table class="table table-bordered" id="profiles-table">
       <thead>
         <tr>
