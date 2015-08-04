@@ -95,6 +95,11 @@ class UsersDataSeeder extends Seeder
         'department_id' => $organizations[1]->departments[1]->id
       ]);
 
+      UserDepartment::create([
+        'user_id' => $users[1]->id,
+        'department_id' => $organizations[1]->departments[0]->id
+      ]);
+
 
     }
 }
