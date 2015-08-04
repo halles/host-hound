@@ -120,6 +120,50 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
     return factor;
   }
 
+  var calculateAttributes = function(index,attributes){
+    var uattributes = $scope.profiles[index].attributes;
+    var factors = [];
+
+    for (var a = 0; a < attributes.length; a++) {
+      found = false;
+      for (var u = 0; u < uattributes.length; u++) {
+        if(uattributes[u].id == attributes[a].attribute_id){
+          found = true;
+        }
+      }
+      if(found){
+        if(attributes[a].requirement == 'mandatory'){
+          factors.push(2);
+        }else if(attributes[a].requirement == 'plus'){
+          factors.push(1.5);
+        }else if(attributes[a].requirement == 'neutral'){
+          factors.push(1);
+        }else if(attributes[a].requirement == 'negative'){
+          factors.push(0.5);
+        }
+      }else{
+        if(attributes[a].requirement == 'mandatory'){
+          factors.push(0.5);
+        }else if(attributes[a].requirement == 'plus'){
+          factors.push(0.75);
+        }else if(attributes[a].requirement == 'neutral'){
+          factors.push(1);
+        }else if(attributes[a].requirement == 'negative'){
+          factors.push(1.5);
+        }
+      }
+
+    }
+
+    var finalfactor = 1;
+
+    for (var i = 0; i < factors.length; i++) {
+      finalfactor = finalfactor * factors[i]
+    };
+
+    return finalfactor;
+  }
+
   $scope.calculateScores = function(doRebuild){
 
     if($scope.currentOpportunity == 0){
@@ -138,7 +182,7 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
     for(pi = 0; pi < $scope.profiles.length; pi++){
       factors = []
       factors.push(calculateProfilePattern(pi,profile_patterns));
-      factors.push(1);
+      factors.push(calculateAttributes(pi,attributes));
       factors.push(1);
       factors.push(1);
       $scope.profiles[pi].score = 1*factors[0]*factors[1]*factors[2]*factors[3];
