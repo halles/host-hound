@@ -1,30 +1,9 @@
-<div class="col-md-4">
+<div class="col-md-8 col-sm-8 col-xs-8">
   <h1><a href="/">HostHound</a></h1>
 </div>
-<div class="col-md-5 col-md-offset-3" style="margin-top: 30px; text-align:right">
+<div class="col-md-4 col-sm-4 col-xs-4" style="margin-top: 50px; text-align:right">
 
-  <div class="btn-group">
-    <a href="{{currentGroup.slug}}" class="btn btn-default" type="button">Noi Santiago</a>
-    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false">
-      <span class="caret"></span>
-      <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <ul role="menu" class="dropdown-menu">
-      <li role="presentation"><a href="{{currentGroup.slug}}/members" tabindex="-1" role="menuitem">Ver Miembros</a></li>
-      <li role="presentation"><a href="{{currentGroup.slug}}/modify" tabindex="-1" role="menuitem">Modificar Grupo</a></li>
-      <li role="presentation"><a href="groups/switch" tabindex="-1" role="menuitem">Cambiar Grupo</a></li>
-      <li role="presentation" class="divider"></li>
-      <li role="presentation"><a href="groups/new" tabindex="-1" role="menuitem">Crear Grupo</a></li>
-    </ul>
-  </div>
-  <a href="login" ng-show="{{!isLoggedIn}}">Login</a>
-  <a href="logout" ng-show="{{isLoggedIn}}">Logout</a>
-  <!--
-  &nbsp;&nbsp;
-  <a href="#/me">
-    <span class="fui-user"></span> Sofía González
-  </a>&nbsp;&nbsp;
-  <a href="#/logout" tabindex="-1" role="menuitem"><span class="fui-power"></span></a>
-  -->
+  <a href="login" ng-show="{{!isLoggedIn}}"><span class="fui-power"></span> Log In</a>
+  <a href="logout" ng-show="{{isLoggedIn}}"><span class="fui-power"></span> Log Out</a>
 
 </div>
