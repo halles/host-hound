@@ -1,0 +1,57 @@
+<div class="row">
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <h4>
+      {{profile.name}}
+    </h4>
+    <h5>
+      {{department.name}}<br/>
+      <small>{{organization.name}}</small>
+    </h5>
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-info">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Información Personal</div>
+      <!-- List group -->
+      <ul class="list-group">
+        <li class="list-group-item">Sexo: {{(profile.sex=='m')?'Hombre':'Mujer'}}</li>
+        <li class="list-group-item">Edad: {{age(profile)}} años</li>
+        <li class="list-group-item">Identificación: {{profile.id_type}}/{{profile.id_num}}</li>
+        <li class="list-group-item">E-mail: {{profile.email}}</li>
+        <li class="list-group-item">Teléfono: {{profile.phone}}</li>
+        <li class="list-group-item">Perfil(es) Psicológico(s): {{profile.test.patterns}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-info">
+      <div class="panel-heading">Atributos</div>
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="attribute in profile.attributes">{{attribute.group}} | {{attribute.attribute}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <h5>Experiencia Laboral</h5>
+    <div class="panel panel-info" ng-repeat="job in profile.jobs | reverse">
+      <div class="panel-heading">{{job.position}} en {{job.employer}}</div>
+      <div class="panel-body">
+        Duracion: {{monthDiff(job.start,job.end)}} meses ({{job.start}} hasta {{(job.end!=null)?job.end:'hoy'}})<br/>
+        Referencia: {{job.reference_name}} / {{job.reference_email}} / {{job.reference_phone}}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <h5>Anotaciones</h5>
+    <p ng-repeat="note in profile.notes">
+      <span class="note-type-tag note-type-tag-class-{{note.profile_note_type_id}}">{{note_types[(note.profile_note_type_id-1)].name}}</span>
+      {{note.content}}
+    </p>
+  </div>
+
+</div>

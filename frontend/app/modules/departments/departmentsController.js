@@ -184,7 +184,6 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
 
   var calculateExperience = function(index,experience){
     var profile = $scope.profiles[index];
-    $log.log(profile);
 
     var factor = 1;
 
@@ -197,7 +196,6 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
 
       for (var i = 0; i < job_count; i++) {
         end = (profile.jobs[i].end!=null)?profile.jobs[i].end:undefined;
-        $log.log(profile.jobs[i].start, end);
         avg_length = avg_length + $scope.monthDiff(profile.jobs[i].start,end)
       }
 
@@ -207,12 +205,9 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
         factor = factor * experience.stability;
       }
 
-      $log.log(avg_length);
-
     }else{
 
       factor = factor * 1;
-      $log.log('Sin Experiencia');
 
     }
 
@@ -271,7 +266,7 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
               "render": function ( data, type, row ) {
                 var employeeClass = (row.is_employee)?'':'not_employee';
                 var sexImg = (row.sex=='m')?'dude.svg':'girl.svg';
-                return '<a href="/o/' + organizationId + '/' + departmentId + '/profile/'+row.id+'/">'+row.name+'</a><br/>'+
+                return '<a href="/o/' + organizationId + '/' + departmentId + '/profile/'+row.id+'">'+row.name+'</a><br/>'+
                 '<img src="/img/icons/shirt.svg" class="'+employeeClass+'">'+
                 '<img src="/img/icons/'+sexImg+'" alt="">' + row.age + ' años<br/>'+
                 '<small>Score: '+ (Math.round(row.score*10000)/10000) + '</small>';
@@ -282,9 +277,9 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
             {
               "render": function ( data, type, row ) {
                 if(row.test.patterns.length == 1)
-                  return '<a href="/profile/'+row.id+'/test-results">' + row.test.patterns[0] + '</a>';
+                  return '<a href="/o/' + organizationId + '/' + departmentId + '/profile/'+row.id+'/test-results">' + row.test.patterns[0] + '</a>';
                 else
-                  return '<a href="/profile/'+row.id+'/test-results">' + row.test.patterns[0] + ' & ' + row.test.patterns[1] + '</a>';
+                  return '<a href="/o/' + organizationId + '/' + departmentId + '/profile/'+row.id+'/test-results">' + row.test.patterns[0] + ' & ' + row.test.patterns[1] + '</a>';
               },
               targets: 1,
               type: "display"

@@ -115,6 +115,40 @@ $app->get('/organizations/{id}/profiles', [
   }
 ]);
 
+$app->get('/profile/{organizationId}/{departmentId}/{profileId}', [
+  'middleware' => 'auth',
+  function($organizationId, $departmentId, $profileId) use ($app){
+
+    $profile = Profile::where('id',intval($profileId))->where('organization_id', intval($organizationId))
+      ->with('attributes')
+      ->with('test')
+      ->with('notes')
+      ->with('jobs')
+      ->first();
+
+    $note_types = ProfileNoteType::all();
+    foreach($note_types as $type){
+      $note_types_count[$type->id] = 0;
+    }
+
+    $temp_note_types_count = $note_types_count;
+    foreach ($profile->notes as $note_key => $note) {
+      $temp_note_types_count[$note->profile_note_type_id]++;
+    }
+    $profile->note_types_count = $temp_note_types_count;
+
+    $response = array(
+      'profile' => $profile,
+      'attributes' => Attribute::all(),
+      'opportunities' => Opportunity::all(),
+      'department' => Department::find($departmentId),
+      'organization' => Organization::find($organizationId),
+      'note_types' => $note_types
+    );
+    return response()->json($response);
+  }
+]);
+
 /** User Auth & Controller Routes **/
 
 $app->post('/login', [

@@ -49,6 +49,22 @@ hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $l
         }
       }
     })
+    .state('profile', {
+      url: '/o/:organizationId/:departmentId/profile/:profileId',
+      templateUrl: 'app/modules/profiles/profileView.html',
+      controller: 'profileViewController',
+      resolve: {
+        authenticated: function($q, $location, $auth) {
+          var deferred = $q.defer();
+          if (!$auth.isAuthenticated()) {
+            $location.path('/login');
+          } else {
+            deferred.resolve();
+          }
+          return deferred.promise;
+        }
+      }
+    })
     .state('test', {
       url: '/test',
       templateUrl: 'app/modules/test/test.html',
@@ -73,24 +89,6 @@ hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $l
       url: '/logout',
       template: null,
       controller: 'LogoutCtrl'
-    })
-    .state('profile', {
-      url: '/profile',
-      templateUrl: 'app/modules/user/profile.html',
-      controller: 'ProfileCtrl',
-      resolve: {
-        authenticated: function($q, $location, $auth) {
-          var deferred = $q.defer();
-
-          if (!$auth.isAuthenticated()) {
-            $location.path('/login');
-          } else {
-            deferred.resolve();
-          }
-
-          return deferred.promise;
-        }
-      }
     });
 
     $locationProvider.html5Mode(true).hashPrefix('!')

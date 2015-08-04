@@ -31,4 +31,9 @@ final class Profile extends Model
       return $this->hasOne('App\Models\ProfileTest');
     }
 
+    public function organization()
+    {
+      return $this->belongsTo('App\Models\Organization');
+    }
+
 }
