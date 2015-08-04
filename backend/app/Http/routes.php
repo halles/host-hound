@@ -20,6 +20,7 @@ use App\Models\Organization;
 use App\Models\Department;
 use App\Models\UserDepartment;
 use App\Models\UserOrganization;
+use App\Models\Opportunity;
 
 $app->get('/', function() use ($app) {
     return $app->welcome();
@@ -61,6 +62,24 @@ $app->get('/organizations/{id}/departments', [
     $response = array(
       'organization' => $data->organizations[0],
       'departments' => $data->departments
+    );
+    return response()->json($response);
+  }
+]);
+
+$app->get('/departments/{id}/tools', [
+  'middleware' => 'auth',
+  function($dep_id) use ($app){
+    $data = User::where('id', $app->request["user"]["sub"])
+      ->with(['departments' => function ($query) use ($dep_id){
+        $query->where('departments.id', $dep_id)->with('opportunities','organization')->first();
+      }])
+      ->first();
+
+    $response = array(
+      'organization' => $data->departments[0]->organization,
+      'department' => $data->departments[0],
+      'opportunities' => $data->departments[0]->opportunities
     );
     return response()->json($response);
   }

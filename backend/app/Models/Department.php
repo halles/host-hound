@@ -19,4 +19,9 @@ final class Department extends Model
       return $this->hasMany('App\Models\Opportunity');
     }
 
+    public function organization()
+    {
+        return $this->belongsTo('App\Models\Organization');
+    }
+
 }
