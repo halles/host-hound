@@ -43,12 +43,12 @@
   background-color: #38A330;
 }
 
-#profile_table td.person img{
+#profiles-table td.person img{
   width: 20px;
   height: 20px;
 }
 
-#profile_table td.notes_tags a{
+#profiles-table td.notes_tags a{
   white-space: nowrap;
 }
 
