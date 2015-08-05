@@ -49,11 +49,11 @@ class OpportunitiesSeeder extends Seeder
           ),
           array(
             'attribute_id' => 3,
-            'requirement' => 'neutral'
+            'requirement' => 'plus'
           ),
           array(
             'attribute_id' => 4,
-            'requirement' => 'neutral'
+            'requirement' => 'plus'
           ),
           array(
             'attribute_id' => 5,
@@ -126,7 +126,7 @@ class OpportunitiesSeeder extends Seeder
         ),
         'experience' => array(
           'stability' => 2,
-          'previous' => 1.5
+          'previous' => 2
         ),
         'employment' => array(
           'is_employee' => 0,
@@ -172,19 +172,19 @@ class OpportunitiesSeeder extends Seeder
         'attributes' => array(
           array(
             'attribute_id' => 1,
-            'requirement' => 'neutral'
+            'requirement' => 'mandatory'
           ),
           array(
             'attribute_id' => 2,
-            'requirement' => 'neutral'
+            'requirement' => 'mandatory'
           ),
           array(
             'attribute_id' => 3,
-            'requirement' => 'plus'
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 4,
-            'requirement' => 'plus'
+            'requirement' => 'neutral'
           ),
           array(
             'attribute_id' => 5,
@@ -257,7 +257,7 @@ class OpportunitiesSeeder extends Seeder
         ),
         'experience' => array(
           'stability' => 2,
-          'previous' => 2
+          'previous' => 1.5
         ),
         'employment' => array(
           'is_employee' => 0,
@@ -268,7 +268,7 @@ class OpportunitiesSeeder extends Seeder
 
       Opportunity::create([
         'department_id' => 2,
-        'name' => 'Mesero',
+        'name' => 'Garzón(a)',
         'active' => true,
         'parameters' => $parameters
       ]);
@@ -391,7 +391,7 @@ class OpportunitiesSeeder extends Seeder
           'previous' => 2
         ),
         'employment' => array(
-          'is_employee' => 1.5,
+          'is_employee' => 0,
           'unemployed' => 1,
           'employed' => 1
         )
@@ -399,7 +399,7 @@ class OpportunitiesSeeder extends Seeder
 
       Opportunity::create([
         'department_id' => 2,
-        'name' => 'Reservas Telefónicas Internacionales',
+        'name' => 'Telefonista',
         'active' => true,
         'parameters' => $parameters
       ]);
