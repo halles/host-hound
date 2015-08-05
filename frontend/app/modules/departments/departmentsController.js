@@ -269,7 +269,7 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
                 return '<a href="/o/' + organizationId + '/' + departmentId + '/profile/'+row.id+'">'+row.name+'</a><br/>'+
                 '<img src="/img/icons/shirt.svg" class="'+employeeClass+'">'+
                 '<img src="/img/icons/'+sexImg+'" alt="">' + row.age + ' años<br/>'+
-                '<small>Score: '+ (Math.round(row.score*10000)/10000) + '</small>';
+                '<small>Puntaje: '+ (Math.round(row.score*10000)/10000) + '</small>';
               },
               targets: 0,
               type: "display"
