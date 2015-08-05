@@ -309,11 +309,12 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
 
   $scope.tableOrder = $scope.tableOrderOptions[0];
 
-  $scope.$watch('tableOrder', function(newValue, oldValue){
+  $scope.reorderTable = function(){
+    $log.log('hola');
     if(theTable!=undefined){
-      theTable.order([newValue.column, 'desc']).draw();
+      theTable.order([$scope.tableOrder.column, 'desc']).draw();
     }
-  },true);
+  };
 
   function buildTable(doRebuild){
 

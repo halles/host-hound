@@ -58,6 +58,22 @@
   background-color: #56a3a6;
 }
 
+.opportunity-select label{
+  font-size: 12px;
+}
+
+.order-select{
+  text-align: right;
+}
+
+.order-select label{
+  font-size: 12px;
+}
+
+.order-select .input-group{
+  float: right;
+}
+
 #profiles-table td.person img{
   width: 40px;
   height: 40px;

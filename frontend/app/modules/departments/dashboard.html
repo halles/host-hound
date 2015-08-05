@@ -19,7 +19,7 @@
 
   </div>
 
-  <div class="col-md-8 col-sm-8 col-xs-8">
+  <div class="col-md-8 col-sm-8 col-xs-8 opportunity-select">
 
     <div class="form-group">
       <label>Selecciona una Oportunidad Laboral</label>
@@ -35,7 +35,7 @@
 
   </div>
 
-  <div class="col-md-4 col-sm-4 col-xs-4">
+  <div class="col-md-4 col-sm-4 col-xs-4 order-select">
 
     <div class="form-group">
       <label>Ordenar por Evaluación</label>
@@ -43,6 +43,9 @@
         <select class="form-control" ng-model="tableOrder"
         ng-options="option.name for option in tableOrderOptions track by option.column">
         </select>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" ng-click="reorderTable()">Ordenar!</button>
+        </span>
       </div>
     </div>
 
