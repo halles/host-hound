@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row test-table">
 
   <div class="col-md-12 col-sm-12 col-xs-12">
 
@@ -81,18 +81,19 @@
     <table class="table table-bordered">
       <tbody>
         <tr ng-repeat="line in terms">
-          <td>
+          <td class="lead center">
             <span class="counter">{{$index+1}}</span>
             <span ng-class="validate[$index].class"></span>
           </td>
           <td ng-repeat="block in line">
             <div class="row">
-              <div class="col-md-6 col-sm-12 col-xs-12 col-md-push-6">
+              <div class="col-md-12 col-sm-12 col-xs-12 answer-select">
                 <select ng-model="answers[$parent.$index][$index]">
                   <option ng-repeat="n in [1,2,3,4]">{{n}}</option>
                 </select>
               </div>
-              <div class="col-md-6 col-sm-12 col-xs-12 col-md-pull-6">
+
+              <div class="col-md-12 col-sm-12 col-xs-12 answer-terms">
                 <strong>{{block[0]}}</strong><br/>
                 {{block[1]}}<br/>
                 {{block[2]}}<br/>
@@ -101,18 +102,22 @@
             </div>
           </td>
         </tr>
-        <tr>
+        <tr class="results">
           <td>Resultados</td>
-          <td>{{results[0]}}</td>
-          <td>{{results[1]}}</td>
-          <td>{{results[2]}}</td>
-          <td>{{results[3]}}</td>
+          <td class="lead">{{results[0]}}</td>
+          <td class="lead">{{results[1]}}</td>
+          <td class="lead">{{results[2]}}</td>
+          <td class="lead">{{results[3]}}</td>
         </tr>
       </tbody>
     </table>
 
   </div>
 
-  <a href="/results/{{results[0]}}-{{results[1]}}-{{results[2]}}-{{results[3]}}" >Ver Resultados</a>
+  <div class="col-md-12 col-sm-12 col-xs-12 go-button-container">
+
+    <a href="/results/{{results[0]}}-{{results[1]}}-{{results[2]}}-{{results[3]}}" class="btn btn-hg btn-info btn-block">Ver Resultados<span class="fui-arrow-right pull-right"></span></a>
+
+  </div>
 
 </div>

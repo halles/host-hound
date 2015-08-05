@@ -124,3 +124,35 @@
   line-height: 20px;
 }
 
+.test-table .results td{
+  text-align: center;
+}
+
+.test-table .go-button-container{
+  margin-bottom: 30px;
+}
+
+.test-table table td{
+  white-space: nowrap;
+}
+
+.answer-select{
+}
+
+.answer-terms{
+}
+
+.answer-select select{
+  width: 100%;
+  margin: 10px 0;
+}
+
+.center{
+  text-align: center;
+}
+
+@media (min-width: 768px){
+  .test-table .table > thead > tr > th, .test-table .table > tbody > tr > th, .test-table .table > tfoot > tr > th, .test-table .table > thead > tr > td, .test-table .table > tbody > tr > td, .test-table .table > tfoot > tr > td {
+      padding: 9px 15px;
+  }
+}
