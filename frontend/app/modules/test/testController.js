@@ -1,15 +1,36 @@
 hostHound
 
-  .controller('TestCtrl', function($scope, $auth, $alert, $log) {
+  .controller('TestCtrl', function($scope, $auth, $alert, $log, $location) {
 
     $scope.answers = [];
     $scope.results = [];
     $scope.validate = [];
 
-    for (i = 0; i < 16; i++) {
+    doReset = true;
+
+    if($location.$$hash!=''){
+      fromhash = $location.$$hash.split('-');
+      if(fromhash.length == 64){
+        y = 0;
+        x = 0;
+        for (var i = 0; i < fromhash.length; i++) {
+          if($scope.answers[y]==undefined){
+            $scope.answers[y] = [];
+          }
+          $scope.answers[y][x]=fromhash[i];
+          x++;
+          if(x > 3){y++;x=0};
+        }
+        doReset = false;
+      }
+    }
+
+    if(doReset){
+      for (i = 0; i < 16; i++) {
       $scope.answers[i] = [];
-      for(o = 0; o < 4; o++) {
-        $scope.answers[i][o] = 0;
+        for(o = 0; o < 4; o++) {
+          $scope.answers[i][o] = 0;
+        }
       }
     }
 
@@ -47,7 +68,6 @@ hostHound
           $scope.validate[y].class = 'not-checked fui-question-circle';
         }
 
-        $log.log('Resultado: ' + $scope.validate[y].class);;
       }
 
       /** Cálculos Resultado por Columna **/
@@ -58,6 +78,16 @@ hostHound
           $scope.results[i] += parseInt($scope.answers[o][i]);
         }
       }
+
+      prehash = [];
+
+      for (i = 0; i < 16; i++) {
+        for(o = 0; o < 4; o++) {
+          prehash.push($scope.answers[i][o]);
+        }
+      }
+
+      $location.hash(prehash.join('-'));
 
     }, true);
 
@@ -167,7 +197,7 @@ hostHound
     ];
 
     $scope.displayAnswers = function(){
-      $log.log($scope.answers);
+
     };
 
     function has_duplicates(arr) {
