@@ -112,3 +112,15 @@
   -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
   opacity: 0.5;
 }
+
+
+.personal-style-graphic-bars .progress {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  height: 20px;
+}
+
+.personal-style-graphic-bars .progress .progress-bar {
+  line-height: 20px;
+}
+

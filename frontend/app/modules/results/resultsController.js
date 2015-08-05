@@ -4,6 +4,13 @@ hostHound
 
     var scores = $state.params.resultsData.split('-');
 
+    $scope.scores = scores;
+    $scope.bars = [];
+
+    for (var i = 0; i < scores.length; i++) {
+      $scope.bars[i] = scores[i]/0.6;
+    };
+
     results = [
       {
         type: 'e',
