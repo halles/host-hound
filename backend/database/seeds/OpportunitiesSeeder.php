@@ -15,11 +15,11 @@ class OpportunitiesSeeder extends Seeder
         'profile_patterns' => array(
           array(
             'factor' => 3,
-            'patterns' => array('cb')
+            'patterns' => array('ce')
           ),
           array(
             'factor' => 3,
-            'patterns' => array('bc')
+            'patterns' => array('ec')
           ),
           array(
             'factor' => 2,
@@ -27,11 +27,11 @@ class OpportunitiesSeeder extends Seeder
           ),
           array(
             'factor' => 1,
-            'patterns' => array('b','ba','bi')
+            'patterns' => array('e','ea','ei')
           ),
           array(
             'factor' => 0.7,
-            'patterns' => array('ac','ic','ab','ib','bci','cia','bia','bca','bcia')
+            'patterns' => array('ac','ic','ae','ie','eci','cia','eia','eca','ecia')
           ),
           array(
             'factor' => 0.3,
@@ -146,11 +146,11 @@ class OpportunitiesSeeder extends Seeder
         'profile_patterns' => array(
           array(
             'factor' => 3,
-            'patterns' => array('cb')
+            'patterns' => array('ce')
           ),
           array(
             'factor' => 3,
-            'patterns' => array('bc')
+            'patterns' => array('ec')
           ),
           array(
             'factor' => 2,
@@ -158,11 +158,11 @@ class OpportunitiesSeeder extends Seeder
           ),
           array(
             'factor' => 1,
-            'patterns' => array('b','ba','bi')
+            'patterns' => array('e','ea','ei')
           ),
           array(
             'factor' => 0.7,
-            'patterns' => array('ac','ic','ab','ib','bci','cia','bia','bca','bcia')
+            'patterns' => array('ac','ic','ae','ie','eci','cia','eia','eca','ecia')
           ),
           array(
             'factor' => 0.3,
@@ -277,11 +277,11 @@ class OpportunitiesSeeder extends Seeder
         'profile_patterns' => array(
           array(
             'factor' => 3,
-            'patterns' => array('cb')
+            'patterns' => array('ce')
           ),
           array(
             'factor' => 3,
-            'patterns' => array('bc')
+            'patterns' => array('ec')
           ),
           array(
             'factor' => 2,
@@ -289,11 +289,11 @@ class OpportunitiesSeeder extends Seeder
           ),
           array(
             'factor' => 1,
-            'patterns' => array('b','ba','bi')
+            'patterns' => array('e','ea','ei')
           ),
           array(
             'factor' => 0.7,
-            'patterns' => array('ac','ic','ab','ib','bci','cia','bia','bca','bcia')
+            'patterns' => array('ac','ic','ae','ie','eci','cia','eia','eca','ecia')
           ),
           array(
             'factor' => 0.3,

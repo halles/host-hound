@@ -18,7 +18,7 @@ class CreateProfileTestsTable extends Migration {
         $table->string('code');
         $table->string('style');
         $table->string('patterns');
-        $table->string('score_b');
+        $table->string('score_e');
         $table->string('score_c');
         $table->string('score_i');
         $table->string('score_a');

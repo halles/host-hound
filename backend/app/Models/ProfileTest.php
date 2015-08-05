@@ -16,16 +16,16 @@ final class ProfileTest extends Model
     'cuadruple' => array(
       array(
         'type' => 'synergistic',
-        'ref' => 'bcia',
-        'letters' => array('b','c','i','a'),
+        'ref' => 'ecia',
+        'letters' => array('e','c','i','a'),
         'name' => 'Sinergístico'
       )
     ),
     'triple' => array(
       array(
         'type' => 'ambitious',
-        'ref' => 'bci',
-        'letters' => array('b','c','i'),
+        'ref' => 'eci',
+        'letters' => array('e','c','i'),
         'name' => 'Ambicioso'
       ),
       array(
@@ -36,40 +36,40 @@ final class ProfileTest extends Model
       ),
       array(
         'type' => 'influential',
-        'ref' => 'bia',
-        'letters' => array('b','i','a'),
+        'ref' => 'eia',
+        'letters' => array('e','i','a'),
         'name' => 'Influyente'
       ),
       array(
         'type' => 'productive',
-        'ref' => 'bca',
-        'letters' => array('b','c','a'),
+        'ref' => 'eca',
+        'letters' => array('e','c','a'),
         'name' => 'Productivo'
       )
     ),
     'double' => array(
       array(
         'type' => 'independent',
-        'ref' => 'bc',
-        'letters' => array('b','c'),
+        'ref' => 'ec',
+        'letters' => array('e','c'),
         'name' => 'Independiente'
       ),
       array(
         'type' => 'determined',
-        'ref' => 'bi',
-        'letters' => array('b','i'),
+        'ref' => 'ei',
+        'letters' => array('e','i'),
         'name' => 'Determinado'
       ),
       array(
         'type' => 'optimistic',
-        'ref' => 'ba',
-        'letters' => array('b','a'),
+        'ref' => 'ea',
+        'letters' => array('e','a'),
         'name' => 'Optimista'
       ),
       array(
         'type' => 'competitive',
-        'ref' => 'cb',
-        'letters' => array('c','b'),
+        'ref' => 'ce',
+        'letters' => array('c','e'),
         'name' => 'Competitivo'
       ),
       array(
@@ -86,8 +86,8 @@ final class ProfileTest extends Model
       ),
       array(
         'type' => 'reliable',
-        'ref' => 'ib',
-        'letters' => array('i','b'),
+        'ref' => 'ie',
+        'letters' => array('i','e'),
         'name' => 'Confiable'
       ),
       array(
@@ -104,8 +104,8 @@ final class ProfileTest extends Model
       ),
       array(
         'type' => 'idealistic',
-        'ref' => 'ab',
-        'letters' => array('a','b'),
+        'ref' => 'ae',
+        'letters' => array('a','e'),
         'name' => 'Idealista'
       ),
       array(
@@ -124,8 +124,8 @@ final class ProfileTest extends Model
     'single' => array(
       array(
         'type' => 'commanding',
-        'ref' => 'b',
-        'letters' => array('b'),
+        'ref' => 'e',
+        'letters' => array('e'),
         'name' => 'Autoritario'
       ),
       array(
@@ -150,31 +150,31 @@ final class ProfileTest extends Model
   );
 
   public $dimentions_display = array(
-    'b' => false,
+    'e' => false,
     'c' => false,
     'i' => false,
     'a' => false
   );
 
   public $patterns_display = array(
-    'bcia' => false,
-    'bci' => false,
+    'ecia' => false,
+    'eci' => false,
     'cia' => false,
-    'bia' => false,
-    'bca' => false,
-    'bc' => false,
-    'bi' => false,
-    'ba' => false,
-    'cb' => false,
+    'eia' => false,
+    'eca' => false,
+    'ec' => false,
+    'ei' => false,
+    'ea' => false,
+    'ce' => false,
     'ci' => false,
     'ca' => false,
-    'ib' => false,
+    'ie' => false,
     'ic' => false,
     'ia' => false,
-    'ab' => false,
+    'ae' => false,
     'ac' => false,
     'ai' => false,
-    'b' => false,
+    'e' => false,
     'c' => false,
     'a' => false,
     'i' => false
@@ -191,19 +191,19 @@ final class ProfileTest extends Model
     $answers = $this->answers;
 
     $test = array();
-    $test['b'] = 0;
+    $test['e'] = 0;
     $test['c'] = 0;
     $test['i'] = 0;
     $test['a'] = 0;
 
     for($y = 0; $y < 16; $y++){
-      $test['b'] = $test['b'] + $answers[$y][0];
+      $test['e'] = $test['e'] + $answers[$y][0];
       $test['c'] = $test['c'] + $answers[$y][1];
       $test['i'] = $test['i'] + $answers[$y][2];
       $test['a'] = $test['a'] + $answers[$y][3];
     }
 
-    $this->score_b = $test['b'];
+    $this->score_e = $test['e'];
     $this->score_c = $test['c'];
     $this->score_i = $test['i'];
     $this->score_a = $test['a'];
@@ -227,7 +227,7 @@ final class ProfileTest extends Model
     if(($results[0]->score - $results[3]->score) <= 5){ /* Is Synergistic */
 
       $this->style = 'cuadruple';
-      $this->patterns = array('bcia');
+      $this->patterns = array('ecia');
 
     }else{
 

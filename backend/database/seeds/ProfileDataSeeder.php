@@ -117,13 +117,13 @@ class ProfileTableSeeder extends Seeder
     {
 
       $test = array();
-      $test['b'] = 0;
+      $test['e'] = 0;
       $test['c'] = 0;
       $test['i'] = 0;
       $test['a'] = 0;
 
       for($y = 0; $y < 16; $y++){
-        $test['b'] = $test['b'] + $answers[$y][0];
+        $test['e'] = $test['e'] + $answers[$y][0];
         $test['c'] = $test['c'] + $answers[$y][1];
         $test['i'] = $test['i'] + $answers[$y][2];
         $test['a'] = $test['a'] + $answers[$y][3];

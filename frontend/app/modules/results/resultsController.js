@@ -6,7 +6,7 @@ hostHound
 
     results = [
       {
-        type: 'b',
+        type: 'e',
         score: parseInt(scores[0])
       },{
         type: 'c',
@@ -34,16 +34,16 @@ hostHound
       cuadruple: [
         {
           type: 'synergistic',
-          ref: 'bcia',
-          letters: ['b','c','i','a'],
+          ref: 'ecia',
+          letters: ['e','c','i','a'],
           name: 'Sinergístico'
         }
       ],
       triple: [
         {
           type: 'ambitious',
-          ref: 'bci',
-          letters: ['b','c','i'],
+          ref: 'eci',
+          letters: ['e','c','i'],
           name: 'Ambicioso'
         },
         {
@@ -54,40 +54,40 @@ hostHound
         },
         {
           type: 'influential',
-          ref: 'bia',
-          letters: ['b','i','a'],
+          ref: 'eia',
+          letters: ['e','i','a'],
           name: 'Influyente'
         },
         {
           type: 'productive',
-          ref: 'bca',
-          letters: ['b','c','a'],
+          ref: 'eca',
+          letters: ['e','c','a'],
           name: 'Productivo'
         }
       ],
       double: [
         {
           type: 'independent',
-          ref: 'bc',
-          letters: ['b','c'],
+          ref: 'ec',
+          letters: ['e','c'],
           name: 'Independiente'
         },
         {
           type: 'determined',
-          ref: 'bi',
-          letters: ['b','i'],
+          ref: 'ei',
+          letters: ['e','i'],
           name: 'Determinado'
         },
         {
           type: 'optimistic',
-          ref: 'ba',
-          letters: ['b','a'],
+          ref: 'ea',
+          letters: ['e','a'],
           name: 'Optimista'
         },
         {
           type: 'competitive',
-          ref: 'cb',
-          letters: ['c','b'],
+          ref: 'ce',
+          letters: ['c','e'],
           name: 'Competitivo'
         },
         {
@@ -104,8 +104,8 @@ hostHound
         },
         {
           type: 'reliable',
-          ref: 'ib',
-          letters: ['i','b'],
+          ref: 'ie',
+          letters: ['i','e'],
           name: 'Confiable'
         },
         {
@@ -122,8 +122,8 @@ hostHound
         },
         {
           type: 'idealistic',
-          ref: 'ab',
-          letters: ['a','b'],
+          ref: 'ae',
+          letters: ['a','e'],
           name: 'Idealista'
         },
         {
@@ -142,8 +142,8 @@ hostHound
       single: [
         {
           type: 'commanding',
-          ref: 'b',
-          letters: ['b'],
+          ref: 'e',
+          letters: ['e'],
           name: 'Autoritario'
         },
         {
@@ -168,31 +168,31 @@ hostHound
     }
 
     $scope.dimentions_display = {
-      b: false,
+      e: false,
       c: false,
       i: false,
       a: false
     }
 
     $scope.patterns_display = {
-      bcia: false,
-      bci: false,
+      ecia: false,
+      eci: false,
       cia: false,
-      bia: false,
-      bca: false,
-      bc: false,
-      bi: false,
-      ba: false,
-      cb: false,
+      eia: false,
+      eca: false,
+      ec: false,
+      ei: false,
+      ea: false,
+      ce: false,
       ci: false,
       ca: false,
-      ib: false,
+      ie: false,
       ic: false,
       ia: false,
-      ab: false,
+      ae: false,
       ac: false,
       ai: false,
-      b: false,
+      e: false,
       c: false,
       a: false,
       i: false
@@ -205,12 +205,12 @@ hostHound
       $log.log('Quadruple Pattern');
 
       $scope.dimentions_display = {
-        b: true,
+        e: true,
         c: true,
         i: true,
         a: true
       }
-      $scope.patterns_display.bcia = true;
+      $scope.patterns_display.ecia = true;
       $scope.pattern_style = 4;
     } /* / Is Synergistic */
 
