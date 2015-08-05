@@ -156,3 +156,8 @@
       padding: 9px 15px;
   }
 }
+
+.instrucciones-container{
+  margin-bottom: 20px;
+  position: relative;
+}

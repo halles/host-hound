@@ -1,15 +1,24 @@
-<div class="row test-table">
+<div class="row test-header">
 
-  <div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="col-md-9 col-sm-9 col-xs-9">
 
     <h2>Indicador de Estilo Personal</h2>
 
-    <a ng-click="toggleInstructions()" ng-hide="{{showInstructions}}"><span class="fui-triangle-down"></span> ver instrucciones</a>
-    <a ng-click="toggleInstructions()" ng-show="{{showInstructions}}"><span class="fui-triangle-up"></span> cerrar instrucciones</a>
+  </div>
+
+</div>
+
+<div class="row instrucciones-container">
+
+  <div class="col-md-12 col-sm-12 col-xs-12 ">
+
+    <a ng-click="toggleInstructions()" ng-hide="showInstructions" class="btn btn-xs btn-info instructions-button">Ver Instrucciones <span class="fui-triangle-down"></span></a>
+
+    <a ng-click="toggleInstructions()" ng-hide="!showInstructions" href="#fakelink" class="btn btn-xs btn-info instructions-button">Ocultar Instrucciones <span class="fui-triangle-up"></span></a>
 
   </div>
 
-  <div class="col-md-12 col-sm-12 col-xs-12 instrucciones" ng-show="{{showInstructions}}" class="slideInDown">
+  <div class="col-md-12 col-sm-12 col-xs-12 instrucciones" ng-hide="!showInstructions">
 
     <h4>Instrucciones para completar la evaluación</h4>
 
@@ -18,54 +27,54 @@
     <table class="table table-bordered">
       <tbody>
         <tr>
-          <td>
+          <td class="lead center">
             <span class="counter">3</span>
             <span class="fui-check-circle"></span>
           </td>
           <td>
             <div class="row">
-              <div class="col-md-6 col-sm-12 col-xs-12 col-md-push-6">
+              <div class="col-md-12 col-sm-12 col-xs-12 answer-select">
                 <select selected="3">
                   <option value="3">3</option>
                 </select>
               </div>
-              <div class="col-md-6 col-sm-12 col-xs-12 col-md-pull-6">
+              <div class="col-md-12 col-sm-12 col-xs-12 answer-terms">
                 <strong>Artístico</strong>
               </div>
             </div>
           </td>
           <td>
             <div class="row">
-              <div class="col-md-6 col-sm-12 col-xs-12 col-md-push-6">
+              <div class="col-md-12 col-sm-12 col-xs-12 answer-select">
                 <select selected="3">
                   <option value="3">4</option>
                 </select>
               </div>
-              <div class="col-md-6 col-sm-12 col-xs-12 col-md-pull-6">
+              <div class="col-md-12 col-sm-12 col-xs-12 answer-terms">
                 <strong>Técnico</strong>
               </div>
             </div>
           </td>
           <td>
             <div class="row">
-              <div class="col-md-6 col-sm-12 col-xs-12 col-md-push-6">
+              <div class="col-md-12 col-sm-12 col-xs-12 answer-select">
                 <select selected="3">
                   <option value="3">1</option>
                 </select>
               </div>
-              <div class="col-md-6 col-sm-12 col-xs-12 col-md-pull-6">
+              <div class="col-md-12 col-sm-12 col-xs-12 answer-terms">
                 <strong>Productivo</strong>
               </div>
             </div>
           </td>
           <td>
             <div class="row">
-              <div class="col-md-6 col-sm-12 col-xs-12 col-md-push-6">
+              <div class="col-md-12 col-sm-12 col-xs-12 answer-select">
                 <select selected="3">
                   <option value="3">2</option>
                 </select>
               </div>
-              <div class="col-md-6 col-sm-12 col-xs-12 col-md-pull-6">
+              <div class="col-md-12 col-sm-12 col-xs-12 answer-terms">
                 <strong>Colaborador</strong>
               </div>
             </div>
@@ -75,6 +84,10 @@
     </table>
 
   </div>
+
+</div>
+
+<div class="row test-table">
 
   <div class="col-md-12 col-sm-12 col-xs-12">
 

@@ -64,7 +64,7 @@ hostHound
     $scope.showInstructions = false;
 
     $scope.toggleInstructions = function(){
-
+      $scope.showInstructions = ($scope.showInstructions)?false:true;
     }
 
     $scope.terms = [
