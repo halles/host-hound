@@ -5,7 +5,6 @@ hostHound.controller('profileViewController', ['$scope','$modal','$log', '$auth'
 
   $http.get('api/profile/'+$state.params.organizationId+'/'+$state.params.departmentId+'/'+$state.params.profileId).
     success(function(data, status, headers, config) {
-      $log.log(data);
       $scope.profile = data.profile;
       $scope.note_types = data.note_types;
       $scope.department = data.department;
@@ -31,10 +30,11 @@ hostHound.controller('profileViewController', ['$scope','$modal','$log', '$auth'
   }
 
   $scope.age = function(profile){
-    $log.log(profile);
-    months = $scope.monthDiff(profile.birthday);
-    age = Math.floor(months/12);
-    return age;
+    if(profile!=undefined){
+      months = $scope.monthDiff(profile.birthday);
+      age = Math.floor(months/12);
+      return age;
+    }
   }
 
 }]);
