@@ -253,10 +253,9 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
           data: $scope.profiles,
           paging: false,
           searching: false,
-          order: [4,'desc'],
+          order: [3,'desc'],
           columns: [
             { 'sClass':'person', 'type': 'display'},
-            { 'sClass':'test_info', 'type': 'display' },
             { 'sClass':'jobs', 'type': 'display' },
             { 'sClass':'notes_tags', 'type': 'display' },
             { "data": "score" }
@@ -276,16 +275,6 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
             },
             {
               "render": function ( data, type, row ) {
-                if(row.test.patterns.length == 1)
-                  return '<a href="/o/' + organizationId + '/' + departmentId + '/profile/'+row.id+'/test-results">' + row.test.patterns[0] + '</a>';
-                else
-                  return '<a href="/o/' + organizationId + '/' + departmentId + '/profile/'+row.id+'/test-results">' + row.test.patterns[0] + ' & ' + row.test.patterns[1] + '</a>';
-              },
-              targets: 1,
-              type: "display"
-            },
-            {
-              "render": function ( data, type, row ) {
                 if(row.jobs.length > 0){
                   var $exp;
                   if(row.jobs[row.jobs.length-1].end != null){
@@ -298,7 +287,7 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
                   return "Sin Experiencia";
                 }
               },
-              targets: 2,
+              targets: 1,
               type: "display"
             },
             {
@@ -312,12 +301,12 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
                 return '<a href="/o/' + organizationId + '/' + departmentId + '/profile/' + row.id + '#notes">' + $stuff + '</a>';
 
               },
-              targets: 3,
+              targets: 2,
               type: "display"
             },
 
-            { "visible": false,  "targets": [ 4 ] },
-            { 'bSortable': false, 'aTargets': [ 0,1,2,3 ] }
+            { "visible": false,  "targets": [ 3 ] },
+            { 'bSortable': false, 'aTargets': [ 0,1,2 ] }
           ]
         });
   }
