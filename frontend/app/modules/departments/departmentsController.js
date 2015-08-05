@@ -263,12 +263,10 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
           columnDefs: [
             {
               "render": function ( data, type, row ) {
-                var employeeClass = (row.is_employee)?'':'not_employee';
                 var sexImg = (row.sex=='m')?'dude.svg':'girl.svg';
-                return '<a href="/o/' + organizationId + '/' + departmentId + '/profile/'+row.id+'">'+row.name+'</a><br/>'+
-                '<img src="/img/icons/shirt.svg" class="'+employeeClass+'">'+
-                '<img src="/img/icons/'+sexImg+'" alt="">' + row.age + ' años<br/>'+
-                '<small>Puntaje: '+ (Math.round(row.score*10000)/10000) + '</small>';
+                return '<img src="/img/icons/'+sexImg+'" alt="">' +
+                '<div><a href="/o/' + organizationId + '/' + departmentId + '/profile/'+row.id+'">'+row.name+'</a><br/>'+
+                row.age + ' años</div>';
               },
               targets: 0,
               type: "display"

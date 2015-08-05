@@ -43,14 +43,17 @@
 }
 
 #profiles-table td.person img{
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin-right: 10px;
 }
 
 #profiles-table td.notes_tags a{
   white-space: nowrap;
 }
 
+#profiles-table td.person,
 #profiles-table td.jobs,
 #profiles-table td.test_info{
   white-space: nowrap;
