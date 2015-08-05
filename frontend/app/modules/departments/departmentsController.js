@@ -310,7 +310,6 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
   $scope.tableOrder = $scope.tableOrderOptions[0];
 
   $scope.reorderTable = function(){
-    $log.log('hola');
     if(theTable!=undefined){
       theTable.order([$scope.tableOrder.column, 'desc']).draw();
     }

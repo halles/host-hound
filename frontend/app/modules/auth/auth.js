@@ -7,7 +7,7 @@ hostHound
       $auth.login({ email: $scope.email, password: $scope.password }, '/')
         .then(function() {
           $alert({
-            content: 'Haz ingresado exitósamente',
+            content: 'Has ingresado exitósamente',
             animation: 'fadeZoomFadeDown',
             duration: 3,
             type: 'success',
