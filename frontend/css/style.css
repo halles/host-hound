@@ -65,6 +65,10 @@
   margin-right: 10px;
 }
 
+#profiles-table td.notes_tags{
+  text-align: center;
+}
+
 #profiles-table td.notes_tags a{
   white-space: nowrap;
 }
