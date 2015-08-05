@@ -42,6 +42,22 @@
   margin-right: 5px;
 }
 
+.progress-overall{
+  background-color: #084c61;
+}
+
+.progress-psiceval{
+  background-color: #db504a;
+}
+
+.progress-attributes{
+  background-color: #e3b505;
+}
+
+.progress-experience{
+  background-color: #56a3a6;
+}
+
 #profiles-table td.person img{
   width: 40px;
   height: 40px;
@@ -55,8 +71,19 @@
 
 #profiles-table td.person,
 #profiles-table td.jobs,
-#profiles-table td.test_info{
+#profiles-table td.test_info,
+#profiles-table td.score_display{
   white-space: nowrap;
+}
+
+#profiles-table td.score_display small{
+  font-size: 10px;
+  line-height: 1em;
+}
+
+#profiles-table td.score_display .progress{
+  margin-bottom: 5px;
+  height: 5px;
 }
 
 .not_employee{

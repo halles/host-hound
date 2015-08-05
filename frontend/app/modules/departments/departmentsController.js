@@ -74,10 +74,36 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
     }
   }
 
+  $scope.scores_max = null;
+  $scope.scores_min = null;
+
+  var resetScoreLimits = function(){
+    $scope.scores_max = {
+      overall: 1,
+      psiceval: 1,
+      attributes: 1,
+      experience: 1
+    };
+
+    $scope.scores_min = {
+      overall: 1,
+      psiceval: 1,
+      attributes: 1,
+      experience: 1
+    };
+  }
+
   var resetScores = function(){
+    resetScoreLimits();
+    var factors = [];
     for($i = 0; $i < $scope.profiles.length; $i++){
-      $scope.profiles[$i].score = 1;
+      factors.psiceval = 1;
+      factors.attributes = 1;
+      factors.experience = 1;
+      factors.overall = 1 * factors.psiceval * factors.attributes * factors.experience;
+      $scope.profiles[$i].score = factors;
     }
+
   }
 
   var vm = this;
@@ -221,6 +247,8 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
       return;
     }
 
+    resetScoreLimits();
+
     var Op = $scope.currentOpportunity;
 
     var profile_patterns = Op.parameters.profile_patterns;
@@ -231,17 +259,61 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
     var factors = [];
 
     for(pi = 0; pi < $scope.profiles.length; pi++){
-      factors = []
-      factors.push(calculateProfilePattern(pi,profile_patterns));
-      factors.push(calculateAttributes(pi,attributes));
-      factors.push(calculateEmployement(pi,employment));
-      factors.push(calculateExperience(pi,experience));
-      $scope.profiles[pi].score = 1*factors[0]*factors[1]*factors[2]*factors[3];
+      factors = [];
+      factors.psiceval = calculateProfilePattern(pi,profile_patterns);
+      factors.attributes = calculateAttributes(pi,attributes);
+      factors.experience = calculateEmployement(pi,employment)*calculateExperience(pi,experience);
+      factors.overall = 1 * factors.psiceval * factors.attributes * factors.experience;
+      $scope.profiles[pi].score = factors;
+
+      $scope.scores_max.psiceval = (factors.psiceval > $scope.scores_max.psiceval)?factors.psiceval:$scope.scores_max.psiceval;
+      $scope.scores_max.attributes = (factors.attributes > $scope.scores_max.attributes)?factors.attributes:$scope.scores_max.attributes;
+      $scope.scores_max.experience = (factors.experience > $scope.scores_max.experience)?factors.experience:$scope.scores_max.experience;
+      $scope.scores_max.overall = (factors.overall > $scope.scores_max.overall)?factors.overall:$scope.scores_max.overall;
+
+      $scope.scores_min.psiceval = (factors.psiceval < $scope.scores_min.psiceval)?factors.psiceval:$scope.scores_min.psiceval;
+      $scope.scores_min.attributes = (factors.attributes < $scope.scores_min.attributes)?factors.attributes:$scope.scores_min.attributes;
+      $scope.scores_min.experience = (factors.experience < $scope.scores_min.experience)?factors.experience:$scope.scores_min.experience;
+      $scope.scores_min.overall = (factors.overall < $scope.scores_min.overall)?factors.overall:$scope.scores_min.overall;
+
     }
 
     buildTable(true);
 
   };
+
+
+
+  $scope.tableOrderOptions = [
+    {
+      value: 'overall',
+      name: 'General',
+      column: 4
+    },
+    {
+      value: 'psiceval',
+      name: 'Perfil Psicológico',
+      column: 5
+    },
+    {
+      value: 'attributes',
+      name: 'Atributos',
+      column: 6
+    },
+    {
+      value: 'experience',
+      name: 'Experiencia',
+      column: 7
+    }
+  ];
+
+  $scope.tableOrder = $scope.tableOrderOptions[0];
+
+  $scope.$watch('tableOrder', function(newValue, oldValue){
+    if(theTable!=undefined){
+      theTable.order([newValue.column, 'desc']).draw();
+    }
+  },true);
 
   function buildTable(doRebuild){
 
@@ -253,12 +325,16 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
           data: $scope.profiles,
           paging: false,
           searching: false,
-          order: [3,'desc'],
+          order: [$scope.tableOrder.column,'desc'],
           columns: [
             { 'sClass':'person', 'type': 'display'},
             { 'sClass':'jobs', 'type': 'display' },
+            { 'sClass':'score_display', 'type': 'display' },
             { 'sClass':'notes_tags', 'type': 'display' },
-            { "data": "score" }
+            { "data": "score.overall" },
+            { "data": "score.psiceval" },
+            { "data": "score.attributes" },
+            { "data": "score.experience" }
           ],
           columnDefs: [
             {
@@ -290,6 +366,23 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
             },
             {
               "render": function ( data, type, row ) {
+
+                $overall_val = Math.floor((row.score.overall - $scope.scores_min.overall)/($scope.scores_max.overall-$scope.scores_min.overall)*100);
+                $overall_bar = '<small>Ponderado</small><br/><div class="progress"><div class="progress-bar progress-overall" style="width: '+$overall_val+'%"></div></div>';
+                $psiceval_val = Math.floor((row.score.psiceval - $scope.scores_min.psiceval)/($scope.scores_max.psiceval-$scope.scores_min.psiceval)*100);
+                $psiceval_bar = '<small>Perfil Psicológico</small><br/><div class="progress"><div class="progress-bar progress-psiceval" style="width: '+$psiceval_val+'%"></div></div>';
+                $attributes_val = Math.floor((row.score.attributes - $scope.scores_min.attributes)/($scope.scores_max.attributes-$scope.scores_min.attributes)*100);
+                $attributes_bar = '<small>Atributos</small><br/><div class="progress"><div class="progress-bar progress-attributes" style="width: '+$attributes_val+'%"></div></div>';
+                $experience_val = Math.floor((row.score.experience - $scope.scores_min.experience)/($scope.scores_max.experience-$scope.scores_min.experience)*100);
+                $experience_bar = '<small>Experiencia</small><br/><div class="progress"><div class="progress-bar progress-experience" style="width: '+$experience_val+'%"></div></div>';
+                return $overall_bar + $psiceval_bar + $attributes_bar + $experience_bar;
+
+              },
+              targets: 2,
+              type: "display"
+            },
+            {
+              "render": function ( data, type, row ) {
                 var $stuff = '';
                 var type_id = null;
                 for (var i = 0; i < $scope.note_types.length; i++) {
@@ -299,11 +392,11 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
                 return '<a href="/o/' + organizationId + '/' + departmentId + '/profile/' + row.id + '#notes">' + $stuff + '</a>';
 
               },
-              targets: 2,
+              targets: 3,
               type: "display"
             },
 
-            { "visible": false,  "targets": [ 3 ] },
+            { "visible": false,  "targets": [ 4,5,6,7 ] },
             { 'bSortable': false, 'aTargets': [ 0,1,2 ] }
           ]
         });

@@ -19,7 +19,7 @@
 
   </div>
 
-  <div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="col-md-8 col-sm-8 col-xs-8">
 
     <div class="form-group">
       <label>Selecciona una Oportunidad Laboral</label>
@@ -35,14 +35,31 @@
 
   </div>
 
+  <div class="col-md-4 col-sm-4 col-xs-4">
+
+    <div class="form-group">
+      <label>Ordenar por Evaluación</label>
+      <div class="input-group">
+        <select class="form-control" ng-model="tableOrder"
+        ng-options="option.name for option in tableOrderOptions track by option.column">
+        </select>
+      </div>
+    </div>
+
+  </div>
+
   <div class="col-md-12 col-sm-12 col-xs-12">
     <table class="table table-bordered" id="profiles-table">
       <thead>
         <tr>
           <th class="person">Personal</th>
           <th class="jobs">Experiencia Laboral</th>
+          <th class="score_display">Evaluación</th>
           <th class="notes_tags">Anotaciones</th>
-          <th class="score">S.</th>
+          <th class="score_all"></th>
+          <th class="score_psiceval"></th>
+          <th class="score_attributes"></th>
+          <th class="score_experience"></th>
         </tr>
       </thead>
       <tbody></tbody>
