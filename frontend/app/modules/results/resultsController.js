@@ -11,6 +11,13 @@ hostHound
       $scope.bars[i] = scores[i]/0.6;
     };
 
+    dimentions_names = {
+      e: 'Acción hacia el Entorno',
+      c: 'Análisis Cognitivo',
+      i: 'Armonía Interpersonal',
+      a: 'Expresión Afectiva'
+    }
+
     results = [
       {
         type: 'e',
@@ -30,6 +37,13 @@ hostHound
     results.sort(function(a,b){
       return b.score-a.score;
     });
+
+    $scope.dimentions = [
+      dimentions_names[results[0].type],
+      dimentions_names[results[1].type],
+      dimentions_names[results[2].type],
+      dimentions_names[results[3].type]
+    ];
 
     $log.log(results[0].type+'-'+results[1].type+'-'+results[2].type+'-'+results[3].type);
     $log.log(results[0].score+'-'+results[1].score+'-'+results[2].score+'-'+results[3].score);
