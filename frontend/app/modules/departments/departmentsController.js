@@ -15,7 +15,7 @@ hostHound.controller('departmentChooserController', ['$scope','$modal','$log', '
 }]);
 
 
-hostHound.controller('departmentDashboardController',['$scope','$modal','$log', '$auth', '$state', '$http', '$q', 'ngProgress' , function ($scope, $modal, $log, $auth, $state, $http, $q, ngProgress) {
+hostHound.controller('departmentDashboardController',['$scope','$modal','$log', '$auth', '$state', '$http', '$q', 'ngProgressFactory' , function ($scope, $modal, $log, $auth, $state, $http, $q, ngProgressFactory) {
 
   $log.log('Department Dashboard Controller');
 
@@ -34,9 +34,11 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
       // or server returns response with an error status.
       });
 
-  ngProgress.setParent(document.getElementById('ngProgressRow'))
-  ngProgress.color('#5dade2');
-  ngProgress.start();
+  $scope.ngProgressBar = ngProgressFactory.createInstance();
+
+  $scope.ngProgressBar.setParent(document.getElementById('ngProgressRow'))
+  $scope.ngProgressBar.setColor('#5dade2');
+  $scope.ngProgressBar.start();
 
   $http.get('api/organizations/'+$state.params.organizationId+'/profiles').
       then(function(response) {
@@ -64,7 +66,7 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
       return buildTable();
     }).then(function(){
       $log.log('Complete!');
-      ngProgress.complete();
+      $scope.ngProgressBar.complete();
     });
 
   }
@@ -161,7 +163,7 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
       return;
     }
 
-    ngProgress.start();
+    $scope.ngProgressBar.start();
 
     setTimeout(function(){
 
@@ -176,7 +178,7 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
         return buildTable();
       }).then(function(){
         $log.log('Complete!');
-        ngProgress.complete();
+        $scope.ngProgressBar.complete();
       });
 
     },500);

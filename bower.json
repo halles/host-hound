@@ -24,7 +24,7 @@
     "satellizer": "~0.10.1",
     "ng-file-upload": "*",
     "sio-client": "*",
-    "ngprogress": "*",
+    "ngprogress": "1.1.2",
     "animate.css": "*",
     "font-awesome": "~4.3.0",
     "respond": "~1.4.2",
