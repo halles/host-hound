@@ -205,6 +205,20 @@ $app->post('/opportunities/{organizationId}/{departmentId}/{opportunityId}', [
   }
 ]);
 
+$app->get('/info/{organizationId}/{departmentId}', [
+  'middleware' => 'auth',
+  function($organizationId, $departmentId) use ($app){
+
+    $attributes = Attribute::all();
+
+    $response = array(
+      'organization' => Organization::find($organizationId),
+      'department' => Department::find($departmentId)
+    );
+    return response()->json($response);
+  }
+]);
+
 $app->get('/attributes/{organizationId}/{departmentId}', [
   'middleware' => 'auth',
   function($organizationId, $departmentId) use ($app){

@@ -11,31 +11,29 @@
   </div>
 
   <div class="col-md-12 col-sm-12 col-xs-12" ng-repeat="ops in opportunities">
+    <h4>{{ops.name}} <a href="" class="btn btn-sm btn-info btn-edit-title">Modificar <span class="fui-new pull-right"></span></a></h4>
+
     <div class="panel panel-info">
-      <div class="panel-heading">{{ops.name}}</div>
       <ul class="list-group">
         <li class="list-group-item">
-          <strong>Perfil Psicológico: </strong>
-          <span class="label label-info inline-label" ng-repeat="pattern in ops.parameters.profile_patterns">
-            <span ng-repeat="pat in pattern.patterns">{{pat}} +</span>: {{pattern.factor}}
+          <strong>Factor y Perfil Psicológico Prioritario </strong><br/>
+          <span class="label label-info inline-label">
+            Factor {{ops.parameters.profile_patterns[0].factor}}
+          </span>
+          <span class="label label-info inline-label" ng-repeat="pattern in ops.parameters.profile_patterns[1].patterns">
+            {{pattern}}
           </span>
         </li>
         <li class="list-group-item">
-          <strong>Atributos: </strong>
-          <span class="label label-info inline-label" ng-repeat="attr in ops.parameters.attributes">
-            {{getAttributeName(attr.attribute_id)}}: {{attr.requirement}}
-          </span>
-        </li>
-        <li class="list-group-item">
-          <strong>Experiencia Laboral:</strong>
+          <strong>Parámetros de Experiencia Laboral</strong><br/>
           <span class="label label-info inline-label">Experiencia Anterior: {{ops.parameters.experience.previous}}</span>
           <span class="label label-info inline-label">Estabilidad Laboral (6+meses): {{ops.parameters.experience.stability}}</span>
         </li>
         <li class="list-group-item">
-          <strong>Estado Laboral:</strong>
-          <span class="label label-info inline-label">En Organización: {{ops.parameters.employent.is_employee}}</span>
-          <span class="label label-info inline-label">Empleado: {{ops.parameters.employent.employed}}</span>
-          <span class="label label-info inline-label">Desempleado: {{ops.parameters.employent.unemployed}}</span>
+          <strong>Atributos Mandatorios</strong><br/>
+          <span class="label label-info inline-label" ng-repeat="attr in ops.parameters.attributes" ng-if="attr.requirement=='mandatory'">
+            {{getAttributeName(attr.attribute_id)}}
+          </span>
         </li>
       </ul>
     </div>

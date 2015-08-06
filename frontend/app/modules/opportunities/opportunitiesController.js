@@ -379,6 +379,13 @@ hostHound.controller('OpportunitiesEditController', ['$scope','$modal','$log', '
       });
     }
 
+  var gotInfo = $http.get('api/info/'+$state.params.organizationId+'/'+$state.params.departmentId);
+
+  gotInfo.then(function(response){
+    $scope.department = response.data.department;
+    $scope.organization = response.data.organization;
+  });
+
   var gotAttributes = $http.get('api/attributes/'+$state.params.organizationId+'/'+$state.params.departmentId);
 
   var opportunity = null;
