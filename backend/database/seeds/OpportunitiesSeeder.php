@@ -15,11 +15,7 @@ class OpportunitiesSeeder extends Seeder
         'profile_patterns' => array(
           array(
             'factor' => 3,
-            'patterns' => array('ce')
-          ),
-          array(
-            'factor' => 3,
-            'patterns' => array('ec')
+            'patterns' => array('ce','ec')
           ),
           array(
             'factor' => 2,
@@ -129,9 +125,9 @@ class OpportunitiesSeeder extends Seeder
           'previous' => 2
         ),
         'employment' => array(
-          'is_employee' => 0,
-          'unemployed' => 1.5,
-          'employed' => 0.7
+          'is_employee' => 1,
+          'unemployed' => 1,
+          'employed' => 1
         )
       );
 
@@ -146,11 +142,7 @@ class OpportunitiesSeeder extends Seeder
         'profile_patterns' => array(
           array(
             'factor' => 3,
-            'patterns' => array('ce')
-          ),
-          array(
-            'factor' => 3,
-            'patterns' => array('ec')
+            'patterns' => array('ce','ec')
           ),
           array(
             'factor' => 2,
@@ -260,9 +252,9 @@ class OpportunitiesSeeder extends Seeder
           'previous' => 1.5
         ),
         'employment' => array(
-          'is_employee' => 0,
-          'unemployed' => 1.5,
-          'employed' => 0.7
+          'is_employee' => 1,
+          'unemployed' => 1,
+          'employed' => 1
         )
       );
 
@@ -277,11 +269,7 @@ class OpportunitiesSeeder extends Seeder
         'profile_patterns' => array(
           array(
             'factor' => 3,
-            'patterns' => array('ce')
-          ),
-          array(
-            'factor' => 3,
-            'patterns' => array('ec')
+            'patterns' => array('ce','ec')
           ),
           array(
             'factor' => 2,
@@ -391,7 +379,7 @@ class OpportunitiesSeeder extends Seeder
           'previous' => 2
         ),
         'employment' => array(
-          'is_employee' => 0,
+          'is_employee' => 1,
           'unemployed' => 1,
           'employed' => 1
         )
