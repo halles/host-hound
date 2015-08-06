@@ -163,6 +163,34 @@ $app->get('/profile/{organizationId}/{departmentId}/{profileId}', [
   }
 ]);
 
+$app->get('/opportunities/{organizationId}/{departmentId}/{opportunityId}', [
+  'middleware' => 'auth',
+  function($organizationId, $departmentId, $opportunityId) use ($app){
+
+    $opportunity = Opportunity::where('id',intval($opportunityId))
+      ->where('department_id', intval($departmentId))
+      ->first();
+
+    $response = array(
+      'opportunity' => $opportunity
+    );
+    return response()->json($response);
+  }
+]);
+
+$app->get('/attributes/{organizationId}/{departmentId}', [
+  'middleware' => 'auth',
+  function($organizationId, $departmentId) use ($app){
+
+    $attributes = Attribute::all();
+
+    $response = array(
+      'attributes' => $attributes
+    );
+    return response()->json($response);
+  }
+]);
+
 /** User Auth & Controller Routes **/
 
 $app->post('/login', [

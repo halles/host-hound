@@ -81,6 +81,38 @@ hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $l
         }
       }
     })
+    .state('opportunities_new', {
+      url: '/o/:organizationId/:departmentId/opportunities/new',
+      templateUrl: 'app/modules/opportunities/edit.html',
+      controller: 'OpportunitiesEditController',
+      resolve: {
+        authenticated: function($q, $location, $auth) {
+          var deferred = $q.defer();
+          if (!$auth.isAuthenticated()) {
+            $location.path('/login');
+          } else {
+            deferred.resolve();
+          }
+          return deferred.promise;
+        }
+      }
+    })
+    .state('opportunities_edit', {
+      url: '/o/:organizationId/:departmentId/opportunities/edit/:opportunityId',
+      templateUrl: 'app/modules/opportunities/edit.html',
+      controller: 'OpportunitiesEditController',
+      resolve: {
+        authenticated: function($q, $location, $auth) {
+          var deferred = $q.defer();
+          if (!$auth.isAuthenticated()) {
+            $location.path('/login');
+          } else {
+            deferred.resolve();
+          }
+          return deferred.promise;
+        }
+      }
+    })
     .state('test', {
       url: '/test',
       templateUrl: 'app/modules/test/test.html',

@@ -794,8 +794,8 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #fff;
-  background-color: #48c9b0;
-  border-color: #48c9b0;
+  background-color: #337ab7;
+  border-color: #337ab7;
   }
 .btn-primary:active,
 .btn-primary.active,
@@ -1802,8 +1802,8 @@ select[multiple].input-group-sm > .select2-search input[type="text"] {
 .open > .dropdown-toggle.form-group.focus .input-group-btn .btn-default,
 .open > .dropdown-toggle.input-group.focus .input-group-btn .btn-default {
   color: #fff;
-  background-color: #48c9b0;
-  border-color: #48c9b0;
+  background-color: #337ab7;
+  border-color: #337ab7;
   }
 .form-group.focus .input-group-btn .btn-default:active,
 .input-group.focus .input-group-btn .btn-default:active,
@@ -2550,7 +2550,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   }
 .ui-slider-handle:hover,
 .ui-slider-handle:focus {
-  background-color: #48c9b0;
+  background-color: #337ab7;
   outline: none;
   }
 .ui-slider-handle:active {
@@ -2772,7 +2772,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   }
 .ui-datepicker .ui-datepicker-prev:hover,
 .ui-datepicker .ui-datepicker-next:hover {
-  background-color: #48c9b0;
+  background-color: #337ab7;
   }
 .ui-datepicker .ui-datepicker-prev:active,
 .ui-datepicker .ui-datepicker-next:active {
@@ -3286,7 +3286,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
     }
   .pagination > .btn:first-child.btn-primary,
   .dataTables_paginate > .btn:first-child.btn-primary {
-    border-bottom-color: #48c9b0;
+    border-bottom-color: #337ab7;
     }
   .pagination > .btn:first-child.btn-danger,
   .dataTables_paginate > .btn:first-child.btn-danger {
@@ -3328,7 +3328,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
     }
   .pagination > .btn + ul + .btn.btn-primary,
   .dataTables_paginate > .btn + ul + .btn.btn-primary {
-    border-bottom-color: #48c9b0;
+    border-bottom-color: #337ab7;
     }
   .pagination > .btn + ul + .btn.btn-danger,
   .dataTables_paginate > .btn + ul + .btn.btn-danger {
@@ -3977,8 +3977,8 @@ fieldset[disabled] .input-group-btn .btn-default.active {
 .select-primary .select2-choice:focus,
 .select-primary .select2-choice:active {
   color: #fff;
-  background-color: #48c9b0;
-  border-color: #48c9b0;
+  background-color: #337ab7;
+  border-color: #337ab7;
   }
 .select-primary .select2-choice:active {
   background: #337ab7;
@@ -4295,7 +4295,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   background-color: #3498db;
   }
 .select2-container-multi.multiselect-primary .select2-search-choice:hover {
-  background-color: #48c9b0;
+  background-color: #337ab7;
   }
 .select2-container-multi.multiselect-info {
   border-color: #3498db;
@@ -5177,7 +5177,7 @@ a.list-group-item > .badge,
   }
 .nav-pills > li > a:hover,
 .nav-pills > li > a:focus {
-  background-color: #48c9b0;
+  background-color: #337ab7;
   }
 .nav-pills > li > a:active {
   background-color: #337ab7;
@@ -6183,8 +6183,8 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse .navbar-form .btn.active,
 .open > .dropdown-toggle.navbar-inverse .navbar-form .btn {
   color: #fff;
-  background-color: #48c9b0;
-  border-color: #48c9b0;
+  background-color: #337ab7;
+  border-color: #337ab7;
   }
 .navbar-inverse .navbar-form .btn:active,
 .navbar-inverse .navbar-form .btn.active,
@@ -6255,8 +6255,8 @@ fieldset[disabled] .navbar-inverse .navbar-form .btn.active {
 .navbar-inverse .navbar-btn.active,
 .open > .dropdown-toggle.navbar-inverse .navbar-btn {
   color: #fff;
-  background-color: #48c9b0;
-  border-color: #48c9b0;
+  background-color: #337ab7;
+  border-color: #337ab7;
   }
 .navbar-inverse .navbar-btn:active,
 .navbar-inverse .navbar-btn.active,
