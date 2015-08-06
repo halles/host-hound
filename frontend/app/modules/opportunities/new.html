@@ -1,0 +1,132 @@
+<div class="row opportunity-header">
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <h4>
+      Modificar oportunidad Laboral
+    </h4>
+    <h5>
+      {{department.name}}<br/>
+      <small>{{organization.name}}</small>
+    </h5>
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="form-group form-group-hg">
+        <input class="form-control" type="text" ng-model="opportunity_name" placeholder="Nombre Oportunidad Laboral" ng-required="true">
+        <span class="help-block">Con este nombre identificarás la oportunidad laboral en el sistema</span>
+      </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-info">
+      <div class="panel-heading">Experiencia Laboral</div>
+      <div class="panel-body">
+        <small>Arrastre el cursor para seleccionar el factor (0 a 2) con que se evaluará cada ámbito</small>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Estabilidad: {{opParams.experience.stability}}</strong>
+          <div id="experience-stability-slider" class="ui-slider"></div>
+        </li>
+        <li class="list-group-item">
+          <strong>Experiencia Previa: {{opParams.experience.previous}}</strong>
+          <div id="experience-previous-slider" class="ui-slider"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-info">
+      <div class="panel-heading">Prioridad Perfiles Psicológicos</div>
+      <div class="panel-body">
+        <p><small>Arrastre los perfiles a las distintas columnas para definir la prioridad asignada</small></p>
+        <div class="drop-column-title"><strong>Mínima</strong></div>
+        <div class="drop-column-title">» » » »</div>
+        <div class="drop-column-title"><strong>Neutra</strong></div>
+        <div class="drop-column-title">» » » »</div>
+        <div class="drop-column-title"><strong>Máxima</strong></div>
+        <div class="drop-column-container">
+
+          <div class="drop-column" data-drop="true" ng-model='list1' data-jqyoui-options="optionsList1" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in list1" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{index: {{$index}}}">{{item}}</div>
+            </div>
+          </div>
+          <div class="drop-column" data-drop="true" ng-model='list2' data-jqyoui-options="optionslist2" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in list2" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list2" jqyoui-draggable="{index: {{$index}}}">{{item}}</div>
+            </div>
+          </div>
+          <div class="drop-column" data-drop="true" ng-model='list3' data-jqyoui-options="optionslist3" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in list3" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list3" jqyoui-draggable="{index: {{$index}}}">{{item}}</div>
+            </div>
+          </div>
+          <div class="drop-column" data-drop="true" ng-model='list4' data-jqyoui-options="optionslist4" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in list4" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list4" jqyoui-draggable="{index: {{$index}}}">{{item}}</div>
+            </div>
+          </div>
+          <div class="drop-column" data-drop="true" ng-model='list5' data-jqyoui-options="optionslist5" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in list5" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list5" jqyoui-draggable="{index: {{$index}}}">{{item}}</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-info">
+      <div class="panel-heading">Requerimientos del Cargo</div>
+      <div class="panel-body">
+        <p><small>Arrastre los atributos según los requerimientos del cargo</small></p>
+        <div class="drop-column-title-attr"><strong>Negativo</strong></div>
+        <div class="drop-column-title-attr"><strong>Neutro</strong></div>
+        <div class="drop-column-title-attr"><strong>Positivo</strong></div>
+        <div class="drop-column-title-attr"><strong>Mandatorio</strong></div>
+        <div class="drop-column-container">
+
+          <div class="drop-column-attr" data-drop="true" ng-model='attributesLists.negative' data-jqyoui-options="attributesLists.negative" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in attributesLists.negative" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="attributesLists.negative" jqyoui-draggable="{index: {{$index}}}">{{item.name}}<br/><small>{{item.group}}</small></div>
+            </div>
+          </div>
+          <div class="drop-column-attr" data-drop="true" ng-model='attributesLists.neutral' data-jqyoui-options="attributesLists.neutral" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in attributesLists.neutral" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="attributesLists.neutral" jqyoui-draggable="{index: {{$index}}}">{{item.name}}<br/><small>{{item.group}}</small></div>
+            </div>
+          </div>
+          <div class="drop-column-attr" data-drop="true" ng-model='attributesLists.plus' data-jqyoui-options="attributesLists.plus" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in attributesLists.plus" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="attributesLists.plus" jqyoui-draggable="{index: {{$index}}}">{{item.name}}<br/><small>{{item.group}}</small></div>
+            </div>
+          </div>
+          <div class="drop-column-attr" data-drop="true" ng-model='attributesLists.mandatory' data-jqyoui-options="attributesLists.mandatory" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in attributesLists.mandatory" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="attributesLists.mandatory" jqyoui-draggable="{index: {{$index}}}">{{item.name}}<br/><small>{{item.group}}</small></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="form-group form-group-hg submit-right">
+          <a ng-click="saveOpportunity()" class="btn btn-info">Guardar Oportunidad Laboral</a>
+      </div>
+  </div>
+
+</div>

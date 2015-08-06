@@ -83,7 +83,7 @@ hostHound.config(function ($stateProvider, $urlRouterProvider, $authProvider, $l
     })
     .state('opportunities_new', {
       url: '/o/:organizationId/:departmentId/opportunities/new',
-      templateUrl: 'app/modules/opportunities/edit.html',
+      templateUrl: 'app/modules/opportunities/new.html',
       controller: 'OpportunitiesEditController',
       resolve: {
         authenticated: function($q, $location, $auth) {
