@@ -13,8 +13,8 @@
   <div class="col-md-12 col-sm-12 col-xs-12" ng-repeat="ops in opportunities">
     <h4>
       {{ops.name}}
-      <a href="/o/{{organization.id}}/{{department.id}}/opportunities/view/{{ops.id}}" class="btn btn-sm btn-info btn-edit-title mlm"><span class="fui-new pull-right"></span> Ver Detalle</a>
-      <a href="/o/{{organization.id}}/{{department.id}}/opportunities/edit/{{ops.id}}" class="btn btn-sm btn-info btn-edit-title"><span class="fui-new pull-right"></span> Modificar</a>
+      <a href="/o/{{organization.id}}/{{department.id}}/opportunities/view/{{ops.id}}" class="btn btn-sm btn-info btn-edit-title mlm"><span class="fui-eye"></span> Ver Detalle</a>
+      <a href="/o/{{organization.id}}/{{department.id}}/opportunities/edit/{{ops.id}}" class="btn btn-sm btn-info btn-edit-title"><span class="fui-new"></span> Modificar</a>
     </h4>
 
     <div class="panel panel-info">
@@ -24,7 +24,7 @@
           <span class="label label-info inline-label">
             Factor {{ops.parameters.profile_patterns[0].factor}}
           </span>
-          <span class="label label-info inline-label" ng-repeat="pattern in ops.parameters.profile_patterns[1].patterns">
+          <span class="label label-info inline-label" ng-repeat="pattern in ops.parameters.profile_patterns[0].patterns">
             {{pattern}}
           </span>
         </li>
