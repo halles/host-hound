@@ -193,3 +193,26 @@
     float: left;
 }
 
+.drop-column-title{
+  text-align: center;
+  line-height: 20px;
+  height: 20px;
+  vertical-align: middle;
+  width: 18%;
+  margin: 10px 1%;
+  float: left;
+}
+
+.drop-column-container{
+  display: flex;
+  width: 100%;
+}
+
+.drop-column{
+  width: 18%;
+  margin: 10px 1%;
+  padding: 1%;
+  float: left;
+  border: 1px solid #f7f9fa;
+  border-radius: 6px;
+}

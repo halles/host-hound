@@ -7,7 +7,8 @@ var hostHound = angular.module("hostHoundApp",[
   'ui.router',
   'satellizer',
   'ngFileUpload',
-  'mgcrea.ngStrap'
+  'mgcrea.ngStrap',
+  'ngDragDrop'
 ]);
 
 /**

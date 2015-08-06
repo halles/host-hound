@@ -207,17 +207,17 @@ hostHound.controller('OpportunitiesEditController', ['$scope','$modal','$log', '
       };
 
       initSliders();
-
+      initProfilePatterns();
     });
 
   }else{
     $http.get('api/opportunities/'+$state.params.organizationId+'/'+$state.params.departmentId+'/'+$state.params.opportunityId).
     then(function(response){
-      $log.log(response);
       $opportunityId = response.data.opportunity.id;
       $scope.opParams = response.data.opportunity.parameters;
       $log.log($scope.opParams);
       initSliders();
+      initProfilePatterns();
     });
   }
 
@@ -240,6 +240,26 @@ hostHound.controller('OpportunitiesEditController', ['$scope','$modal','$log', '
         }
       };
     }*/
+
+    $log.log($scope.opParams);
+
+
+    var initProfilePatterns = function(){
+
+      return $q(function(resolve, reject) {
+
+        $scope.list1 = $scope.opParams.profile_patterns[4].patterns;
+        $scope.list2 = $scope.opParams.profile_patterns[3].patterns;
+        $scope.list3 = $scope.opParams.profile_patterns[2].patterns;
+        $scope.list4 = $scope.opParams.profile_patterns[1].patterns;
+        $scope.list5 = $scope.opParams.profile_patterns[0].patterns;
+        resolve(true);
+
+      });
+
+    }
+
+
 
     var initSliders = function(){
 
@@ -275,6 +295,10 @@ hostHound.controller('OpportunitiesEditController', ['$scope','$modal','$log', '
 
       });
 
+    }
+
+    $scope.spitData = function(){
+      $log.log($scope.opParams);
     }
 
 }]);

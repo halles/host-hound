@@ -30,7 +30,8 @@
     "respond": "~1.4.2",
     "html5shiv": "~3.7.2",
     "datatables": "~1.10.7",
-    "angular-strap": "~2.2.4"
+    "angular-strap": "~2.2.4",
+    "angular-dragdrop": "~1.0.11"
   },
   "devDependencies": {},
   "resolutions": {

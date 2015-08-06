@@ -4,6 +4,7 @@
     <h4>
       Modificar oportunidad Laboral
     </h4>
+    <a ng-click="spitData()" class="btn btn-info">Spit Data</a>
     <h5>
       {{department.name}}<br/>
       <small>{{organization.name}}</small>
@@ -23,6 +24,49 @@
           <div id="experience-previous-slider" class="ui-slider"></div>
         </li>
       </ul>
+    </div>
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-info">
+      <div class="panel-heading">Prioridad Perfiles Psicológicos</div>
+      <div class="panel-body">
+        <div class="drop-column-title"><strong>Mínima</strong></div>
+        <div class="drop-column-title"></div>
+        <div class="drop-column-title"><strong>Neutra</strong></div>
+        <div class="drop-column-title"></div>
+        <div class="drop-column-title"><strong>Máxima</strong></div>
+        <div class="drop-column-container">
+
+          <div class="drop-column" data-drop="true" ng-model='list1' data-jqyoui-options="optionsList1" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in list1" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{index: {{$index}}}">{{item}}</div>
+            </div>
+          </div>
+          <div class="drop-column" data-drop="true" ng-model='list2' data-jqyoui-options="optionslist2" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in list2" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list2" jqyoui-draggable="{index: {{$index}}}">{{item}}</div>
+            </div>
+          </div>
+          <div class="drop-column" data-drop="true" ng-model='list3' data-jqyoui-options="optionslist3" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in list3" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list3" jqyoui-draggable="{index: {{$index}}}">{{item}}</div>
+            </div>
+          </div>
+          <div class="drop-column" data-drop="true" ng-model='list4' data-jqyoui-options="optionslist4" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in list4" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list4" jqyoui-draggable="{index: {{$index}}}">{{item}}</div>
+            </div>
+          </div>
+          <div class="drop-column" data-drop="true" ng-model='list5' data-jqyoui-options="optionslist5" jqyoui-droppable="{multiple:true}">
+            <div class="caption">
+              <div class="btn btn-info btn-block btn-draggable" ng-repeat="item in list5" ng-show="item" data-drag="{{true}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list5" jqyoui-draggable="{index: {{$index}}}">{{item}}</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </div>
   </div>
 
