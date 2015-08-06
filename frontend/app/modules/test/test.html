@@ -28,8 +28,7 @@
       <tbody>
         <tr>
           <td class="lead center">
-            <span class="counter">3</span>
-            <span class="fui-check-circle"></span>
+            Ejemplo
           </td>
           <td>
             <div class="row">
@@ -129,7 +128,7 @@
 
   <div class="col-md-12 col-sm-12 col-xs-12 go-button-container">
 
-    <a href="/results/{{results[0]}}-{{results[1]}}-{{results[2]}}-{{results[3]}}" class="btn btn-hg btn-info btn-block">Ver Resultados<span class="fui-arrow-right pull-right"></span></a>
+    <a ng-click="goToResults()" class="btn btn-hg btn-info btn-block" ng-class="(ValidAnswers)?'':'disabled'">Ver Resultados<span class="fui-arrow-right pull-right"></span></a>
 
   </div>
 

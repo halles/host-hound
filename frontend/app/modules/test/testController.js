@@ -34,7 +34,11 @@ hostHound
       }
     }
 
+    $scope.ValidAnswers = true;
+
     $scope.$watch('answers', function(newValue, oldValue){
+
+      $scope.ValidAnswers = true;
 
       /** Cálculos Validaciones por Block **/
 
@@ -61,8 +65,10 @@ hostHound
           }else{
             $log.log('INVALID');
             $scope.validate[y].class = 'invalid fui-cross-circle';
+            $scope.ValidAnswers = false;
           }
         }else{
+          $scope.ValidAnswers = false;
           $log.log('No Completado: ' + y);
           $scope.validate[y].is_valid = null;
           $scope.validate[y].class = 'not-checked fui-question-circle';
@@ -72,12 +78,17 @@ hostHound
 
       /** Cálculos Resultado por Columna **/
 
+      $scope.resultsTotal = 0;
+
       for (i = 0; i < 4; i++) {
         $scope.results[i] = 0;
         for (o = 0; o < 16; o++) {
           $scope.results[i] += parseInt($scope.answers[o][i]);
+          $scope.resultsTotal += parseInt($scope.answers[o][i]);
         }
       }
+
+      if($scope.resultsTotal != 160) $scope.ValidAnswers = false;
 
       prehash = [];
 
@@ -221,6 +232,11 @@ hostHound
 
       return (out.length>0)?true:false;
 
+    }
+
+    $scope.goToResults = function(){
+      if($scope.ValidAnswers)
+        $location.url('/results/'+ $scope.results[0] + '-' + $scope.results[1] + '-' + $scope.results[2] + '-' + $scope.results[3]);
     }
 
   });

@@ -11,7 +11,11 @@
   </div>
 
   <div class="col-md-12 col-sm-12 col-xs-12" ng-repeat="ops in opportunities">
-    <h4>{{ops.name}} <a href="" class="btn btn-sm btn-info btn-edit-title">Modificar <span class="fui-new pull-right"></span></a></h4>
+    <h4>
+      {{ops.name}}
+      <a href="/o/{{organization.id}}/{{department.id}}/opportunities/view/{{ops.id}}" class="btn btn-sm btn-info btn-edit-title mlm"><span class="fui-new pull-right"></span> Ver Detalle</a>
+      <a href="/o/{{organization.id}}/{{department.id}}/opportunities/edit/{{ops.id}}" class="btn btn-sm btn-info btn-edit-title"><span class="fui-new pull-right"></span> Modificar</a>
+    </h4>
 
     <div class="panel panel-info">
       <ul class="list-group">
