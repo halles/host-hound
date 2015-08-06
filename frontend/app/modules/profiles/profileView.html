@@ -30,6 +30,8 @@
               </div>
               <div class="col-md-9 col-sm-9 col-xs-9">
                 <span ng-repeat="pat in profile.test.patterns" class="pattern-tag btn btn-info mlm">{{pat}}</span>
+                <a href="/test#{{profile.test|answerstochain}}" class="btn btn-info mlm btn-xs">ver test</a>
+                <a href="/results/{{profile.test|resultstochain}}" class="btn btn-info mlm btn-xs">ver resultados</a>
               </div>
             </div>
 

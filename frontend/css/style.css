@@ -258,6 +258,6 @@
   height: 10px;
 }
 
-.personal-style-graphic-bars .progress .progress-bar {
+#profileView .personal-style-graphic-bars .progress .progress-bar {
   line-height: 10px;
 }
