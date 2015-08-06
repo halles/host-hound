@@ -1,10 +1,12 @@
-<div class="row">
+<div class="row" id="profileView">
 
   <div class="col-md-12 col-sm-12 col-xs-12">
+    <a ng-click="goBack()" class="btn btn-xs btn-info"><span class="fui-arrow-left"></span> Volver</a>
     <h4>
       {{profile.name}}
     </h4>
     <h5>
+      <a href="/o/{{organization.id}}/{{department.id}}" class="btn btn-sm btn-info btn-edit-title mlm"><span class="fui-arrow-right pull-right"></span> Ir a Departamento</a>
       {{department.name}}<br/>
       <small>{{organization.name}}</small>
     </h5>
@@ -21,7 +23,72 @@
         <li class="list-group-item">Identificación: {{profile.id_type}}/{{profile.id_num}}</li>
         <li class="list-group-item">E-mail: {{profile.email}}</li>
         <li class="list-group-item">Teléfono: {{profile.phone}}</li>
-        <li class="list-group-item">Perfil(es) Psicológico(s): {{profile.test.patterns}}</li>
+        <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-3 col-sm-3 col-xs-3">
+                Perfil(es) Psicológico(s)
+              </div>
+              <div class="col-md-9 col-sm-9 col-xs-9">
+                <span ng-repeat="pat in profile.test.patterns" class="pattern-tag btn btn-info mlm">{{pat}}</span>
+              </div>
+            </div>
+
+            <div class="row personal-style-graphic-bars">
+              <div class="col-md-3 col-sm-3 col-xs-3">
+                <small>
+                  Acción hacia el Entorno
+                </small>
+              </div>
+              <div class="col-md-9 col-sm-9 col-xs-9">
+                <div class="progress">
+                  <div class="progress-bar" style="width: {{bar(profile.test.score_e)}}%;">{{profile.test.score_e}}</div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row personal-style-graphic-bars">
+
+              <div class="col-md-3 col-sm-3 col-xs-3">
+                <small>
+                  Análisis Cognitivo
+                </small>
+              </div>
+              <div class="col-md-9 col-sm-9 col-xs-9">
+                <div class="progress">
+                  <div class="progress-bar" style="width: {{bar(profile.test.score_c)}}%;">{{profile.test.score_c}}</div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row personal-style-graphic-bars">
+
+              <div class="col-md-3 col-sm-3 col-xs-3">
+                <small>
+                  Armonía Interpersonal
+                </small>
+              </div>
+              <div class="col-md-9 col-sm-9 col-xs-9">
+                <div class="progress">
+                  <div class="progress-bar" style="width: {{bar(profile.test.score_i)}}%;">{{profile.test.score_i}}</div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row personal-style-graphic-bars">
+
+              <div class="col-md-3 col-sm-3 col-xs-3">
+                <small>
+                  Expresión Afectiva
+                </small>
+              </div>
+              <div class="col-md-9 col-sm-9 col-xs-9">
+                <div class="progress">
+                  <div class="progress-bar" style="width: {{bar(profile.test.score_a)}}%;">{{profile.test.score_i}}</div>
+                </div>
+              </div>
+
+            </div>
+        </li>
       </ul>
     </div>
   </div>
@@ -30,7 +97,8 @@
     <div class="panel panel-info">
       <div class="panel-heading">Atributos</div>
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat="attribute in profile.attributes">{{attribute.group}} | {{attribute.attribute}}</li>
+        <li class="list-group-item" ng-repeat="attribute in profile.attributes">
+        {{attribute.attribute}}<br/><small>{{attribute.group}}</small></li>
       </ul>
     </div>
   </div>

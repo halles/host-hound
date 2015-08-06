@@ -1,10 +1,12 @@
 <div class="row">
 
   <div class="col-md-12 col-sm-12 col-xs-12">
+    <a href="/o/{{organization.id}}/{{department.id}}" class="btn btn-xs btn-info"><span class="fui-arrow-left"></span> Volver a Departamento</a>
     <h4>
       Oportunidades Laborales
     </h4>
     <h5>
+      <a href="/o/{{organization.id}}/{{department.id}}/opportunities/new" class="btn btn-sm btn-info btn-edit-title mlm"><span class="fui-new"></span> Nueva Oportunidad</a>
       {{department.name}}<br/>
       <small>{{organization.name}}</small>
     </h5>
@@ -24,7 +26,7 @@
           <span class="label label-info inline-label">
             Factor {{ops.parameters.profile_patterns[0].factor}}
           </span>
-          <span class="label label-info inline-label" ng-repeat="pattern in ops.parameters.profile_patterns[0].patterns">
+          <span class="label label-info inline-label pattern-tag" ng-repeat="pattern in ops.parameters.profile_patterns[0].patterns">
             {{pattern}}
           </span>
         </li>

@@ -37,4 +37,8 @@ hostHound.controller('profileViewController', ['$scope','$modal','$log', '$auth'
     }
   }
 
+  $scope.bar = function(value){
+    return value/0.6;
+  }
+
 }]);

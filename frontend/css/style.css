@@ -247,3 +247,17 @@
 .btn-edit-title{
   float:right;
 }
+
+.pattern-tag{
+  text-transform: uppercase;
+}
+
+#profileView .personal-style-graphic-bars .progress {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  height: 10px;
+}
+
+.personal-style-graphic-bars .progress .progress-bar {
+  line-height: 10px;
+}

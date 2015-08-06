@@ -1,12 +1,15 @@
 <div class="row opportunity-header">
 
   <div class="col-md-12 col-sm-12 col-xs-12">
+    <a ng-click="goBack()" class="btn btn-xs btn-info"><span class="fui-arrow-left"></span> Volver</a>
     <h4>
       Detalle de Oportunidad Laboral
     </h4>
     <h5>
+      <a href="/o/{{organization.id}}/{{department.id}}" class="btn btn-sm btn-info btn-edit-title mlm"><span class="fui-arrow-right pull-right"></span> Ir a Departamento</a>
       {{department.name}}<br/>
       <small>{{organization.name}}</small>
+
     </h5>
   </div>
 

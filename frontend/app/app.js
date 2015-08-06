@@ -15,7 +15,7 @@ var hostHound = angular.module("hostHoundApp",[
  *  Main App Controller
  **/
 
-hostHound.controller('hostHoundController', ['$scope','$modal','$log', '$auth', '$rootScope', function ($scope, $modal, $log, $auth, $rootScope) {
+hostHound.controller('hostHoundController', ['$scope','$modal','$log', '$auth', '$rootScope', '$window', function ($scope, $modal, $log, $auth, $rootScope, $window) {
 
   $log.log('HostHound Controller');
   $log.log('Authenticated: ' + $auth.isAuthenticated());
@@ -24,6 +24,10 @@ hostHound.controller('hostHoundController', ['$scope','$modal','$log', '$auth', 
 
   if ($auth.isAuthenticated()){
     $rootScope.isLoggedIn = true;
+  }
+
+  $rootScope.goBack = function(){
+    $window.history.back();
   }
 
 }]);
