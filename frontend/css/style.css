@@ -216,3 +216,30 @@
   border: 1px solid #f7f9fa;
   border-radius: 6px;
 }
+
+.drop-column-title-attr{
+  text-align: center;
+  line-height: 20px;
+  height: 20px;
+  vertical-align: middle;
+  width: 23%;
+  margin: 10px 1%;
+  float: left;
+}
+
+.drop-column-attr{
+  width: 23%;
+  margin: 10px 1%;
+  padding: 1%;
+  float: left;
+  border: 1px solid #f7f9fa;
+  border-radius: 6px;
+}
+
+.submit-right{
+  text-align: right;
+}
+
+.opportunity-header{
+  margin-bottom: 20px;
+}

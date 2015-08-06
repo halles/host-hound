@@ -178,6 +178,33 @@ $app->get('/opportunities/{organizationId}/{departmentId}/{opportunityId}', [
   }
 ]);
 
+$app->post('/opportunities/{organizationId}/{departmentId}/{opportunityId}', [
+  'middleware' => 'auth',
+  function($organizationId, $departmentId, $opportunityId) use ($app){
+
+    if($opportunityId == 'new'){
+      $opportunity = new Opportunity;
+      $opportunity->department_id = $departmentId;
+      $opportunity->name = $app->request->opportunity['name'];
+      $opportunity->active = $app->request->opportunity['active'];
+      $opportunity->parameters = $app->request->opportunity['parameters'];
+      $opportunity->save();
+    }else{
+      $opportunity = Opportunity::find($opportunityId);
+      $opportunity->department_id = $departmentId;
+      $opportunity->name = $app->request->opportunity['name'];
+      $opportunity->active = $app->request->opportunity['active'];
+      $opportunity->parameters = $app->request->opportunity['parameters'];
+      $opportunity->save();
+    }
+
+    $response = array(
+      'opportunity' => $opportunity
+    );
+    return response()->json($response);
+  }
+]);
+
 $app->get('/attributes/{organizationId}/{departmentId}', [
   'middleware' => 'auth',
   function($organizationId, $departmentId) use ($app){
