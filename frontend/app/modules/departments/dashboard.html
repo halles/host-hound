@@ -28,7 +28,7 @@
         ng-options="opportunity.name for opportunity in opportunities track by opportunity.id">
         </select>
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button" ng-click="calculateScores()">Aplicar!</button>
+          <button class="btn btn-default" type="button" ng-click="doApplyOpportunity()">Aplicar!</button>
         </span>
       </div>
     </div>
@@ -51,6 +51,8 @@
 
   </div>
 
+  <div class="col-md-12 col-sm-12 col-xs-12" id="ngProgressRow"></div>
+
   <div class="col-md-12 col-sm-12 col-xs-12">
     <table class="table table-bordered" id="profiles-table">
       <thead>
@@ -59,10 +61,10 @@
           <th class="jobs">Experiencia Laboral</th>
           <th class="score_display">Evaluación</th>
           <th class="notes_tags">Anotaciones</th>
-          <th class="score_all"></th>
-          <th class="score_psiceval"></th>
-          <th class="score_attributes"></th>
-          <th class="score_experience"></th>
+          <th class="hidden"></th>
+          <th class="hidden"></th>
+          <th class="hidden"></th>
+          <th class="hidden"></th>
         </tr>
       </thead>
       <tbody></tbody>

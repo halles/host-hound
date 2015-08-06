@@ -4,74 +4,78 @@ hostHound.controller('departmentChooserController', ['$scope','$modal','$log', '
   $log.log('Department Chooser Controller');
 
   $http.get('api/organizations/'+$state.params.organizationId+'/departments').
-    success(function(data, status, headers, config) {
-      $log.log(status);
-      $log.log(data);
-      $scope.departments = data.departments;
-      $scope.organization = data.organization;
-    }).
-    error(function(data, status, headers, config) {
-      $log.log(status);
+    then(function(response) {
+      $log.log(response);
+      $scope.departments = response.data.departments;
+      $scope.organization = response.data.organization;
+    }, function(response) {
+
     });
 
 }]);
 
 
-hostHound.controller('departmentDashboardController',['$scope','$modal','$log', '$auth', '$state', '$http' , function ($scope, $modal, $log, $auth, $state, $http) {
+hostHound.controller('departmentDashboardController',['$scope','$modal','$log', '$auth', '$state', '$http', '$q', 'ngProgress' , function ($scope, $modal, $log, $auth, $state, $http, $q, ngProgress) {
 
   $log.log('Department Dashboard Controller');
 
   $scope.organizationId = $state.params.organizationId;
   $scope.departmentId = $state.params.departmentId;
-
-  $http.get('api/departments/'+$state.params.departmentId+'/tools').
-      success(function(data, status, headers, config) {
-        $scope.opportunities = data.opportunities;
-        $scope.organization = data.organization;
-        $scope.department = data.department;
-      }).
-      error(function(data, status, headers, config) {
-
-      });
-
-  /** Utils **/
-
   var organizationId = $state.params.organizationId;
   var departmentId = $state.params.departmentId;
 
-  $scope.monthDiff = function(d1,d2){
-    d1 = d1.split('-');
-    d1 = new Date(d1[0],d1[1],d1[2]);
-    if (d2 == undefined){
-      d2 = new Date();
-    }else{
-      d2 = d2.split('-');
-      d2 = new Date(d2[0],d2[1],d2[2]);
-    }
-    months = (d2.getFullYear() - d1.getFullYear()) * 12;
-    months -= d1.getMonth() + 1;
-    months += d2.getMonth();
-    return months <= 0 ? 0 : months;
-  }
+  $http.get('api/departments/'+$state.params.departmentId+'/tools').
+      then(function(response) {
+        $scope.opportunities = response.data.opportunities;
+        $scope.organization = response.data.organization;
+        $scope.department = response.data.department;
+      }, function(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      });
 
-  $scope.age = function(profile){
-    months = $scope.monthDiff(profile.birthday);
-    age = Math.floor(months/12);
-    return age;
-  }
+  ngProgress.setParent(document.getElementById('ngProgressRow'))
+  ngProgress.color('#5dade2');
+  ngProgress.start();
 
-  var getRandomArbitrary = function(min, max) {
-    return Math.random() * (max - min) + min;
-  }
+  $http.get('api/organizations/'+$state.params.organizationId+'/profiles').
+      then(function(response) {
+        $scope.status = response.data.status;
+        $scope.profiles = response.data.profiles;
+        $scope.note_types = response.data.note_types;
+        profilesStartUp();
+      }, function(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      });
 
-  $scope.prepareFields = function(){
+  /** Profiles Initialization Functions **/
+
+  var profilesStartUp = function(){
+
+    $log.log('Setting Ages');
+    var promise = setAge();
+
+    promise.then(function(){
+      $log.log('Resetting Scores');
+      return resetScores();
+    }).then(function(){
+      $log.log('Building Table');
+      return buildTable();
+    }).then(function(){
+      $log.log('Complete!');
+      ngProgress.complete();
+    });
 
   }
 
   var setAge = function(){
-    for($i = 0; $i < $scope.profiles.length; $i++){
-      $scope.profiles[$i].age = $scope.age($scope.profiles[$i]);
-    }
+    return $q(function(resolve, reject) {
+      for($i = 0; $i < $scope.profiles.length; $i++){
+        $scope.profiles[$i].age = $scope.age($scope.profiles[$i]);
+      }
+      resolve(true);
+    });
   }
 
   $scope.scores_max = null;
@@ -94,40 +98,141 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
   }
 
   var resetScores = function(){
-    resetScoreLimits();
-    var factors = [];
-    for($i = 0; $i < $scope.profiles.length; $i++){
-      factors.psiceval = 1;
-      factors.attributes = 1;
-      factors.experience = 1;
-      factors.overall = 1 * factors.psiceval * factors.attributes * factors.experience;
-      $scope.profiles[$i].score = factors;
-    }
+
+    return $q(function(resolve, reject) {
+
+      setTimeout(function(){
+        resetScoreLimits();
+        var factors = [];
+        for($i = 0; $i < $scope.profiles.length; $i++){
+          factors.psiceval = 1;
+          factors.attributes = 1;
+          factors.experience = 1;
+          factors.overall = 1 * factors.psiceval * factors.attributes * factors.experience;
+          $scope.profiles[$i].score = factors;
+        }
+
+        resolve(true);
+      }, 0);
+    });
 
   }
 
-  var vm = this;
+  /** Table Init **/
 
   var theTable;
 
-  $http.get('api/organizations/'+$state.params.organizationId+'/profiles').
-      success(function(data, status, headers, config) {
-        $scope.status = data.status;
-        $scope.profiles = data.profiles;
-        $scope.note_types = data.note_types;
-        prepareProfiles();
-        buildTable();
-      }).
-      error(function(data, status, headers, config) {
+  $scope.currentOpportunity = 0;
 
+  $scope.tableOrderOptions = [
+    {
+      value: 'overall',
+      name: 'General',
+      column: 4
+    },
+    {
+      value: 'psiceval',
+      name: 'Perfil Psicológico',
+      column: 5
+    },
+    {
+      value: 'attributes',
+      name: 'Atributos',
+      column: 6
+    },
+    {
+      value: 'experience',
+      name: 'Experiencia',
+      column: 7
+    }
+  ];
+
+  $scope.tableOrder = $scope.tableOrderOptions[0];
+
+  $scope.reorderTable = function(){
+    if(theTable!=undefined){
+      theTable.order([$scope.tableOrder.column, 'desc']).draw();
+    }
+  };
+
+  $scope.doApplyOpportunity = function(){
+
+    if($scope.currentOpportunity == 0){
+      return;
+    }
+
+    ngProgress.start();
+
+    setTimeout(function(){
+
+      $log.log('Destroying Table!');
+      var promise = destroyTable();
+
+      promise.then(function(){
+        $log.log('Recalculating Scores');
+        return calculateScores();
+      }).then(function(){
+        $log.log('Building Table');
+        return buildTable();
+      }).then(function(){
+        $log.log('Complete!');
+        ngProgress.complete();
       });
 
-  var prepareProfiles = function(){
-    setAge();
-    resetScores();
+    },500);
+
   }
 
-  $scope.currentOpportunity = 0;
+  var destroyTable = function(){
+
+    return $q(function(resolve, reject) {
+      theTable.destroy().draw();
+      resolve(true);
+    });
+
+  }
+
+  var calculateScores = function(){
+
+    return $q(function(resolve, reject) {
+
+      resetScoreLimits();
+
+      var Op = $scope.currentOpportunity;
+
+      var profile_patterns = Op.parameters.profile_patterns;
+      var attributes = Op.parameters.attributes;
+      var employment = Op.parameters.employment;
+      var experience = Op.parameters.experience;
+
+      var factors = [];
+
+      for(pi = 0; pi < $scope.profiles.length; pi++){
+
+        factors = [];
+        factors.psiceval = calculateProfilePattern(pi,profile_patterns);
+        factors.attributes = calculateAttributes(pi,attributes);
+        factors.experience = calculateEmployement(pi,employment)*calculateExperience(pi,experience);
+        factors.overall = 1 * factors.psiceval * factors.attributes * factors.experience;
+        $scope.profiles[pi].score = factors;
+
+        $scope.scores_max.psiceval = (factors.psiceval > $scope.scores_max.psiceval)?factors.psiceval:$scope.scores_max.psiceval;
+        $scope.scores_max.attributes = (factors.attributes > $scope.scores_max.attributes)?factors.attributes:$scope.scores_max.attributes;
+        $scope.scores_max.experience = (factors.experience > $scope.scores_max.experience)?factors.experience:$scope.scores_max.experience;
+        $scope.scores_max.overall = (factors.overall > $scope.scores_max.overall)?factors.overall:$scope.scores_max.overall;
+
+        $scope.scores_min.psiceval = (factors.psiceval < $scope.scores_min.psiceval)?factors.psiceval:$scope.scores_min.psiceval;
+        $scope.scores_min.attributes = (factors.attributes < $scope.scores_min.attributes)?factors.attributes:$scope.scores_min.attributes;
+        $scope.scores_min.experience = (factors.experience < $scope.scores_min.experience)?factors.experience:$scope.scores_min.experience;
+        $scope.scores_min.overall = (factors.overall < $scope.scores_min.overall)?factors.overall:$scope.scores_min.overall;
+
+      }
+
+      resolve(true);
+
+    });
+
+  };
 
   var calculateProfilePattern = function(index,patterns){
     var upatterns = $scope.profiles[index].test.patterns;
@@ -241,87 +346,11 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
 
   }
 
-  $scope.calculateScores = function(doRebuild){
+  var buildTable = function(doRebuild){
 
-    if($scope.currentOpportunity == 0){
-      return;
-    }
+    return $q(function(resolve, reject) {
 
-    resetScoreLimits();
-
-    var Op = $scope.currentOpportunity;
-
-    var profile_patterns = Op.parameters.profile_patterns;
-    var attributes = Op.parameters.attributes;
-    var employment = Op.parameters.employment;
-    var experience = Op.parameters.experience;
-
-    var factors = [];
-
-    for(pi = 0; pi < $scope.profiles.length; pi++){
-      factors = [];
-      factors.psiceval = calculateProfilePattern(pi,profile_patterns);
-      factors.attributes = calculateAttributes(pi,attributes);
-      factors.experience = calculateEmployement(pi,employment)*calculateExperience(pi,experience);
-      factors.overall = 1 * factors.psiceval * factors.attributes * factors.experience;
-      $scope.profiles[pi].score = factors;
-
-      $scope.scores_max.psiceval = (factors.psiceval > $scope.scores_max.psiceval)?factors.psiceval:$scope.scores_max.psiceval;
-      $scope.scores_max.attributes = (factors.attributes > $scope.scores_max.attributes)?factors.attributes:$scope.scores_max.attributes;
-      $scope.scores_max.experience = (factors.experience > $scope.scores_max.experience)?factors.experience:$scope.scores_max.experience;
-      $scope.scores_max.overall = (factors.overall > $scope.scores_max.overall)?factors.overall:$scope.scores_max.overall;
-
-      $scope.scores_min.psiceval = (factors.psiceval < $scope.scores_min.psiceval)?factors.psiceval:$scope.scores_min.psiceval;
-      $scope.scores_min.attributes = (factors.attributes < $scope.scores_min.attributes)?factors.attributes:$scope.scores_min.attributes;
-      $scope.scores_min.experience = (factors.experience < $scope.scores_min.experience)?factors.experience:$scope.scores_min.experience;
-      $scope.scores_min.overall = (factors.overall < $scope.scores_min.overall)?factors.overall:$scope.scores_min.overall;
-
-    }
-
-    buildTable(true);
-
-  };
-
-
-
-  $scope.tableOrderOptions = [
-    {
-      value: 'overall',
-      name: 'General',
-      column: 4
-    },
-    {
-      value: 'psiceval',
-      name: 'Perfil Psicológico',
-      column: 5
-    },
-    {
-      value: 'attributes',
-      name: 'Atributos',
-      column: 6
-    },
-    {
-      value: 'experience',
-      name: 'Experiencia',
-      column: 7
-    }
-  ];
-
-  $scope.tableOrder = $scope.tableOrderOptions[0];
-
-  $scope.reorderTable = function(){
-    if(theTable!=undefined){
-      theTable.order([$scope.tableOrder.column, 'desc']).draw();
-    }
-  };
-
-  function buildTable(doRebuild){
-
-    if(doRebuild){
-      theTable.destroy();
-    }
-
-    theTable = angular.element('#profiles-table').DataTable({
+      theTable = angular.element('#profiles-table').DataTable({
           data: $scope.profiles,
           paging: false,
           searching: false,
@@ -331,10 +360,10 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
             { 'sClass':'jobs', 'type': 'display' },
             { 'sClass':'score_display', 'type': 'display' },
             { 'sClass':'notes_tags', 'type': 'display' },
-            { "data": "score.overall" },
-            { "data": "score.psiceval" },
-            { "data": "score.attributes" },
-            { "data": "score.experience" }
+            { "data": "score.overall", 'sClass': 'hidden'},
+            { "data": "score.psiceval", 'sClass': 'hidden' },
+            { "data": "score.attributes", 'sClass': 'hidden' },
+            { "data": "score.experience", 'sClass': 'hidden' }
           ],
           columnDefs: [
             {
@@ -398,10 +427,42 @@ hostHound.controller('departmentDashboardController',['$scope','$modal','$log', 
 
             { "visible": false,  "targets": [ 4,5,6,7 ] },
             { 'bSortable': false, 'aTargets': [ 0,1,2 ] }
-          ]
+          ],
+          drawCallback: function( settings ) {
+            resolve(true);
+          }
         });
+
+    });
+
   }
 
+  /** Utils **/
+
+  $scope.monthDiff = function(d1,d2){
+    d1 = d1.split('-');
+    d1 = new Date(d1[0],d1[1],d1[2]);
+    if (d2 == undefined){
+      d2 = new Date();
+    }else{
+      d2 = d2.split('-');
+      d2 = new Date(d2[0],d2[1],d2[2]);
+    }
+    months = (d2.getFullYear() - d1.getFullYear()) * 12;
+    months -= d1.getMonth() + 1;
+    months += d2.getMonth();
+    return months <= 0 ? 0 : months;
+  }
+
+  $scope.age = function(profile){
+    months = $scope.monthDiff(profile.birthday);
+    age = Math.floor(months/12);
+    return age;
+  }
+
+  var getRandomArbitrary = function(min, max) {
+    return Math.random() * (max - min) + min;
+  }
 
 
 }]);
